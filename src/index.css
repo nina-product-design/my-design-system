@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "./globals.css";
+
+body {
+  background: #f5f5f0;
+}
