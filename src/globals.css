@@ -243,7 +243,7 @@
     --font-label-2-family: var(--font-family-label);
     --font-label-2-size: 12px;
     --font-label-2-line-height: 1.2;
-    --font-label-2-letter-spacing: 0px;
+    --font-label-2-letter-spacing: 0.08em; /* 8% = 0.96px at 12px */
     --font-label-2-weight-regular: 400;
     --font-label-2-weight-medium: 500;
 

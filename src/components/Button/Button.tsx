@@ -1,3 +1,5 @@
+import { typography } from "../../tokens";
+
 /*
  * Button — Figma: Design System Foundations
  *
@@ -167,7 +169,17 @@ export function Button({
       {loading ? (
         <Spinner />
       ) : (
-        <span className="label-2-medium uppercase text-center flex-1 min-w-0">
+        <span
+          style={{
+            fontFamily: typography.label2Medium.fontFamily,
+            fontSize: typography.label2Medium.fontSize,
+            fontWeight: typography.label2Medium.fontWeight,
+            lineHeight: typography.label2Medium.lineHeight,
+            letterSpacing: typography.label2Medium.letterSpacing,
+            textTransform: "uppercase",
+          }}
+          className="text-center flex-1 min-w-0"
+        >
           {children}
         </span>
       )}
