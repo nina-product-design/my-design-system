@@ -1,0 +1,46 @@
+import{r as s,j as r}from"./index-kCiLUfvA.js";/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const d=(...e)=>e.filter((t,n,o)=>!!t&&t.trim()!==""&&o.indexOf(t)===n).join(" ").trim();/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const m=e=>e.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase();/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const f=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(t,n,o)=>o?o.toUpperCase():n.toLowerCase());/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const u=e=>{const t=f(e);return t.charAt(0).toUpperCase()+t.slice(1)};/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var h={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const g=e=>{for(const t in e)if(t.startsWith("aria-")||t==="role"||t==="title")return!0;return!1};/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const w=s.forwardRef(({color:e="currentColor",size:t=24,strokeWidth:n=2,absoluteStrokeWidth:o,className:l="",children:a,iconNode:i,...c},C)=>s.createElement("svg",{ref:C,...h,width:t,height:t,stroke:e,strokeWidth:o?Number(n)*24/Number(t):n,className:d("lucide",l),...!a&&!g(c)&&{"aria-hidden":"true"},...c},[...i.map(([x,p])=>s.createElement(x,p)),...Array.isArray(a)?a:[a]]));/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const b=(e,t)=>{const n=s.forwardRef(({className:o,...l},a)=>s.createElement(w,{ref:a,iconNode:t,className:d(`lucide-${m(u(e))}`,`lucide-${e}`,o),...l}));return n.displayName=u(e),n};/**
+ * @license lucide-react v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const y=[["path",{d:"m6 9 6 6 6-6",key:"qrunsl"}]],v=b("chevron-down",y),k="data:image/svg+xml,%3csvg%20viewBox='0%200%20428.31%20123.89'%20overflow='visible'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Group'%3e%3cpath%20id='Vector'%20d='M395.03%2043.44L395.01%2043.4H395.03C394.89%2017.43%20381.37%200.86%20357.92%200.86C334.47%200.86%20319.31%2018.26%20319.31%2043.75C319.31%2069.24%20334.37%2086.64%20357.92%2086.64C375.65%2086.64%20388.08%2078.26%20393.5%2062.78L378.73%2059C376.05%2075.22%20368.64%2082.4%20357.92%2082.4C344.29%2082.4%20335.99%2070.92%20335.99%2043.76C335.99%2043.66%20335.99%2043.56%20335.99%2043.45H395.02L395.03%2043.44ZM357.92%205.1C370.67%205.1%20377.34%2014.58%20378.15%2038.59H336.1C337.11%2015.13%20345.18%205.1%20357.92%205.1ZM282.08%2037.01L273.53%2034.59C262.56%2031.52%20257.29%2026.14%20257.29%2019.37C257.29%2011.51%20264.47%205.11%20272.2%205.11C282.37%205.11%20288.88%2011.27%20290.82%2025.8L304.34%2022.34C301.55%208.4%20288.17%200.86%20272.19%200.86C259.36%200.86%20246.04%209.89%20246.04%2024.16C246.04%2035.4%20253.67%2043.97%20268.35%2048.16L276.9%2050.58C287.39%2053.48%20295.45%2057.71%20295.45%2066.31C295.45%2074.91%20287.72%2082.39%20277.46%2082.39C267.2%2082.39%20258.89%2075.3%20256.65%2058.99L242.55%2062.6C245.57%2078.11%20259.73%2086.63%20277.46%2086.63C295.19%2086.63%20307.52%2075.04%20307.52%2061.01C307.52%2046.98%20297.4%2041.36%20282.07%2037L282.08%2037.01ZM37.52%200.85C27.88%200.85%2020.39%205.58%2015.35%209.97V2.61H0V123.89H15.35V77.52C20.39%2081.91%2027.87%2086.64%2037.52%2086.64C60.8%2086.64%2075.13%2069.24%2075.13%2043.75C75.13%2018.26%2060.8%200.85%2037.52%200.85ZM36.92%2081.64C28.82%2081.64%2019.65%2076.69%2015.35%2070.28V17.22C19.65%2010.81%2028.88%205.85%2036.92%205.85C49.88%205.85%2058.35%2016.58%2058.35%2043.74C58.35%2070.9%2049.89%2081.63%2036.92%2081.63V81.64ZM147.65%2015.08C146.01%2015.08%20144.38%2014.19%20142.27%2012.23L136.69%207.05C131.11%201.87%20128.66%200.77%20125.17%200.77C121.68%200.77%20118.18%203.04%20114.07%207.25C110.88%2010.52%20108.5%2013.25%20105.91%2016.93V2.61H90.56V84.88H105.91V23.77C110.64%2017.34%20115.27%2012.49%20120.22%2012.49C123.1%2012.49%20124.57%2013.68%20128.06%2016.91L133.64%2022.09C136.91%2025.13%20138.5%2026.63%20141.8%2026.63C146.12%2026.63%20151.58%2018.12%20153.38%2014.42L151.49%2012.98C150.17%2014.46%20148.83%2015.09%20147.65%2015.09V15.08ZM193.36%200.85C169.81%200.85%20154.75%2018.25%20154.75%2043.74C154.75%2069.23%20169.81%2086.63%20193.36%2086.63C216.91%2086.63%20231.97%2069.23%20231.97%2043.74C231.97%2018.25%20216.91%200.85%20193.36%200.85ZM193.36%2082.39C179.68%2082.39%20171.25%2071.01%20171.25%2043.75C171.25%2016.49%20179.68%205.11%20193.36%205.11C207.04%205.11%20215.37%2016.49%20215.37%2043.75C215.37%2071.01%20207.04%2082.39%20193.36%2082.39Z'%20fill='currentColor'/%3e%3cpath%20id='Vector_2'%20d='M417.05%200C423.27%200%20428.31%205.03%20428.31%2011.26C428.31%2017.49%20423.28%2022.52%20417.05%2022.52C410.82%2022.52%20405.79%2017.49%20405.79%2011.26C405.79%205.03%20410.82%200%20417.05%200ZM417.05%2020.51C422.18%2020.51%20426.28%2016.38%20426.28%2011.25C426.28%206.12%20422.18%201.99%20417.05%201.99C411.92%201.99%20407.82%206.12%20407.82%2011.25C407.82%2016.38%20411.92%2020.51%20417.05%2020.51ZM420.12%2017.79L416.87%2012.25H414.84V17.79H412.71V4.72H418.03C420.56%204.72%20422.1%206.13%20422.1%208.5C422.1%2010.5%20421.04%2011.78%20419.19%2012.16L422.5%2017.79H420.12ZM414.83%2010.2H418.02C419.15%2010.2%20419.9%209.64%20419.9%208.54C419.9%207.44%20419.15%206.85%20418.02%206.85H414.83V10.2Z'%20fill='currentColor'/%3e%3c/g%3e%3c/svg%3e",N=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];function M(){const[e,t]=s.useState(""),[n,o]=s.useState(!1),l=s.useRef(null);return s.useEffect(()=>{const a=i=>{l.current&&!l.current.contains(i.target)&&o(!1)};return document.addEventListener("mousedown",a),()=>document.removeEventListener("mousedown",a)},[]),r.jsx("div",{className:"flex min-h-screen items-center justify-center bg-neutral-200",children:r.jsxs("div",{className:"flex w-full max-w-md flex-col items-center gap-6 rounded-[20px] bg-neutral-100 px-8 py-16 text-center",children:[r.jsx("img",{src:k,alt:"Prose",className:"mb-2 w-[60px]"}),r.jsx("h1",{className:"font-heading text-5xl font-light tracking-[-1.44px] leading-[110%] text-neutral-900",children:"hi michelle!!"}),r.jsx("p",{className:"font-body text-xl tracking-[0.4px] leading-[150%] text-neutral-800",children:"belated happy bday!"}),r.jsxs("div",{ref:l,className:"relative flex w-full flex-col items-start gap-2",children:[r.jsx("label",{className:"font-label text-xs font-medium uppercase tracking-wide text-neutral-800",children:"Select your state"}),r.jsxs("button",{type:"button",onClick:()=>o(!n),className:"flex w-full items-center justify-between rounded-[10px] border border-neutral-400 bg-neutral-200 px-4 py-3 text-left transition-colors focus:border-primary-300 focus:outline-none",children:[r.jsx("span",{className:`font-body text-base tracking-[0.32px] leading-[150%] ${e?"text-neutral-900":"text-neutral-700"}`,children:e||"Choose a state"}),r.jsx(v,{size:16,className:`text-neutral-800 transition-transform ${n?"rotate-180":""}`})]}),n&&r.jsx("ul",{className:"absolute top-full z-10 mt-1 max-h-[240px] w-full overflow-y-auto rounded-xl border border-neutral-400 bg-neutral-100 py-2 shadow-[2px_2px_3px_#eaeaea]",children:N.map(a=>r.jsx("li",{children:r.jsx("button",{type:"button",onClick:()=>{t(a),o(!1)},className:`w-full px-4 py-2 text-left font-body text-base tracking-[0.32px] leading-[150%] transition-colors hover:bg-neutral-300 ${a===e?"bg-primary-100 text-primary-400":"text-neutral-900"}`,children:a})},a))})]}),r.jsx("a",{href:"#",className:"font-label text-sm font-medium uppercase tracking-[1.12px] leading-[120%] flex h-[44px] items-center justify-center rounded-[60px] bg-accent-200 px-8 text-neutral-100 no-underline transition-colors hover:bg-accent-300",children:"present here!"})]})})}export{M as default};
