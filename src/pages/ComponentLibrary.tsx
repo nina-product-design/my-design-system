@@ -6,19 +6,37 @@ import {
   stateClasses,
   variantTokens,
 } from "../components/Button/Button";
+import { Logo } from "../components/Logo";
+import {
+  InputField,
+  type InputFieldType,
+  type InputFieldState,
+  bgClasses as inputBgClasses,
+  stateTokens as inputStateTokens,
+} from "../components/InputField/InputField";
+import {
+  TextLink,
+  type TextLinkType,
+  type TextLinkColor,
+  stateClasses as linkStateClasses,
+  variantTokens as linkVariantTokens,
+} from "../components/TextLink/TextLink";
 import { TypographyShowcase } from "../components/Typography/Typography";
 import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "colors" | "typography" | "spacing" | "radius" | "buttons";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs";
 
 const navItems: { id: Page; label: string }[] = [
+  { id: "logo",       label: "Logo" },
   { id: "colors",     label: "Colors" },
   { id: "typography", label: "Typography" },
   { id: "spacing",    label: "Spacing" },
   { id: "radius",     label: "Radius" },
   { id: "buttons",    label: "Buttons" },
+  { id: "text-links", label: "Text Links" },
+  { id: "inputs",     label: "Inputs" },
 ];
 
 // ─── Color data ───────────────────────────────────────────────────────────────
@@ -471,6 +489,343 @@ function RadiusPage() {
   );
 }
 
+function LogoPage() {
+  return (
+    <div>
+      <PageHeader title="Logo" subtitle="The Prose wordmark. Uses currentColor — inherits text color from parent." />
+
+      <div className="flex flex-col gap-10">
+        {/* Dark variant on light bg */}
+        <div>
+          <SectionLabel>Dark variant — for light backgrounds</SectionLabel>
+          <div
+            className="flex items-center justify-center p-10 rounded-xl"
+            style={{ background: cssVars["color/neutral/200"] }}
+          >
+            <Logo variant="dark" height={48} />
+          </div>
+          <p className="text-[10px] font-mono mt-2" style={{ color: cssVars["color/neutral/700"] }}>
+            {'<Logo variant="dark" height={48} />'}
+          </p>
+        </div>
+
+        {/* Light variant on dark bg */}
+        <div>
+          <SectionLabel>Light variant — for dark backgrounds</SectionLabel>
+          <div
+            className="flex items-center justify-center p-10 rounded-xl"
+            style={{ background: cssVars["color/primary/400"] }}
+          >
+            <Logo variant="light" height={48} />
+          </div>
+          <p className="text-[10px] font-mono mt-2" style={{ color: cssVars["color/neutral/700"] }}>
+            {'<Logo variant="light" height={48} />'}
+          </p>
+        </div>
+
+        {/* Size examples */}
+        <div>
+          <SectionLabel>Sizes</SectionLabel>
+          <div
+            className="flex items-end gap-8 p-10 rounded-xl"
+            style={{ background: cssVars["color/neutral/200"] }}
+          >
+            <div className="flex flex-col items-center gap-2">
+              <Logo variant="dark" height={18} />
+              <p className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>18px</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Logo variant="dark" height={24} />
+              <p className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>24px</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Logo variant="dark" height={32} />
+              <p className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>32px</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Logo variant="dark" height={48} />
+              <p className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>48px</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Logo variant="dark" height={64} />
+              <p className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>64px</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Tokens */}
+        <div>
+          <SectionLabel>Tokens</SectionLabel>
+          <div className="flex gap-3">
+            <TokenPill token="color/primary/400" />
+            <TokenPill token="color/neutral/100" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Text Links data ─────────────────────────────────────────────────────────
+
+type LinkRow = {
+  type: TextLinkType;
+  color: TextLinkColor;
+  label: string;
+  hasIcon?: boolean;
+  previewBg: "light" | "dark";
+};
+
+type LinkGroup = { name: string; rows: LinkRow[] };
+
+const linkGroups: LinkGroup[] = [
+  {
+    name: "Primary",
+    rows: [
+      { type: "primary", color: "light", label: "Primary Light",           previewBg: "light" },
+      { type: "primary", color: "light", label: "Primary Light + Icon",    previewBg: "light", hasIcon: true },
+      { type: "primary", color: "dark",  label: "Primary Dark",            previewBg: "dark" },
+      { type: "primary", color: "dark",  label: "Primary Dark + Icon",     previewBg: "dark",  hasIcon: true },
+    ],
+  },
+  {
+    name: "Secondary",
+    rows: [
+      { type: "secondary", color: "light", label: "Secondary Light", previewBg: "light" },
+      { type: "secondary", color: "dark",  label: "Secondary Dark",  previewBg: "dark" },
+    ],
+  },
+  {
+    name: "Simple",
+    rows: [
+      { type: "simple", color: "light", label: "Simple Light", previewBg: "light" },
+      { type: "simple", color: "dark",  label: "Simple Dark",  previewBg: "dark" },
+    ],
+  },
+];
+
+function LinkHoverPreview({
+  type,
+  color,
+  hasIcon = false,
+}: {
+  type: TextLinkType;
+  color: TextLinkColor;
+  hasIcon?: boolean;
+}) {
+  const key = `${type}-${color}` as const;
+  const isSimple = type === "simple";
+
+  if (isSimple) {
+    return (
+      <span
+        className={[
+          "inline-flex items-center underline decoration-current",
+          linkStateClasses[key].hover,
+        ].join(" ")}
+        style={{
+          fontFamily: "var(--font-body-4-family)",
+          fontSize: "var(--font-body-4-size)",
+          fontWeight: "var(--font-body-4-weight-regular)",
+          lineHeight: "var(--font-body-4-line-height)",
+          letterSpacing: "var(--font-body-4-letter-spacing)",
+        }}
+      >
+        Text goes here
+      </span>
+    );
+  }
+
+  const isPrimary = type === "primary";
+  const underlineBgClass = isPrimary ? "bg-(--color-accent-300)" : "bg-(--color-primary-400)";
+  const underlineBgDarkClass = isPrimary ? "bg-(--color-accent-300)" : "bg-(--color-neutral-100)";
+  const ulClass = color === "dark" ? underlineBgDarkClass : underlineBgClass;
+
+  return (
+    <span className={["inline-flex items-center gap-(--spacing-spacing-8)", linkStateClasses[key].hover].join(" ")}>
+      <span className="flex flex-col gap-[4px] items-start">
+        <span className="label-2-medium uppercase whitespace-nowrap">Text goes here</span>
+        <span className={`h-px w-full ${ulClass}`} aria-hidden="true" />
+      </span>
+      {hasIcon && (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0" aria-hidden="true">
+          <circle cx="10" cy="10" r="9.5" stroke="currentColor" />
+          <path d="M8.5 6L13.5 10L8.5 14" fill="currentColor" />
+        </svg>
+      )}
+    </span>
+  );
+}
+
+function LinkGroupSection({ name, rows }: LinkGroup) {
+  return (
+    <div className="mb-10">
+      <SectionLabel>{name}</SectionLabel>
+
+      {/* Column headers */}
+      <div className="grid gap-3 mb-2" style={{ gridTemplateColumns: "200px 1fr 1fr 1fr 200px" }}>
+        <div />
+        <StateLabel>Default</StateLabel>
+        <StateLabel>Hover</StateLabel>
+        <StateLabel>Disabled</StateLabel>
+        <StateLabel>Tokens</StateLabel>
+      </div>
+
+      {rows.map((row) => {
+        const key = `${row.type}-${row.color}` as const;
+        const tokens = linkVariantTokens[key];
+        return (
+          <div
+            key={row.label}
+            className="grid gap-3 items-center py-3 border-b last:border-0"
+            style={{ gridTemplateColumns: "200px 1fr 1fr 1fr 200px", borderColor: cssVars["color/neutral/600"] }}
+          >
+            <div>
+              <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>
+                {row.label}
+              </p>
+              <p className="text-[10px] font-mono mt-0.5" style={{ color: cssVars["color/neutral/700"] }}>
+                type="{row.type}" color="{row.color}"{row.hasIcon ? " hasIcon" : ""}
+              </p>
+            </div>
+
+            <PreviewCell bg={row.previewBg}>
+              <TextLink type={row.type} color={row.color} hasIcon={row.hasIcon}>
+                Text goes here
+              </TextLink>
+            </PreviewCell>
+
+            <PreviewCell bg={row.previewBg}>
+              <LinkHoverPreview type={row.type} color={row.color} hasIcon={row.hasIcon} />
+            </PreviewCell>
+
+            <PreviewCell bg={row.previewBg}>
+              <TextLink type={row.type} color={row.color} hasIcon={row.hasIcon} disabled>
+                Text goes here
+              </TextLink>
+            </PreviewCell>
+
+            <div className="flex flex-col gap-1.5">
+              <TokenPill token={tokens.text} />
+              <TokenPill token={tokens.underline} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Inputs data ─────────────────────────────────────────────────────────────
+
+const inputTypes: { type: InputFieldType; label: string }[] = [
+  { type: "form-field", label: "Form Field" },
+  { type: "dropdown",   label: "Dropdown" },
+  { type: "button",     label: "Button" },
+];
+
+const inputStates: InputFieldState[] = [
+  "default",
+  "active",
+  "disabled",
+  "incomplete",
+  "invalid",
+  "complete",
+];
+
+const stateLabels: Record<InputFieldState, string> = {
+  default:    "Default",
+  active:     "Active",
+  disabled:   "Disabled",
+  incomplete: "Incomplete",
+  invalid:    "Invalid",
+  complete:   "Complete",
+};
+
+function InputsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Input Fields"
+        subtitle="Text inputs, dropdowns, and button inputs — all states."
+      />
+
+      {inputTypes.map(({ type, label: typeLabel }) => (
+        <div key={type} className="mb-12">
+          <SectionLabel>{typeLabel}</SectionLabel>
+
+          <div className="grid grid-cols-3 gap-6">
+            {inputStates.map((state) => {
+              const tokens = inputStateTokens[state];
+              return (
+                <div key={state} className="flex flex-col gap-2">
+                  <StateLabel>{stateLabels[state]}</StateLabel>
+                  <div
+                    className="flex items-start justify-center p-6 rounded-xl min-h-[100px]"
+                    style={{ background: cssVars["color/neutral/200"] }}
+                  >
+                    <InputField type={type} state={state} />
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 mt-1">
+                    <TokenPill token={tokens.bg} />
+                    <TokenPill token={tokens.border} />
+                    <TokenPill token={tokens.value} />
+                    {tokens.label && <TokenPill token={tokens.label} />}
+                    {tokens.underline && <TokenPill token={tokens.underline} />}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Height: 56px — Padding: 16px horizontal, 8px vertical
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Border: 1px solid neutral/600 — Shadow: 2px 2px 3px rgba(234,234,234,0.5)
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Label: body/5 regular (12px) — Value: body/3 regular (16px)
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Active/error underline: 2px solid — Disabled bg: neutral/600
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TextLinksPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Text Links"
+        subtitle="Used when a button is unnecessary or too large. Underline animates left→right on hover."
+      />
+      {linkGroups.map((group) => (
+        <LinkGroupSection key={group.name} {...group} />
+      ))}
+
+      {/* Animation note */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Animation</SectionLabel>
+        <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+          Primary & Secondary: underline animates left→right on hover.
+          <br />
+          Simple: static underline (text-decoration), no animation.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function ButtonsPage() {
   return (
     <div>
@@ -496,17 +851,12 @@ function Sidebar({ active, onNav }: { active: Page; onNav: (p: Page) => void }) 
     >
       {/* Brand */}
       <div className="mb-8 px-3">
+        <Logo variant="dark" height={20} />
         <p
-          className="text-[11px] font-mono uppercase tracking-[2px]"
+          className="text-[11px] font-mono uppercase tracking-[2px] mt-1.5"
           style={{ color: cssVars["color/neutral/700"] }}
         >
           Design System
-        </p>
-        <p
-          className="text-[13px] font-medium mt-0.5"
-          style={{ color: cssVars["color/primary/400"] }}
-        >
-          Foundations
         </p>
       </div>
 
@@ -545,11 +895,14 @@ export default function ComponentLibrary() {
       <Sidebar active={page} onNav={setPage} />
 
       <main className="ml-[220px] flex-1 px-12 py-10 min-h-screen">
+        {page === "logo"       && <LogoPage />}
         {page === "colors"     && <ColorsPage />}
         {page === "typography" && <TypographyPage />}
         {page === "spacing"    && <SpacingPage />}
         {page === "radius"     && <RadiusPage />}
         {page === "buttons"    && <ButtonsPage />}
+        {page === "text-links" && <TextLinksPage />}
+        {page === "inputs"     && <InputsPage />}
       </main>
     </div>
   );

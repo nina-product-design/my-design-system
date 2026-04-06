@@ -8,13 +8,26 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:library": "VITE_PAGE=library vite --port 5173",
+    "dev:mobile": "VITE_PAGE=mobile vite --port 5174",
+    "dev:category": "VITE_PAGE=category vite --port 5175",
+    "dev:himarc": "VITE_PAGE=himarc vite --port 5176",
+    "dev:black": "VITE_PAGE=black vite --port 5177",
+    "dev:scoring": "VITE_PAGE=scoring vite --port 5178",
+    "dev:himichelle": "VITE_PAGE=himichelle vite --port 5179",
+    "dev:all": "npm run dev:library & npm run dev:mobile & npm run dev:category & npm run dev:himarc &",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "tsc && vite build && netlify deploy --prod"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
+    "lucide-react": "^0.577.0",
+    "motion": "^12.38.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router": "^7.13.1",
+    "react-router-dom": "^7.13.1",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
