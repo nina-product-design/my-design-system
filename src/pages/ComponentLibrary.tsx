@@ -15,6 +15,11 @@ import {
   stateTokens as inputStateTokens,
 } from "../components/InputField/InputField";
 import {
+  Selector,
+  type SelectorSize,
+  stateTokens as selectorStateTokens,
+} from "../components/Selector/Selector";
+import {
   TextLink,
   type TextLinkType,
   type TextLinkColor,
@@ -26,7 +31,7 @@ import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors";
 
 const navItems: { id: Page; label: string }[] = [
   { id: "logo",       label: "Logo" },
@@ -37,6 +42,7 @@ const navItems: { id: Page; label: string }[] = [
   { id: "buttons",    label: "Buttons" },
   { id: "text-links", label: "Text Links" },
   { id: "inputs",     label: "Inputs" },
+  { id: "selectors",  label: "Selectors" },
 ];
 
 // ─── Color data ───────────────────────────────────────────────────────────────
@@ -742,6 +748,93 @@ const stateLabels: Record<InputFieldState, string> = {
   complete:   "Complete",
 };
 
+// ─── Selectors data ──────────────────────────────────────────────────────────
+
+import sampleImage from "../../images/shampoo.png";
+import sampleImageType from "../../images/type-3-defined-curl.png";
+
+function SelectorsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Selectors"
+        subtitle="Consultation selectors — text pills and image cards. Selected state uses primary/200 (light green)."
+      />
+
+      {/* Text pill — fixed width */}
+      <div className="mb-10">
+        <SectionLabel>Text Pill — Fixed</SectionLabel>
+        <div className="flex flex-col gap-3 items-start">
+          <Selector label="Once or twice a week" />
+          <Selector selected label="Once or twice a week" />
+        </div>
+        <div className="flex flex-wrap gap-1.5 mt-3"><TokenPill token="color/neutral/100" /><TokenPill token="color/neutral/300" /><TokenPill token="color/primary/400" /><TokenPill token="color/primary/200" /></div>
+      </div>
+
+      {/* Text pill — with subcopy */}
+      <div className="mb-10">
+        <SectionLabel>Text Pill — With Subcopy</SectionLabel>
+        <div className="flex flex-col gap-3 items-start">
+          <Selector label="Once or twice a week" subcopy="Some fibers look healthy, others don't" />
+          <Selector selected label="Once or twice a week" subcopy="Some fibers look healthy, others don't" />
+        </div>
+      </div>
+
+      {/* Text pill — hug width */}
+      <div className="mb-10">
+        <SectionLabel>Text Pill — Hug</SectionLabel>
+        <div className="flex flex-wrap gap-3 items-start">
+          <Selector size="hug" label="Once or twice a week" />
+          <Selector selected size="hug" label="Once or twice a week" />
+          <Selector size="hug" label="$100" />
+          <Selector selected size="hug" label="$100" />
+        </div>
+      </div>
+
+      {/* Image card — mobile */}
+      <div className="mb-10">
+        <SectionLabel>Image Card — Mobile</SectionLabel>
+        <div className="flex flex-wrap gap-4 items-start">
+          <Selector image={sampleImage} size="mobile" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
+          <Selector selected image={sampleImage} size="mobile" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
+          <Selector image={sampleImageType} size="mobile" label="Type 1 - Straight" />
+          <Selector selected image={sampleImageType} size="mobile" label="Type 1 - Straight" />
+        </div>
+      </div>
+
+      {/* Image card — desktop */}
+      <div className="mb-10">
+        <SectionLabel>Image Card — Desktop</SectionLabel>
+        <div className="flex flex-wrap gap-4 items-start">
+          <Selector image={sampleImage} size="desktop" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
+          <Selector selected image={sampleImage} size="desktop" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
+          <Selector image={sampleImageType} size="desktop" label="Type 1 - Straight" />
+          <Selector selected image={sampleImageType} size="desktop" label="Type 1 - Straight" />
+        </div>
+      </div>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Text pill: py-16px, rounded-10. Fixed: w-327px px-32. Hug: w-fit px-12.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Image card: 127px tall. Image: 101px wide. Mobile: 327px total. Desktop: 368px total.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Deselected: bg neutral/100, border neutral/300, text primary/400
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Selected: bg primary/200, text neutral/900 — border primary/200 (image cards)
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function InputsPage() {
   return (
     <div>
@@ -903,6 +996,7 @@ export default function ComponentLibrary() {
         {page === "buttons"    && <ButtonsPage />}
         {page === "text-links" && <TextLinksPage />}
         {page === "inputs"     && <InputsPage />}
+        {page === "selectors"  && <SelectorsPage />}
       </main>
     </div>
   );

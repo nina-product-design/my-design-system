@@ -172,6 +172,13 @@ Primary & Secondary use Simplon Mono 12px medium uppercase with animated underli
 
 56px height, 1px border neutral/600, shadow 2px 2px 3px. Label is body/5 regular (12px), value is body/3 regular (16px). Active state has dark underline, error states (incomplete/invalid) have red underline + helper text. Disabled uses neutral/600 background. Dropdown shows caret icon, Button shows circular arrow.
 
+### Selectors (page: Selectors)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **Selector** | Text pill + Image card | Selected (True/False), Size (Fixed/Hug/Mobile/Desktop), Subcopy (optional), Image (optional URL) |
+
+Two forms: text pills and image cards. Deselected: white bg, border neutral/300, text primary/400. Selected: bg primary/200 (light green), text neutral/900. Text pills: rounded-10, body/4 regular (14px). Image cards: 127px tall, image 101px wide, rounded-8. Subcopy uses body/5 (12px).
+
 ### Buttons (page: Buttons)
 | Component | Variants | Properties |
 |-----------|----------|------------|
