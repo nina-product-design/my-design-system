@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { InputField } from "../components/InputField/InputField";
 import { Selector } from "../components/Selector/Selector";
+import { Checkbox } from "../components/Checkbox/Checkbox";
 import { typography } from "../tokens";
 import proseLogo from "../assets/prose-logo.svg";
 
@@ -19,6 +20,7 @@ export default function HiMichellePage() {
   const [state, setState] = useState("");
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
+  const [checked, setChecked] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -149,6 +151,17 @@ export default function HiMichellePage() {
               onClick={() => setSelected(opt)}
             />
           ))}
+        </div>
+
+        {/* Checkbox — body-4 */}
+        <div
+          onClick={() => setChecked(!checked)}
+          style={{ cursor: "pointer" }}
+        >
+          <Checkbox
+            state={checked ? "selected" : "empty"}
+            label="we did it!"
+          />
         </div>
 
         {/* CTA Button — accent coral */}
