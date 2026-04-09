@@ -179,6 +179,22 @@ Primary & Secondary use Simplon Mono 12px medium uppercase with animated underli
 
 Two forms: text pills and image cards. Deselected: white bg, border neutral/300, text primary/400. Selected: bg primary/200 (light green), text neutral/900. Text pills: rounded-10, body/4 regular (14px). Image cards: 127px tall, image 101px wide, rounded-8. Subcopy uses body/5 (12px).
 
+### UI Controls (page: UI Controls)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **Radio** | 6 variants | State (Empty, Selected, Disabled), Size (Small 20px, Large 24px) |
+| **Checkbox** | 4 variants | State (Empty, Selected, Inactive, Read Only), optional Label + Headline |
+| **Toggle** | 4 variants | On/Off, optional Labels (OFF/ON text), optional Label + Headline |
+
+Radio: primary/300 for selected fill and border, neutral/700 for disabled. Checkbox: 28px, shadow, primary/300 fill with white check. Toggle: 55×24px track, 18px thumb, neutral/600 off, primary/300 on.
+
+### Accordion (page: Accordion)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **Accordion** | 2 variants | Variant (Product, FAQ), Items (question + optional answer) |
+
+Product variant: label/2 medium (Simplon Mono 12px uppercase), primary/300 text, chevron icon. FAQ variant: body/4 regular (14px), primary/400 text, plus/minus icon, expandable answers. Divider: 1px neutral/600. Desktop FAQ uses two-column layout (title left, questions right).
+
 ### Buttons (page: Buttons)
 | Component | Variants | Properties |
 |-----------|----------|------------|

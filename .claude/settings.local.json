@@ -17,7 +17,21 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git rm:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(brew:*)",
+      "mcp__figma__get_design_context",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/436f6717-c25f-4c33-b383-6117abb0358c\" -o /Users/nina.dinoff/my-design-system/src/assets/prose-logo.svg)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/436f6717-c25f-4c33-b383-6117abb0358c\" -o /Users/nina.dinoff/my-design-system/src/assets/prose-logo.png)",
+      "Bash(open /Users/nina.dinoff/.claude/commands/)",
+      "mcp__figma__get_screenshot",
+      "mcp__figma__get_metadata",
+      "Bash(npx --yes ngrok --version)",
+      "Bash(npx ngrok:*)",
+      "Bash(gh repo:*)",
+      "Bash(gh api:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx gh-pages:*)",
+      "Bash(gh auth:*)"
     ]
   }
 }

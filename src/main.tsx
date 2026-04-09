@@ -12,6 +12,7 @@ const pages: Record<string, () => Promise<{ default: React.ComponentType }>> = {
   black:    () => import("./pages/MobileBlackPage"),
   scoring:  () => import("./pages/ScoringPage"),
   himichelle: () => import("./pages/HiMichellePage"),
+  consultation: () => import("./pages/ConsultationPage"),
 };
 
 const loader = pages[page] ?? pages.library;

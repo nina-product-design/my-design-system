@@ -6,7 +6,12 @@ import {
   stateClasses,
   variantTokens,
 } from "../components/Button/Button";
+import { Accordion } from "../components/Accordion/Accordion";
+import { ButtonMini, type ButtonMiniVariant, type ButtonMiniColor } from "../components/Button/ButtonMini";
+import { Checkbox, type CheckboxState } from "../components/Checkbox/Checkbox";
 import { Logo } from "../components/Logo";
+import { Radio, type RadioState, type RadioSize } from "../components/Radio/Radio";
+import { Toggle } from "../components/Toggle/Toggle";
 import {
   InputField,
   type InputFieldType,
@@ -31,18 +36,20 @@ import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion";
 
 const navItems: { id: Page; label: string }[] = [
-  { id: "logo",       label: "Logo" },
-  { id: "colors",     label: "Colors" },
-  { id: "typography", label: "Typography" },
-  { id: "spacing",    label: "Spacing" },
-  { id: "radius",     label: "Radius" },
-  { id: "buttons",    label: "Buttons" },
-  { id: "text-links", label: "Text Links" },
-  { id: "inputs",     label: "Inputs" },
-  { id: "selectors",  label: "Selectors" },
+  { id: "logo",        label: "Logo" },
+  { id: "colors",      label: "Colors" },
+  { id: "typography",  label: "Typography" },
+  { id: "spacing",     label: "Spacing" },
+  { id: "radius",      label: "Radius" },
+  { id: "buttons",     label: "Buttons" },
+  { id: "text-links",  label: "Text Links" },
+  { id: "inputs",      label: "Inputs" },
+  { id: "selectors",   label: "Selectors" },
+  { id: "ui-controls", label: "UI Controls" },
+  { id: "accordion",   label: "Accordion" },
 ];
 
 // ─── Color data ───────────────────────────────────────────────────────────────
@@ -927,6 +934,340 @@ function ButtonsPage() {
       {buttonGroups.map((group) => (
         <ButtonGroupSection key={group.name} {...group} />
       ))}
+
+      {/* Mini buttons */}
+      <div className="mb-10">
+        <SectionLabel>Mini Buttons</SectionLabel>
+        <p className="text-[13px] mb-4" style={{ color: cssVars["color/neutral/800"] }}>
+          44×44px circular icon buttons. Back (arrow) and Add (plus) variants.
+        </p>
+
+        <div className="mb-6">
+          <p className="text-[11px] font-mono uppercase tracking-[1px] mb-3" style={{ color: cssVars["color/neutral/700"] }}>
+            Light mode (dark bg)
+          </p>
+          <div className="flex gap-4 items-center">
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="back" color="light" floating />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Back + Float</span>
+            </div>
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="back" color="light" floating={false} />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Back</span>
+            </div>
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="add" color="light" floating />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Add + Float</span>
+            </div>
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="add" color="light" floating={false} />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Add</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <p className="text-[11px] font-mono uppercase tracking-[1px] mb-3" style={{ color: cssVars["color/neutral/700"] }}>
+            Dark mode (light bg)
+          </p>
+          <div className="flex gap-4 items-center">
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="back" color="dark" floating />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Back + Float</span>
+            </div>
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="back" color="dark" floating={false} />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Back</span>
+            </div>
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="add" color="dark" floating />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Add + Float</span>
+            </div>
+            <div className="flex flex-col gap-1 items-center">
+              <ButtonMini variant="add" color="dark" floating={false} />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Add</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-1.5">
+          <TokenPill token="color/primary/400" />
+          <TokenPill token="color/neutral/200" />
+          <TokenPill token="color/neutral/100" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Accordion ───────────────────────────────────────────────────────────────
+
+const productAccordionItems = [
+  { question: "How Prose does custom" },
+  { question: "Scientific results" },
+  { question: "Exclusive fragrances" },
+];
+
+const faqItems = [
+  {
+    question: "What shampoo should I use?",
+    answer: "Everyone's hair is unique, and your shampoo should factor in your hair type, porosity, density, and the environmental stressors (like hard water, humidity and pollution) in your zip code. Prose asks in-depth questions about your diet, lifestyle, and climate, all of which impact your hair. From millions of possible formulas, only one is uniquely yours.",
+  },
+  { question: "What type of hair is this shampoo for?" },
+  { question: "How often should I wash my hair?" },
+  { question: "Will Prose shampoo help me go longer in between washes?" },
+  { question: "I have a sensitive scalp — can I still use Prose Custom Shampoo?" },
+  { question: "What ingredients should I avoid in shampoo?" },
+  { question: "What is the best shampoo and conditioner to use together?" },
+];
+
+function AccordionPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Accordion"
+        subtitle="Product detail accordions and FAQ accordions. Click items to expand."
+      />
+
+      {/* Product Details variant */}
+      <div className="mb-10">
+        <SectionLabel>Product Details</SectionLabel>
+        <div className="max-w-[417px]">
+          <Accordion variant="product" items={productAccordionItems} />
+        </div>
+      </div>
+
+      {/* FAQ variant — interactive */}
+      <div className="mb-10">
+        <SectionLabel>FAQ — Mobile (375px)</SectionLabel>
+        <div className="max-w-[375px] bg-(--color-neutral-100) p-(--spacing-spacing-24) rounded-(--radius-radius-10)">
+          <h3
+            className="mb-(--spacing-spacing-24)"
+            style={{
+              fontFamily: "var(--font-heading-h3-family)",
+              fontSize: "var(--font-heading-h3-size)",
+              fontWeight: "var(--font-heading-h3-weight)",
+              lineHeight: "var(--font-heading-h3-line-height)",
+              letterSpacing: "var(--font-heading-h3-letter-spacing)",
+              color: "var(--color-primary-400)",
+            }}
+          >
+            FAQs
+          </h3>
+          <Accordion variant="faq" items={faqItems} />
+        </div>
+      </div>
+
+      {/* FAQ variant — desktop layout */}
+      <div className="mb-10">
+        <SectionLabel>FAQ — Desktop</SectionLabel>
+        <div className="flex gap-(--spacing-spacing-64) bg-(--color-neutral-100) p-(--spacing-spacing-64) rounded-(--radius-radius-10)">
+          <h3
+            className="shrink-0 w-[200px]"
+            style={{
+              fontFamily: "var(--font-heading-h3-family)",
+              fontSize: "var(--font-heading-h3-size)",
+              fontWeight: "var(--font-heading-h3-weight)",
+              lineHeight: "var(--font-heading-h3-line-height)",
+              letterSpacing: "var(--font-heading-h3-letter-spacing)",
+              color: "var(--color-neutral-900)",
+            }}
+          >
+            FAQs
+          </h3>
+          <div className="flex-1">
+            <Accordion variant="faq" items={faqItems} />
+          </div>
+        </div>
+      </div>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Product: label/2 medium (Simplon Mono 12px uppercase), text primary/300, chevron icon
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            FAQ mobile: body/4 regular (14px), text primary/400, plus/minus icon
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            FAQ desktop: body/3 regular (16px), two-column layout (title left, questions right)
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Divider: 1px neutral/600 between items. Padding: 8px vertical per row.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── UI Controls ─────────────────────────────────────────────────────────────
+
+function UIControlsPage() {
+  const [toggleOn, setToggleOn] = useState(false);
+  const [toggleLabelOn, setToggleLabelOn] = useState(false);
+
+  return (
+    <div>
+      <PageHeader
+        title="UI Controls"
+        subtitle="Radio buttons, checkboxes, and toggles."
+      />
+
+      {/* Radio buttons */}
+      <div className="mb-10">
+        <SectionLabel>Radio Buttons — Small (20px)</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <Radio state="selected" size="small" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Selected</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Radio state="empty" size="small" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Empty</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Radio state="disabled" size="small" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Disabled</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Radio Buttons — Large (24px)</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <Radio state="selected" size="large" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Selected</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Radio state="empty" size="large" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Empty</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Radio state="disabled" size="large" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Disabled</span>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          <TokenPill token="color/primary/300" />
+          <TokenPill token="color/neutral/700" />
+        </div>
+      </div>
+
+      {/* Checkboxes */}
+      <div className="mb-10">
+        <SectionLabel>Checkbox — Box Only</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <Checkbox state="empty" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Empty</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Checkbox state="selected" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Selected</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Checkbox state="inactive" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Inactive</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Checkbox state="read-only" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Read Only</span>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          <TokenPill token="color/primary/300" />
+          <TokenPill token="color/neutral/700" />
+          <TokenPill token="color/neutral/200" />
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Checkbox — With Label</SectionLabel>
+        <div className="flex flex-col gap-4 items-start">
+          <Checkbox
+            state="selected"
+            headline="To help reduce waste, we encourage reusing pumps and droppers for your bottles."
+            label="Check this box to send my subscription orders with pumps and droppers"
+          />
+          <Checkbox
+            state="inactive"
+            headline="To help reduce waste, we encourage reusing pumps and droppers for your bottles."
+            label="Check this box to send my subscription orders with pumps and droppers"
+          />
+        </div>
+      </div>
+
+      {/* Toggles */}
+      <div className="mb-10">
+        <SectionLabel>Toggle — Basic</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <Toggle on={false} />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Off</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Toggle on={true} />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>On</span>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          <TokenPill token="color/primary/300" />
+          <TokenPill token="color/neutral/600" />
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Toggle — With Labels</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <Toggle on={false} showLabels />
+          <Toggle on={true} showLabels />
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Toggle — With Label + Headline</SectionLabel>
+        <div className="flex flex-col gap-4 items-start">
+          <Toggle
+            on={toggleLabelOn}
+            onChange={setToggleLabelOn}
+            headline="To help reduce waste, we encourage reusing pumps and droppers for your bottles."
+            label="Check this box to send my subscription orders with pumps and droppers"
+          />
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Interactive Demo</SectionLabel>
+        <div className="flex items-center gap-4">
+          <Toggle on={toggleOn} onChange={setToggleOn} />
+          <span className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Toggle is {toggleOn ? "ON" : "OFF"} — click to change
+          </span>
+        </div>
+      </div>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Radio: small 20px, large 24px. Border/fill: primary/300. Disabled border: neutral/700.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Checkbox: 28×28px, shadow 2px 2px 3px #eaeaea. Selected fill: primary/300, white check.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Toggle: 55×24px track, 18px thumb. Off: neutral/600. On: primary/300.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Labels: body/4 regular (14px), text neutral/900 or primary/400.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -997,6 +1338,8 @@ export default function ComponentLibrary() {
         {page === "text-links" && <TextLinksPage />}
         {page === "inputs"     && <InputsPage />}
         {page === "selectors"  && <SelectorsPage />}
+        {page === "ui-controls" && <UIControlsPage />}
+        {page === "accordion"   && <AccordionPage />}
       </main>
     </div>
   );

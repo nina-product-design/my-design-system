@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { InputField } from "../components/InputField/InputField";
+import { Selector } from "../components/Selector/Selector";
 import { typography } from "../tokens";
 import proseLogo from "../assets/prose-logo.svg";
 
@@ -17,6 +18,7 @@ const US_STATES = [
 export default function HiMichellePage() {
   const [state, setState] = useState("");
   const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -134,6 +136,19 @@ export default function HiMichellePage() {
               ))}
             </ul>
           )}
+        </div>
+
+        {/* Selector — Text Pill Fixed */}
+        <div className="flex w-full flex-col" style={{ gap: "var(--spacing-spacing-12)" }}>
+          {["Option A", "Option B", "Option C"].map((opt) => (
+            <Selector
+              key={opt}
+              size="fixed"
+              label={opt}
+              selected={selected === opt}
+              onClick={() => setSelected(opt)}
+            />
+          ))}
         </div>
 
         {/* CTA Button — accent coral */}

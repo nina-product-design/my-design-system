@@ -15,6 +15,7 @@
     "dev:black": "VITE_PAGE=black vite --port 5177",
     "dev:scoring": "VITE_PAGE=scoring vite --port 5178",
     "dev:himichelle": "VITE_PAGE=himichelle vite --port 5179",
+    "dev:consultation": "VITE_PAGE=consultation vite --port 5180",
     "dev:all": "npm run dev:library & npm run dev:mobile & npm run dev:category & npm run dev:himarc &",
     "build": "tsc && vite build",
     "preview": "vite preview",

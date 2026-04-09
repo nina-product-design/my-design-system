@@ -144,49 +144,49 @@
     --font-weight-light: 300;
     --font-weight-medium: 500;
 
-    /* ── typography styles — headings (Saol, weight 300) ───── */
+    /* ── typography styles — headings (Saol, weight 200) ───── */
     --font-heading-h1-family: var(--font-family-title);
     --font-heading-h1-size: 48px;
-    --font-heading-h1-weight: 300;
+    --font-heading-h1-weight: 200;
     --font-heading-h1-line-height: 1.1; /* 110% */
-    --font-heading-h1-letter-spacing: 0px;
+    --font-heading-h1-letter-spacing: -0.03em;
 
     --font-heading-h2-family: var(--font-family-title);
     --font-heading-h2-size: 40px;
-    --font-heading-h2-weight: 300;
+    --font-heading-h2-weight: 200;
     --font-heading-h2-line-height: 1.1;
-    --font-heading-h2-letter-spacing: 0px;
+    --font-heading-h2-letter-spacing: -0.03em;
 
     --font-heading-h3-family: var(--font-family-title);
     --font-heading-h3-size: 32px;
-    --font-heading-h3-weight: 300;
+    --font-heading-h3-weight: 200;
     --font-heading-h3-line-height: 1.1;
-    --font-heading-h3-letter-spacing: 0px;
+    --font-heading-h3-letter-spacing: -0.03em;
 
     --font-heading-h4-family: var(--font-family-title);
     --font-heading-h4-size: 24px;
-    --font-heading-h4-weight: 300;
+    --font-heading-h4-weight: 200;
     --font-heading-h4-line-height: 1.1;
-    --font-heading-h4-letter-spacing: 0px;
+    --font-heading-h4-letter-spacing: -0.03em;
 
     --font-heading-h5-family: var(--font-family-title);
     --font-heading-h5-size: 20px;
-    --font-heading-h5-weight: 300;
+    --font-heading-h5-weight: 200;
     --font-heading-h5-line-height: 1.2; /* 120% */
-    --font-heading-h5-letter-spacing: 0px;
+    --font-heading-h5-letter-spacing: -0.03em;
 
     --font-heading-h6-family: var(--font-family-title);
     --font-heading-h6-size: 16px;
-    --font-heading-h6-weight: 300;
+    --font-heading-h6-weight: 200;
     --font-heading-h6-line-height: 1.2;
-    --font-heading-h6-letter-spacing: 0px;
+    --font-heading-h6-letter-spacing: -0.03em;
 
     /* ── typography styles — body (Simplon Norm) ───────────── */
     /* Body 1: 24px / 150% */
     --font-body-1-family: var(--font-family-body);
     --font-body-1-size: 24px;
     --font-body-1-line-height: 1.5;
-    --font-body-1-letter-spacing: 0px;
+    --font-body-1-letter-spacing: 0.02em;
     --font-body-1-weight-regular: 400;
     --font-body-1-weight-medium: 500;
 
@@ -194,7 +194,7 @@
     --font-body-2-family: var(--font-family-body);
     --font-body-2-size: 20px;
     --font-body-2-line-height: 1.5;
-    --font-body-2-letter-spacing: 0px;
+    --font-body-2-letter-spacing: 0.02em;
     --font-body-2-weight-regular: 400;
     --font-body-2-weight-medium: 500;
 
@@ -202,7 +202,7 @@
     --font-body-3-family: var(--font-family-body);
     --font-body-3-size: 16px;
     --font-body-3-line-height: 1.5;
-    --font-body-3-letter-spacing: 0px;
+    --font-body-3-letter-spacing: 0.02em;
     --font-body-3-weight-regular: 400;
     --font-body-3-weight-medium: 500;
 
@@ -210,7 +210,7 @@
     --font-body-4-family: var(--font-family-body);
     --font-body-4-size: 14px;
     --font-body-4-line-height: 1.5;
-    --font-body-4-letter-spacing: 0px;
+    --font-body-4-letter-spacing: 0.02em;
     --font-body-4-weight-regular: 400;
     --font-body-4-weight-medium: 500;
 
@@ -218,7 +218,7 @@
     --font-body-5-family: var(--font-family-body);
     --font-body-5-size: 12px;
     --font-body-5-line-height: 1.5;
-    --font-body-5-letter-spacing: 0px;
+    --font-body-5-letter-spacing: 0.02em;
     --font-body-5-weight-regular: 400;
     --font-body-5-weight-medium: 500;
 
@@ -226,7 +226,7 @@
     --font-body-6-family: var(--font-family-body);
     --font-body-6-size: 10px;
     --font-body-6-line-height: 1.5;
-    --font-body-6-letter-spacing: 0px;
+    --font-body-6-letter-spacing: 0.02em;
     --font-body-6-weight-regular: 400;
     --font-body-6-weight-medium: 500;
 
@@ -235,7 +235,7 @@
     --font-label-1-family: var(--font-family-label);
     --font-label-1-size: 14px;
     --font-label-1-line-height: 1.2;
-    --font-label-1-letter-spacing: 0px;
+    --font-label-1-letter-spacing: 0.08em;
     --font-label-1-weight-regular: 400;
     --font-label-1-weight-medium: 500;
 
@@ -251,8 +251,17 @@
     --font-label-3-family: var(--font-family-label);
     --font-label-3-size: 10px;
     --font-label-3-line-height: 1.2;
-    --font-label-3-letter-spacing: 0px;
+    --font-label-3-letter-spacing: 0.08em;
     --font-label-3-weight-regular: 400;
+  }
+
+  /* ── default type colors ──────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary-400);
+  }
+
+  p, span, li, td, th, blockquote {
+    color: var(--color-neutral-800);
   }
 
   /* Utility: applies the label/2 medium type style in one class */
