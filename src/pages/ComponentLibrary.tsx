@@ -11,6 +11,7 @@ import { ButtonMini, type ButtonMiniVariant, type ButtonMiniColor } from "../com
 import { Checkbox, type CheckboxState } from "../components/Checkbox/Checkbox";
 import { Logo } from "../components/Logo";
 import { Radio, type RadioState, type RadioSize } from "../components/Radio/Radio";
+import { Tag, type TagSize } from "../components/Tag/Tag";
 import { Toast, type ToastType, type ToastBreakpoint } from "../components/Toast/Toast";
 import { Toggle } from "../components/Toggle/Toggle";
 import {
@@ -37,7 +38,7 @@ import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags";
 
 const navItems: { id: Page; label: string }[] = [
   { id: "logo",        label: "Logo" },
@@ -52,6 +53,7 @@ const navItems: { id: Page; label: string }[] = [
   { id: "ui-controls", label: "UI Controls" },
   { id: "accordion",   label: "Accordion" },
   { id: "toasts",      label: "Toasts" },
+  { id: "tags",        label: "Tags" },
 ];
 
 // ─── Color data ───────────────────────────────────────────────────────────────
@@ -1474,6 +1476,68 @@ function ToastsPage() {
   );
 }
 
+// ─── Tags ────────────────────────────────────────────────────────────────────
+
+const tagExamples = [
+  "15% off",
+  "50% off first order",
+  "Free skincare starter set",
+  "50% off",
+  "$65 value",
+  "NEW",
+  "Get $20",
+  "60% off",
+];
+
+function TagsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Tags"
+        subtitle="Offer and promo tags. Lime highlight background with uppercase mono text."
+      />
+
+      <div className="mb-10">
+        <SectionLabel>Default — Label/1 (14px)</SectionLabel>
+        <div className="flex flex-wrap gap-3">
+          {tagExamples.map((t) => (
+            <Tag key={t}>{t}</Tag>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          <TokenPill token="color/highlight/200" />
+          <TokenPill token="color/primary/400" />
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Small — Label/2 (12px)</SectionLabel>
+        <div className="flex flex-wrap gap-3">
+          {tagExamples.map((t) => (
+            <Tag key={t} size="small">{t}</Tag>
+          ))}
+        </div>
+      </div>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            BG: highlight/200. Text: primary/400, Simplon Mono Medium, uppercase.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Default (label/1): 14px, tracking 1.12px. Small (label/2): 12px, tracking 0.96px.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Padding: 8px. Border radius: 4px.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Layout ───────────────────────────────────────────────────────────────────
 
 export default function ComponentLibrary() {
@@ -1496,6 +1560,7 @@ export default function ComponentLibrary() {
         {page === "ui-controls" && <UIControlsPage />}
         {page === "accordion"   && <AccordionPage />}
         {page === "toasts"     && <ToastsPage />}
+        {page === "tags"       && <TagsPage />}
       </main>
     </div>
   );
