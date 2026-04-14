@@ -14,9 +14,15 @@ import { typography } from "../../tokens";
 
 export type AccordionVariant = "product" | "faq";
 
+export type ProductStep = {
+  title: string;
+  description: string;
+};
+
 type AccordionItem = {
   question: string;
   answer?: string;
+  steps?: ProductStep[];
 };
 
 type AccordionProps = {
@@ -86,7 +92,7 @@ export function Accordion({
             <button
               type="button"
               onClick={() => toggle(i)}
-              className="flex items-start justify-between w-full py-(--spacing-spacing-8) gap-(--spacing-spacing-12) cursor-pointer text-left"
+              className={`flex items-center justify-between w-full gap-(--spacing-spacing-12) cursor-pointer text-left ${isProduct ? "h-[70px]" : "min-h-[53px] py-(--spacing-spacing-8)"}`}
             >
               <span
                 className={isProduct ? "text-(--color-primary-300)" : "text-(--color-primary-400)"}
@@ -113,6 +119,50 @@ export function Accordion({
               </span>
               {isProduct ? <ChevronIcon open={isOpen} /> : <PlusMinusIcon open={isOpen} />}
             </button>
+
+            {/* Product steps (open state) */}
+            {isProduct && isOpen && item.steps && (
+              <div className="flex flex-col gap-(--spacing-spacing-16) pb-(--spacing-spacing-12) text-(--color-primary-300)">
+                {item.steps.map((step, si) => (
+                  <div key={si} className="flex gap-(--spacing-spacing-16) items-start">
+                    <span
+                      className="shrink-0"
+                      style={{
+                        fontFamily: typography.styles.body4Medium.fontFamily,
+                        fontSize: typography.styles.body4Medium.fontSize,
+                        fontWeight: typography.styles.body4Medium.fontWeight,
+                        lineHeight: typography.styles.body4Medium.lineHeight,
+                      }}
+                    >
+                      {String(si + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <p
+                        style={{
+                          fontFamily: typography.styles.body4Medium.fontFamily,
+                          fontSize: typography.styles.body4Medium.fontSize,
+                          fontWeight: typography.styles.body4Medium.fontWeight,
+                          lineHeight: typography.styles.body4Medium.lineHeight,
+                        }}
+                      >
+                        {step.title}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: typography.styles.body4Regular.fontFamily,
+                          fontSize: typography.styles.body4Regular.fontSize,
+                          fontWeight: typography.styles.body4Regular.fontWeight,
+                          lineHeight: typography.styles.body4Regular.lineHeight,
+                          letterSpacing: typography.styles.body4Regular.letterSpacing,
+                        }}
+                      >
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Answer (FAQ only) */}
             {!isProduct && isOpen && item.answer && (

@@ -1003,7 +1003,14 @@ function ButtonsPage() {
 // ─── Accordion ───────────────────────────────────────────────────────────────
 
 const productAccordionItems = [
-  { question: "How Prose does custom" },
+  {
+    question: "How Prose does custom",
+    steps: [
+      { title: "Take our haircare consultation", description: "We'll analyze 85+ factors — from what you eat to where you live — to understand the unique needs of your hair and scalp." },
+      { title: "Your formulas are made to order", description: "Our AI-powered algorithm creates your personalized formulas + recommended routine, carefully selecting from 185+ clean ingredients to meet your hair goals." },
+      { title: "As you change, so does your Prose", description: "We'll address any new concerns, adjust your formulas with the seasons, and learn from your feedback for better hair with every order." },
+    ],
+  },
   { question: "Scientific results" },
   { question: "Exclusive fragrances" },
 ];
