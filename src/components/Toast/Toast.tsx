@@ -102,6 +102,7 @@ export function Toast({
               fontSize: typography.styles.body4Medium.fontSize,
               fontWeight: typography.styles.body4Medium.fontWeight,
               lineHeight: typography.styles.body4Medium.lineHeight,
+              letterSpacing: typography.styles.body4Medium.letterSpacing,
             }}
           >
             {message}
