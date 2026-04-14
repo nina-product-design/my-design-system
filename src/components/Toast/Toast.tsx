@@ -61,9 +61,9 @@ const iconMap: Record<ToastType, () => JSX.Element> = {
 };
 
 const bgMap: Record<ToastType, string> = {
-  removal: "bg-(--color-primary-300)",
-  added: "bg-(--color-primary-300)",
-  paused: "bg-(--color-primary-300)",
+  removal: "bg-(--color-primary-400)",
+  added: "bg-(--color-primary-400)",
+  paused: "bg-(--color-primary-400)",
   error: "bg-(--color-error-200)",
 };
 

@@ -45,12 +45,12 @@ export const stateClasses: Record<
   "primary-light": {
     default:  "bg-(--color-primary-400) text-(--color-neutral-100)",
     hover:    "bg-(--color-primary-300) text-(--color-neutral-100)",
-    disabled: "bg-(--color-neutral-700) text-(--color-neutral-100)",
+    disabled: "bg-(--color-neutral-800) text-(--color-neutral-100)",
   },
   "primary-dark": {
     default:  "bg-(--color-neutral-100) text-(--color-primary-400)",
     hover:    "bg-(--color-primary-100) text-(--color-primary-400)",
-    disabled: "bg-(--color-neutral-700) text-(--color-neutral-100)",
+    disabled: "bg-(--color-neutral-800) text-(--color-neutral-100)",
   },
   "secondary-light": {
     default:  "bg-transparent border border-(--color-primary-400) text-(--color-primary-400)",
@@ -63,9 +63,9 @@ export const stateClasses: Record<
     disabled: "bg-transparent border border-(--color-neutral-700) text-(--color-neutral-700)",
   },
   accent: {
-    default:  "bg-(--color-accent-200) text-(--color-neutral-100)",
+    default:  "bg-(--color-accent-200) text-(--color-primary-400)",
     hover:    "bg-(--color-accent-300) text-(--color-neutral-100)",
-    disabled: "bg-(--color-neutral-700) text-(--color-neutral-100)",
+    disabled: "bg-(--color-neutral-800) text-(--color-neutral-100)",
   },
   destructive: {
     default:  "bg-transparent border border-(--color-error-200) text-(--color-error-200)",
@@ -80,12 +80,12 @@ const variantClasses: Record<ButtonVariant, string> = {
   "primary-light":
     "bg-(--color-primary-400) text-(--color-neutral-100) " +
     "hover:bg-(--color-primary-300) " +
-    "disabled:bg-(--color-neutral-700) disabled:text-(--color-neutral-100) disabled:opacity-100",
+    "disabled:bg-(--color-neutral-800) disabled:text-(--color-neutral-100) disabled:opacity-100",
 
   "primary-dark":
     "bg-(--color-neutral-100) text-(--color-primary-400) " +
     "hover:bg-(--color-primary-100) " +
-    "disabled:bg-(--color-neutral-700) disabled:text-(--color-neutral-100) disabled:opacity-100",
+    "disabled:bg-(--color-neutral-800) disabled:text-(--color-neutral-100) disabled:opacity-100",
 
   "secondary-light":
     "bg-transparent border border-(--color-primary-400) text-(--color-primary-400) " +
@@ -98,9 +98,9 @@ const variantClasses: Record<ButtonVariant, string> = {
     "disabled:bg-transparent disabled:border-(--color-neutral-700) disabled:text-(--color-neutral-700) disabled:opacity-100",
 
   accent:
-    "bg-(--color-accent-200) text-(--color-neutral-100) " +
-    "hover:bg-(--color-accent-300) " +
-    "disabled:bg-(--color-neutral-700) disabled:text-(--color-neutral-100) disabled:opacity-100",
+    "bg-(--color-accent-200) text-(--color-primary-400) " +
+    "hover:bg-(--color-accent-300) hover:text-(--color-neutral-100) " +
+    "disabled:bg-(--color-neutral-800) disabled:text-(--color-neutral-100) disabled:opacity-100",
 
   destructive:
     "bg-transparent border border-(--color-error-200) text-(--color-error-200) " +
@@ -118,7 +118,7 @@ export const variantTokens: Record<
   "primary-dark":    { bg: "color/neutral/100",    text: "color/primary/400",  hoverBg: "color/primary/100" },
   "secondary-light": { border: "color/primary/400", text: "color/primary/400", hoverBg: "color/primary/400" },
   "secondary-dark":  { border: "color/neutral/100", text: "color/neutral/100", hoverBg: "color/neutral/100" },
-  accent:            { bg: "color/accent/200",     text: "color/neutral/100",  hoverBg: "color/accent/300" },
+  accent:            { bg: "color/accent/200",     text: "color/primary/400",  hoverBg: "color/accent/300" },
   destructive:       { border: "color/error/200",  text: "color/error/200",    hoverBg: "color/error/200" },
 };
 
@@ -158,7 +158,7 @@ export function Button({
         // Floating elevation
         floating ? floatingShadow : "",
         // Appearance + hover + disabled
-        variantClasses[variant],
+        loading ? "bg-(--color-neutral-800) border-transparent" : variantClasses[variant],
         // Cursor when non-interactive
         isDisabled ? "cursor-not-allowed" : "",
         className,
@@ -191,23 +191,33 @@ export function Button({
 
 function Spinner() {
   return (
-    <svg
-      className="animate-spin h-[18px] w-[18px] shrink-0"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle
-        className="opacity-25"
-        cx="12" cy="12" r="10"
-        stroke="currentColor"
-        strokeWidth="3"
-      />
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-      />
-    </svg>
+    <>
+      <style>{`
+        @keyframes spinner-draw {
+          0%   { stroke-dasharray: 0 63; stroke-dashoffset: 0; }
+          50%  { stroke-dasharray: 50 63; stroke-dashoffset: 0; }
+          100% { stroke-dasharray: 0 63; stroke-dashoffset: -50; }
+        }
+        @keyframes spinner-rotate {
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+      <svg
+        className="h-[19px] w-[19px] shrink-0"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+        style={{ animation: "spinner-rotate 4s linear infinite" }}
+      >
+        <circle
+          cx="12" cy="12" r="10"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          fill="none"
+          style={{ animation: "spinner-draw 1.5s ease-in-out infinite" }}
+        />
+      </svg>
+    </>
   );
 }
