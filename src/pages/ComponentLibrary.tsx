@@ -11,6 +11,7 @@ import { ButtonMini, type ButtonMiniVariant, type ButtonMiniColor } from "../com
 import { Checkbox, type CheckboxState } from "../components/Checkbox/Checkbox";
 import { Logo } from "../components/Logo";
 import { Radio, type RadioState, type RadioSize } from "../components/Radio/Radio";
+import { Toast, type ToastType, type ToastBreakpoint } from "../components/Toast/Toast";
 import { Toggle } from "../components/Toggle/Toggle";
 import {
   InputField,
@@ -36,7 +37,7 @@ import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts";
 
 const navItems: { id: Page; label: string }[] = [
   { id: "logo",        label: "Logo" },
@@ -50,6 +51,7 @@ const navItems: { id: Page; label: string }[] = [
   { id: "selectors",   label: "Selectors" },
   { id: "ui-controls", label: "UI Controls" },
   { id: "accordion",   label: "Accordion" },
+  { id: "toasts",      label: "Toasts" },
 ];
 
 // ─── Color data ───────────────────────────────────────────────────────────────
@@ -761,19 +763,33 @@ import sampleImage from "../../images/shampoo.png";
 import sampleImageType from "../../images/type-3-defined-curl.png";
 
 function SelectorsPage() {
+  const [fixedSel, setFixedSel] = useState<string | null>(null);
+  const [subcopySel, setSubcopySel] = useState<string | null>(null);
+  const [hugSel, setHugSel] = useState<string | null>(null);
+  const [mobileSel, setMobileSel] = useState<string | null>(null);
+  const [desktopSel, setDesktopSel] = useState<string | null>(null);
+
+  const fixedOptions = ["Once or twice a week", "Every other day", "Daily"];
+  const subcopyOptions = [
+    { label: "Once or twice a week", subcopy: "Some fibers look healthy, others don't" },
+    { label: "Every other day", subcopy: "Most fibers look healthy and shiny" },
+  ];
+  const hugOptions = ["Once or twice a week", "$100", "Daily"];
+
   return (
     <div>
       <PageHeader
         title="Selectors"
-        subtitle="Consultation selectors — text pills and image cards. Selected state uses primary/200 (light green)."
+        subtitle="Consultation selectors — text pills and image cards. Click to select."
       />
 
       {/* Text pill — fixed width */}
       <div className="mb-10">
         <SectionLabel>Text Pill — Fixed</SectionLabel>
         <div className="flex flex-col gap-3 items-start">
-          <Selector label="Once or twice a week" />
-          <Selector selected label="Once or twice a week" />
+          {fixedOptions.map((opt) => (
+            <Selector key={opt} label={opt} selected={fixedSel === opt} onClick={() => setFixedSel(fixedSel === opt ? null : opt)} />
+          ))}
         </div>
         <div className="flex flex-wrap gap-1.5 mt-3"><TokenPill token="color/neutral/100" /><TokenPill token="color/neutral/300" /><TokenPill token="color/primary/400" /><TokenPill token="color/primary/200" /></div>
       </div>
@@ -782,8 +798,9 @@ function SelectorsPage() {
       <div className="mb-10">
         <SectionLabel>Text Pill — With Subcopy</SectionLabel>
         <div className="flex flex-col gap-3 items-start">
-          <Selector label="Once or twice a week" subcopy="Some fibers look healthy, others don't" />
-          <Selector selected label="Once or twice a week" subcopy="Some fibers look healthy, others don't" />
+          {subcopyOptions.map((opt) => (
+            <Selector key={opt.label} label={opt.label} subcopy={opt.subcopy} selected={subcopySel === opt.label} onClick={() => setSubcopySel(subcopySel === opt.label ? null : opt.label)} />
+          ))}
         </div>
       </div>
 
@@ -791,10 +808,9 @@ function SelectorsPage() {
       <div className="mb-10">
         <SectionLabel>Text Pill — Hug</SectionLabel>
         <div className="flex flex-wrap gap-3 items-start">
-          <Selector size="hug" label="Once or twice a week" />
-          <Selector selected size="hug" label="Once or twice a week" />
-          <Selector size="hug" label="$100" />
-          <Selector selected size="hug" label="$100" />
+          {hugOptions.map((opt) => (
+            <Selector key={opt} size="hug" label={opt} selected={hugSel === opt} onClick={() => setHugSel(hugSel === opt ? null : opt)} />
+          ))}
         </div>
       </div>
 
@@ -802,10 +818,8 @@ function SelectorsPage() {
       <div className="mb-10">
         <SectionLabel>Image Card — Mobile</SectionLabel>
         <div className="flex flex-wrap gap-4 items-start">
-          <Selector image={sampleImage} size="mobile" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
-          <Selector selected image={sampleImage} size="mobile" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
-          <Selector image={sampleImageType} size="mobile" label="Type 1 - Straight" />
-          <Selector selected image={sampleImageType} size="mobile" label="Type 1 - Straight" />
+          <Selector image={sampleImage} size="mobile" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" selected={mobileSel === "Haircare"} onClick={() => setMobileSel(mobileSel === "Haircare" ? null : "Haircare")} />
+          <Selector image={sampleImageType} size="mobile" label="Type 1 - Straight" selected={mobileSel === "Type 1 - Straight"} onClick={() => setMobileSel(mobileSel === "Type 1 - Straight" ? null : "Type 1 - Straight")} />
         </div>
       </div>
 
@@ -813,10 +827,8 @@ function SelectorsPage() {
       <div className="mb-10">
         <SectionLabel>Image Card — Desktop</SectionLabel>
         <div className="flex flex-wrap gap-4 items-start">
-          <Selector image={sampleImage} size="desktop" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
-          <Selector selected image={sampleImage} size="desktop" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" />
-          <Selector image={sampleImageType} size="desktop" label="Type 1 - Straight" />
-          <Selector selected image={sampleImageType} size="desktop" label="Type 1 - Straight" />
+          <Selector image={sampleImage} size="desktop" label="Haircare" subcopy="Shampoo, conditioner, masks, stylers" selected={desktopSel === "Haircare"} onClick={() => setDesktopSel(desktopSel === "Haircare" ? null : "Haircare")} />
+          <Selector image={sampleImageType} size="desktop" label="Type 1 - Straight" selected={desktopSel === "Type 1 - Straight"} onClick={() => setDesktopSel(desktopSel === "Type 1 - Straight" ? null : "Type 1 - Straight")} />
         </div>
       </div>
 
@@ -843,12 +855,39 @@ function SelectorsPage() {
 }
 
 function InputsPage() {
+  const [inputVal, setInputVal] = useState("");
+  const [inputState, setInputState] = useState<InputFieldState>("default");
+
   return (
     <div>
       <PageHeader
         title="Input Fields"
         subtitle="Text inputs, dropdowns, and button inputs — all states."
       />
+
+      {/* Interactive demo */}
+      <div className="mb-12">
+        <SectionLabel>Interactive Demo</SectionLabel>
+        <div className="flex gap-3 mb-4 flex-wrap">
+          {inputStates.map((s) => (
+            <button
+              key={s}
+              onClick={() => setInputState(s)}
+              className="px-3 py-1 rounded-[60px] text-xs font-label uppercase tracking-[0.96px] cursor-pointer transition-colors"
+              style={{
+                background: inputState === s ? cssVars["color/primary/300"] : cssVars["color/neutral/100"],
+                color: inputState === s ? cssVars["color/neutral/100"] : cssVars["color/primary/400"],
+                border: `1px solid ${cssVars["color/neutral/400"]}`,
+              }}
+            >
+              {stateLabels[s]}
+            </button>
+          ))}
+        </div>
+        <div className="flex items-start justify-center p-6 rounded-xl min-h-[100px]" style={{ background: cssVars["color/neutral/200"] }}>
+          <InputField type="form-field" state={inputState} value={inputVal || undefined} />
+        </div>
+      </div>
 
       {inputTypes.map(({ type, label: typeLabel }) => (
         <div key={type} className="mb-12">
@@ -1115,26 +1154,39 @@ function AccordionPage() {
 function UIControlsPage() {
   const [toggleOn, setToggleOn] = useState(false);
   const [toggleLabelOn, setToggleLabelOn] = useState(false);
+  const [radioSmall, setRadioSmall] = useState<number>(0);
+  const [radioLarge, setRadioLarge] = useState<number>(0);
+  const [checkStates, setCheckStates] = useState<CheckboxState[]>(["empty", "selected", "inactive", "read-only"]);
+  const [checkLabeled, setCheckLabeled] = useState(true);
+
+  const toggleCheck = (i: number) => {
+    setCheckStates((prev) => {
+      const next = [...prev];
+      if (next[i] === "inactive" || next[i] === "read-only") return next;
+      next[i] = next[i] === "selected" ? "empty" : "selected";
+      return next;
+    });
+  };
+
+  const radioLabels = ["Option A", "Option B", "Option C"];
 
   return (
     <div>
       <PageHeader
         title="UI Controls"
-        subtitle="Radio buttons, checkboxes, and toggles."
+        subtitle="Radio buttons, checkboxes, and toggles. Click to interact."
       />
 
       {/* Radio buttons */}
       <div className="mb-10">
         <SectionLabel>Radio Buttons — Small (20px)</SectionLabel>
         <div className="flex gap-6 items-center">
-          <div className="flex flex-col gap-1 items-center">
-            <Radio state="selected" size="small" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Selected</span>
-          </div>
-          <div className="flex flex-col gap-1 items-center">
-            <Radio state="empty" size="small" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Empty</span>
-          </div>
+          {radioLabels.map((label, i) => (
+            <button key={label} onClick={() => setRadioSmall(i)} className="flex flex-col gap-1 items-center cursor-pointer">
+              <Radio state={radioSmall === i ? "selected" : "empty"} size="small" />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{label}</span>
+            </button>
+          ))}
           <div className="flex flex-col gap-1 items-center">
             <Radio state="disabled" size="small" />
             <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Disabled</span>
@@ -1145,14 +1197,12 @@ function UIControlsPage() {
       <div className="mb-10">
         <SectionLabel>Radio Buttons — Large (24px)</SectionLabel>
         <div className="flex gap-6 items-center">
-          <div className="flex flex-col gap-1 items-center">
-            <Radio state="selected" size="large" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Selected</span>
-          </div>
-          <div className="flex flex-col gap-1 items-center">
-            <Radio state="empty" size="large" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Empty</span>
-          </div>
+          {radioLabels.map((label, i) => (
+            <button key={label} onClick={() => setRadioLarge(i)} className="flex flex-col gap-1 items-center cursor-pointer">
+              <Radio state={radioLarge === i ? "selected" : "empty"} size="large" />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{label}</span>
+            </button>
+          ))}
           <div className="flex flex-col gap-1 items-center">
             <Radio state="disabled" size="large" />
             <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Disabled</span>
@@ -1168,22 +1218,12 @@ function UIControlsPage() {
       <div className="mb-10">
         <SectionLabel>Checkbox — Box Only</SectionLabel>
         <div className="flex gap-6 items-center">
-          <div className="flex flex-col gap-1 items-center">
-            <Checkbox state="empty" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Empty</span>
-          </div>
-          <div className="flex flex-col gap-1 items-center">
-            <Checkbox state="selected" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Selected</span>
-          </div>
-          <div className="flex flex-col gap-1 items-center">
-            <Checkbox state="inactive" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Inactive</span>
-          </div>
-          <div className="flex flex-col gap-1 items-center">
-            <Checkbox state="read-only" />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Read Only</span>
-          </div>
+          {(["empty", "selected", "inactive", "read-only"] as const).map((_, i) => (
+            <button key={i} onClick={() => toggleCheck(i)} className="flex flex-col gap-1 items-center cursor-pointer">
+              <Checkbox state={checkStates[i]} />
+              <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{checkStates[i]}</span>
+            </button>
+          ))}
         </div>
         <div className="flex flex-wrap gap-1.5 mt-3">
           <TokenPill token="color/primary/300" />
@@ -1195,16 +1235,13 @@ function UIControlsPage() {
       <div className="mb-10">
         <SectionLabel>Checkbox — With Label</SectionLabel>
         <div className="flex flex-col gap-4 items-start">
-          <Checkbox
-            state="selected"
-            headline="To help reduce waste, we encourage reusing pumps and droppers for your bottles."
-            label="Check this box to send my subscription orders with pumps and droppers"
-          />
-          <Checkbox
-            state="inactive"
-            headline="To help reduce waste, we encourage reusing pumps and droppers for your bottles."
-            label="Check this box to send my subscription orders with pumps and droppers"
-          />
+          <button onClick={() => setCheckLabeled(!checkLabeled)} className="cursor-pointer text-left">
+            <Checkbox
+              state={checkLabeled ? "selected" : "empty"}
+              headline="To help reduce waste, we encourage reusing pumps and droppers for your bottles."
+              label="Check this box to send my subscription orders with pumps and droppers"
+            />
+          </button>
         </div>
       </div>
 
@@ -1213,12 +1250,8 @@ function UIControlsPage() {
         <SectionLabel>Toggle — Basic</SectionLabel>
         <div className="flex gap-6 items-center">
           <div className="flex flex-col gap-1 items-center">
-            <Toggle on={false} />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>Off</span>
-          </div>
-          <div className="flex flex-col gap-1 items-center">
-            <Toggle on={true} />
-            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>On</span>
+            <Toggle on={toggleOn} onChange={setToggleOn} />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{toggleOn ? "On" : "Off"}</span>
           </div>
         </div>
         <div className="flex flex-wrap gap-1.5 mt-3">
@@ -1230,8 +1263,7 @@ function UIControlsPage() {
       <div className="mb-10">
         <SectionLabel>Toggle — With Labels</SectionLabel>
         <div className="flex gap-6 items-center">
-          <Toggle on={false} showLabels />
-          <Toggle on={true} showLabels />
+          <Toggle on={toggleLabelOn} onChange={setToggleLabelOn} showLabels />
         </div>
       </div>
 
@@ -1244,16 +1276,6 @@ function UIControlsPage() {
             headline="To help reduce waste, we encourage reusing pumps and droppers for your bottles."
             label="Check this box to send my subscription orders with pumps and droppers"
           />
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <SectionLabel>Interactive Demo</SectionLabel>
-        <div className="flex items-center gap-4">
-          <Toggle on={toggleOn} onChange={setToggleOn} />
-          <span className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Toggle is {toggleOn ? "ON" : "OFF"} — click to change
-          </span>
         </div>
       </div>
 
@@ -1326,6 +1348,132 @@ function Sidebar({ active, onNav }: { active: Page; onNav: (p: Page) => void }) 
   );
 }
 
+// ─── Toasts ──────────────────────────────────────────────────────────────────
+
+const toastTypes: ToastType[] = ["removal", "added", "paused", "error"];
+
+const toastMessages: Record<ToastType, string> = {
+  removal: "Removed: Maggie's Shampoo",
+  added: "Added: Maggie's Shampoo",
+  paused: "Subscription paused 2 weeks",
+  error: "Change payment method",
+};
+
+function ToastsPage() {
+  const [demoType, setDemoType] = useState<ToastType>("removal");
+  const [demoImage, setDemoImage] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <div>
+      <PageHeader
+        title="Toasts"
+        subtitle="Notification banners for confirmations, errors, and status changes."
+      />
+
+      {/* Interactive demo */}
+      <div className="mb-10">
+        <SectionLabel>Interactive Demo</SectionLabel>
+        <div className="flex gap-3 mb-4 flex-wrap items-center">
+          {toastTypes.map((t) => (
+            <button
+              key={t}
+              onClick={() => setDemoType(t)}
+              className="px-3 py-1 rounded-[60px] text-xs font-label uppercase tracking-[0.96px] cursor-pointer transition-colors"
+              style={{
+                background: demoType === t ? cssVars["color/primary/300"] : cssVars["color/neutral/100"],
+                color: demoType === t ? cssVars["color/neutral/100"] : cssVars["color/primary/400"],
+                border: `1px solid ${cssVars["color/neutral/400"]}`,
+              }}
+            >
+              {t}
+            </button>
+          ))}
+          <button
+            onClick={() => setDemoImage(!demoImage)}
+            className="px-3 py-1 rounded-[60px] text-xs font-label uppercase tracking-[0.96px] cursor-pointer transition-colors"
+            style={{
+              background: demoImage ? cssVars["color/primary/300"] : cssVars["color/neutral/100"],
+              color: demoImage ? cssVars["color/neutral/100"] : cssVars["color/primary/400"],
+              border: `1px solid ${cssVars["color/neutral/400"]}`,
+            }}
+          >
+            Image
+          </button>
+          <button
+            onClick={() => { setVisible(true); setTimeout(() => setVisible(false), 3000); }}
+            className="px-3 py-1 rounded-[60px] text-xs font-label uppercase tracking-[0.96px] cursor-pointer bg-(--color-accent-200) text-(--color-primary-400)"
+          >
+            Show Toast
+          </button>
+        </div>
+        {visible && (
+          <div className="mb-4 transition-opacity">
+            <Toast type={demoType} message={toastMessages[demoType]} image={demoImage ? sampleImage : undefined} breakpoint="desktop" />
+          </div>
+        )}
+      </div>
+
+      {/* Mobile */}
+      <div className="mb-10">
+        <SectionLabel>Mobile — Without Image</SectionLabel>
+        <div className="flex flex-col gap-4">
+          {toastTypes.map((t) => (
+            <Toast key={t} type={t} message={toastMessages[t]} breakpoint="mobile" />
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Mobile — With Image</SectionLabel>
+        <div className="flex flex-col gap-4">
+          {toastTypes.map((t) => (
+            <Toast key={t} type={t} message={toastMessages[t]} image={sampleImage} breakpoint="mobile" />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div className="mb-10">
+        <SectionLabel>Desktop — Without Image</SectionLabel>
+        <div className="flex flex-col gap-4">
+          {toastTypes.map((t) => (
+            <Toast key={t} type={t} message={toastMessages[t]} breakpoint="desktop" />
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Desktop — With Image</SectionLabel>
+        <div className="flex flex-col gap-4">
+          {toastTypes.map((t) => (
+            <Toast key={t} type={t} message={toastMessages[t]} image={sampleImage} breakpoint="desktop" />
+          ))}
+        </div>
+      </div>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Height: 60px. Mobile: 343px, px-16. Desktop: 600px, px-16.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            BG: primary/300 (removal, added, paused), error/200 (error). Radius: 12px.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Shadow: 0px 8px 24px rgba(0,0,0,0.18). Text: body/4 medium, neutral/100.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Icon: 24px circle, bg white 15% opacity. Product image: 32×40px, rounded-[6px].
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Layout ───────────────────────────────────────────────────────────────────
 
 export default function ComponentLibrary() {
@@ -1347,6 +1495,7 @@ export default function ComponentLibrary() {
         {page === "selectors"  && <SelectorsPage />}
         {page === "ui-controls" && <UIControlsPage />}
         {page === "accordion"   && <AccordionPage />}
+        {page === "toasts"     && <ToastsPage />}
       </main>
     </div>
   );
