@@ -1,8 +1,8 @@
 /*
  * Radio — Figma: Design System Foundations > UI Controls > Radio Buttons
  *
- * Sizes: small (20px), large (24px)
- * States: empty, selected (primary/300 fill), disabled (neutral/700 border)
+ * Sizes: small (20px outer, 15px inner), large (24px outer, 18px inner)
+ * States: empty (neutral/700 ring), selected (primary/400 ring + dot), disabled (neutral/700 ring + dot)
  */
 
 export type RadioState = "empty" | "selected" | "disabled";
@@ -15,10 +15,19 @@ type RadioProps = {
 };
 
 const sizeMap: Record<RadioSize, number> = { small: 20, large: 24 };
+const dotMap: Record<RadioSize, number> = { small: 7.5, large: 9 };
 
 export function Radio({ state = "empty", size = "small", className = "" }: RadioProps) {
   const s = sizeMap[size];
-  const inner = s * 0.5;
+  const dotR = dotMap[size];
+
+  const ringColor = state === "selected"
+    ? "var(--color-primary-400)"
+    : "var(--color-neutral-700)";
+
+  const dotColor = state === "selected"
+    ? "var(--color-primary-400)"
+    : "var(--color-neutral-700)";
 
   return (
     <div
@@ -30,18 +39,18 @@ export function Radio({ state = "empty", size = "small", className = "" }: Radio
         <circle
           cx={s / 2}
           cy={s / 2}
-          r={s / 2 - 1}
-          stroke={state === "disabled" ? "var(--color-neutral-700)" : "var(--color-primary-300)"}
+          r={s / 2 - 0.5}
+          stroke={ringColor}
           strokeWidth={1}
           fill="none"
         />
-        {/* Inner dot for selected */}
-        {state === "selected" && (
+        {/* Inner dot for selected and disabled */}
+        {(state === "selected" || state === "disabled") && (
           <circle
             cx={s / 2}
             cy={s / 2}
-            r={inner / 2}
-            fill="var(--color-primary-300)"
+            r={dotR}
+            fill={dotColor}
           />
         )}
       </svg>
