@@ -31,7 +31,14 @@
       "Bash(gh api:*)",
       "Bash(npx tsc:*)",
       "Bash(npx gh-pages:*)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(curl -s \"https://api.zippopotam.us/us/90210\")",
+      "Bash(curl -s \"https://api.zippopotam.us/us/11238\")",
+      "Bash(curl -sI \"https://api.zippopotam.us/us/90210\")",
+      "Read(//Users/nina.dinoff/prose-consultation/**)",
+      "Bash(npx vite:*)",
+      "WebFetch(domain:github.com)",
+      "mcp__claude_ai_Google_Drive__search_files"
     ]
   }
 }

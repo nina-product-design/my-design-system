@@ -12,6 +12,13 @@ import { Checkbox, type CheckboxState } from "../components/Checkbox/Checkbox";
 import { Logo } from "../components/Logo";
 import { Radio, type RadioState, type RadioSize } from "../components/Radio/Radio";
 import { Tag, type TagSize } from "../components/Tag/Tag";
+import { OfferBadge, type OfferBadgeColor, type OfferBadgeOffer, type OfferBadgeSize } from "../components/OfferBadge";
+import { ProgressBar, HAIR_RR_STEPS, SKIN_RR_STEPS, HAIR_CONSULTATION_STEPS, SKIN_CONSULTATION_STEPS } from "../components/ProgressBar";
+import { ProductCard, HAIRCARE_PRODUCTS, ACCESSORY_PRODUCTS, SKINCARE_PRODUCTS, type HaircareProduct, type AccessoryProduct, type SkincareProduct } from "../components/ProductCard";
+import { ProductCardCarousel, type ProductCardItem } from "../components/ProductCardCarousel";
+import { IngredientCard, INGREDIENTS, type IngredientKey } from "../components/IngredientCard";
+import { Tip, TipTrigger } from "../components/Tip";
+import { IngredientCardCarousel } from "../components/IngredientCardCarousel";
 import { Toast, type ToastType, type ToastBreakpoint } from "../components/Toast/Toast";
 import { Toggle } from "../components/Toggle/Toggle";
 import {
@@ -38,22 +45,46 @@ import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "carousels" | "tips";
 
-const navItems: { id: Page; label: string }[] = [
-  { id: "logo",        label: "Logo" },
-  { id: "colors",      label: "Colors" },
-  { id: "typography",  label: "Typography" },
-  { id: "spacing",     label: "Spacing" },
-  { id: "radius",      label: "Radius" },
-  { id: "buttons",     label: "Buttons" },
-  { id: "text-links",  label: "Text Links" },
-  { id: "inputs",      label: "Inputs" },
-  { id: "selectors",   label: "Selectors" },
-  { id: "ui-controls", label: "UI Controls" },
-  { id: "accordion",   label: "Accordion" },
-  { id: "toasts",      label: "Toasts" },
-  { id: "tags",        label: "Tags" },
+type NavSection = {
+  title: string;
+  items: { id: Page; label: string }[];
+};
+
+const navSections: NavSection[] = [
+  {
+    title: "Foundations",
+    items: [
+      { id: "logo",       label: "Logo" },
+      { id: "colors",     label: "Colors" },
+      { id: "typography", label: "Typography" },
+      { id: "spacing",    label: "Spacing" },
+      { id: "radius",     label: "Radius" },
+    ],
+  },
+  {
+    title: "Components",
+    items: [
+      { id: "buttons",       label: "Buttons" },
+      { id: "text-links",    label: "Text Links" },
+      { id: "inputs",        label: "Inputs" },
+      { id: "selectors",     label: "Selectors" },
+      { id: "ui-controls",   label: "UI Controls" },
+      { id: "accordion",     label: "Accordion" },
+      { id: "toasts",        label: "Toasts" },
+      { id: "tags",           label: "Tags" },
+      { id: "offer-badges",   label: "Offer Badges" },
+      { id: "progress-bars",  label: "Progress Bars" },
+    ],
+  },
+  {
+    title: "Patterns",
+    items: [
+      { id: "carousels", label: "Carousels" },
+      { id: "tips",      label: "Tips" },
+    ],
+  },
 ];
 
 // ─── Color data ───────────────────────────────────────────────────────────────
@@ -1305,6 +1336,64 @@ function UIControlsPage() {
 
 // ─── Sidebar ──────────────────────────────────────────────────────────────────
 
+function SidebarSection({
+  title,
+  items,
+  active,
+  onNav,
+}: NavSection & { active: Page; onNav: (p: Page) => void }) {
+  const hasActiveChild = items.some(({ id }) => id === active);
+  const [isOpen, setIsOpen] = useState(hasActiveChild || true);
+
+  return (
+    <div className="flex flex-col">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between px-3 py-2 cursor-pointer"
+      >
+        <span
+          className="text-[11px] font-mono uppercase tracking-[1.5px] font-medium"
+          style={{ color: cssVars["color/neutral/700"] }}
+        >
+          {title}
+        </span>
+        <svg
+          width="10"
+          height="6"
+          viewBox="0 0 10 6"
+          fill="none"
+          className="transition-transform duration-150"
+          style={{ transform: isOpen ? "rotate(0deg)" : "rotate(-90deg)" }}
+        >
+          <path d="M1 1L5 5L9 1" stroke={colors.neutral[700]} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      {isOpen && (
+        <ul className="flex flex-col gap-0.5 pb-3">
+          {items.map(({ id, label }) => {
+            const isActive = active === id;
+            return (
+              <li key={id}>
+                <button
+                  onClick={() => onNav(id)}
+                  className="w-full text-left px-3 py-1.5 rounded-lg text-[13px] font-medium transition-colors duration-100 cursor-pointer"
+                  style={
+                    isActive
+                      ? { background: cssVars["color/primary/400"], color: cssVars["color/neutral/100"] }
+                      : { color: cssVars["color/neutral/800"] }
+                  }
+                >
+                  {label}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function Sidebar({ active, onNav }: { active: Page; onNav: (p: Page) => void }) {
   return (
     <nav
@@ -1315,7 +1404,7 @@ function Sidebar({ active, onNav }: { active: Page; onNav: (p: Page) => void }) 
       }}
     >
       {/* Brand */}
-      <div className="mb-8 px-3">
+      <div className="mb-6 px-3">
         <Logo variant="dark" height={20} />
         <p
           className="text-[11px] font-mono uppercase tracking-[2px] mt-1.5"
@@ -1325,27 +1414,17 @@ function Sidebar({ active, onNav }: { active: Page; onNav: (p: Page) => void }) 
         </p>
       </div>
 
-      {/* Nav items */}
-      <ul className="flex flex-col gap-0.5">
-        {navItems.map(({ id, label }) => {
-          const isActive = active === id;
-          return (
-            <li key={id}>
-              <button
-                onClick={() => onNav(id)}
-                className="w-full text-left px-3 py-2 rounded-lg text-[13px] font-medium transition-colors duration-100 cursor-pointer"
-                style={
-                  isActive
-                    ? { background: cssVars["color/primary/400"], color: cssVars["color/neutral/100"] }
-                    : { color: cssVars["color/neutral/800"] }
-                }
-              >
-                {label}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      {/* Sections */}
+      <div className="flex flex-col gap-1">
+        {navSections.map((section) => (
+          <SidebarSection
+            key={section.title}
+            {...section}
+            active={active}
+            onNav={onNav}
+          />
+        ))}
+      </div>
     </nav>
   );
 }
@@ -1538,6 +1617,393 @@ function TagsPage() {
   );
 }
 
+// ─── Carousels ───────────────────────────────────────────────────────────────
+
+const allHaircareKeys = Object.keys(HAIRCARE_PRODUCTS) as HaircareProduct[];
+const allAccessoryKeys = Object.keys(ACCESSORY_PRODUCTS) as AccessoryProduct[];
+const allSkincareKeys = Object.keys(SKINCARE_PRODUCTS) as SkincareProduct[];
+const allIngredientKeys = Object.keys(INGREDIENTS) as IngredientKey[];
+
+const sampleCarouselItems: ProductCardItem[] = allHaircareKeys.map((key) => HAIRCARE_PRODUCTS[key]);
+
+function CarouselsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Carousels"
+        subtitle="Horizontally scrollable product card rows with a section title."
+      />
+
+      <div className="mb-10">
+        <SectionLabel>Haircare Products</SectionLabel>
+        <div className="flex gap-3 overflow-x-auto pb-2">
+          {allHaircareKeys.map((key) => (
+            <div key={key} className="flex flex-col items-center gap-2">
+              <ProductCard product={key} />
+              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
+                product="{key}"
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          <TokenPill token="radius/radius-10" />
+          <TokenPill token="spacing/spacing-24" />
+          <TokenPill token="color/highlight/200" />
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Accessory Products</SectionLabel>
+        <div className="flex gap-3 overflow-x-auto pb-2">
+          {allAccessoryKeys.map((key) => (
+            <div key={key} className="flex flex-col items-center gap-2">
+              <ProductCard product={key} />
+              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
+                product="{key}"
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Skincare Products</SectionLabel>
+        <div className="flex gap-3 overflow-x-auto pb-2">
+          {allSkincareKeys.map((key) => (
+            <div key={key} className="flex flex-col items-center gap-2">
+              <ProductCard product={key} />
+              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
+                product="{key}"
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Product Card Carousel</SectionLabel>
+        <div className="rounded-xl overflow-hidden" style={{ background: cssVars["color/neutral/200"], maxWidth: 420 }}>
+          <div className="py-6">
+            <ProductCardCarousel title="Custom Haircare" items={sampleCarouselItems} />
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Ingredient Card — All Ingredients</SectionLabel>
+        <div className="flex gap-3 overflow-x-auto pb-2" style={{ background: cssVars["color/neutral/300"], borderRadius: 12, padding: 16 }}>
+          {allIngredientKeys.map((key) => (
+            <div key={key} className="flex flex-col items-center gap-2">
+              <IngredientCard ingredient={key} />
+              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
+                ingredient="{key}"
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Ingredient Card Carousel</SectionLabel>
+        <div className="rounded-xl overflow-hidden" style={{ background: cssVars["color/neutral/300"], maxWidth: 420 }}>
+          <div className="py-6">
+            <IngredientCardCarousel title="Your Ingredients" items={allIngredientKeys.map((key) => INGREDIENTS[key])} />
+          </div>
+        </div>
+      </div>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>
+            Product Card
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Image: 185×246px, radius-10, object-cover. Gap: 24px image→text, 5px name→price.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Name: body/3 medium, #1f232d. Price: body/3 regular, #1f232d.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Badge: 50×50px circle, highlight/200, Simplon Mono Regular 14px, tracking 1.12px, uppercase.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Carousel: title Saol Text Regular 28px, tracking 0.5px, leading 36px. Gap 23px title→cards, 12px between cards, px-16.
+          </p>
+          <p className="text-[13px] font-medium mt-2" style={{ color: cssVars["color/primary/400"] }}>
+            Ingredient Card
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Card: 204×207px, white, radius 15px, offset 67px from top. Total height: 274px.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Image: ~148×148px, centered, overlaps card top.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Name: body/3 regular (16px), neutral/800.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Description: body/5 regular (12px), neutral/800, max-w 162px.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Carousel gap: 11px between cards. Hidden scrollbar.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Tips ────────────────────────────────────────────────────────────────────
+
+function TipsPage() {
+  const [isMobileTipOpen, setIsMobileTipOpen] = useState(false);
+  const [isDesktopTipOpen, setIsDesktopTipOpen] = useState(false);
+
+  return (
+    <div>
+      <PageHeader
+        title="Tips"
+        subtitle="Bottom-sheet tooltip panels triggered by a link. Used in consultation flows to explain why a question is asked."
+      />
+
+      <div className="mb-10">
+        <SectionLabel>Trigger</SectionLabel>
+        <div className="flex flex-col gap-4">
+          <TipTrigger label="More of a visual learner? Tap for pics (Mobile)" onClick={() => setIsMobileTipOpen(true)} />
+          <TipTrigger label="Why we ask (Desktop)" onClick={() => setIsDesktopTipOpen(true)} />
+        </div>
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          <TokenPill token="color/tertiary/300" />
+          <TokenPill token="color/neutral/800" />
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Mobile Panel (375px)</SectionLabel>
+        <div className="rounded-xl overflow-hidden" style={{ maxWidth: 375 }}>
+          <div
+            style={{
+              backgroundColor: "var(--color-tertiary-200)",
+              borderTopLeftRadius: "var(--radius-radius-20)",
+              borderTopRightRadius: "var(--radius-radius-20)",
+              padding: "12px 24px 24px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 16,
+            }}
+          >
+            <div style={{ width: 42, height: 5, borderRadius: 5, backgroundColor: "var(--color-tertiary-300)" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%", textAlign: "center" }}>
+              <p style={{ fontFamily: "var(--font-family-label)", fontSize: 13, letterSpacing: "1px", textTransform: "uppercase", color: "var(--color-neutral-900)", margin: 0 }}>WHY WE ASK:</p>
+              <div style={{ fontFamily: "var(--font-family-body)", fontSize: 14, lineHeight: "22px", letterSpacing: "0.5px", color: "var(--color-neutral-900)" }}>
+                <p style={{ margin: "0 0 22px" }}>Over the course of a lifetime, hair goes through changes in texture, density, and strength. We'll use this info to give you extra support at any stage.</p>
+                <p style={{ margin: 0 }}>*Please note our haircare products are not intended for use by individuals under the age of 18. These products have not been specifically formulated or tested for this age group.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Desktop Panel (500px)</SectionLabel>
+        <div className="rounded-xl overflow-hidden" style={{ maxWidth: 500 }}>
+          <div
+            style={{
+              backgroundColor: "var(--color-tertiary-200)",
+              borderTopLeftRadius: "var(--radius-radius-20)",
+              borderTopRightRadius: "var(--radius-radius-20)",
+              padding: "18px 24px 48px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 32,
+            }}
+          >
+            <div style={{ width: 42, height: 5, borderRadius: 5, backgroundColor: "var(--color-tertiary-300)" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%", textAlign: "center" }}>
+              <p style={{ fontFamily: "var(--font-family-label)", fontSize: 14, letterSpacing: "1.12px", textTransform: "uppercase", color: "var(--color-neutral-900)", margin: 0 }}>WHY WE ASK:</p>
+              <div style={{ fontFamily: "var(--font-family-body)", fontSize: 16, lineHeight: 1.5, letterSpacing: "0.32px", color: "var(--color-neutral-900)" }}>
+                <p style={{ margin: "0 0 24px" }}>Over the course of a lifetime, hair goes through changes in texture, density, and strength. We'll use this info to give you extra support at any stage.</p>
+                <p style={{ margin: 0 }}>*Please note our haircare products are not intended for use by individuals under the age of 18. These products have not been specifically formulated or tested for this age group.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Live demo tips */}
+      <Tip isOpen={isMobileTipOpen} onClose={() => setIsMobileTipOpen(false)} size="mobile">
+        <p style={{ margin: "0 0 22px" }}>Over the course of a lifetime, hair goes through changes in texture, density, and strength. We'll use this info to give you extra support at any stage.</p>
+        <p style={{ margin: 0 }}>*Please note our haircare products are not intended for use by individuals under the age of 18.</p>
+      </Tip>
+      <Tip isOpen={isDesktopTipOpen} onClose={() => setIsDesktopTipOpen(false)} size="desktop">
+        <p style={{ margin: "0 0 24px" }}>Over the course of a lifetime, hair goes through changes in texture, density, and strength. We'll use this info to give you extra support at any stage.</p>
+        <p style={{ margin: 0 }}>*Please note our haircare products are not intended for use by individuals under the age of 18.</p>
+      </Tip>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>
+            Panel
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            BG: tertiary/200. Rounded top: radius-20. Drag handle: 42×5px, tertiary/300, rounded 5px.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Mobile: 375px, px-24, pt-12, pb-24, gap 16px. Title: Simplon Mono 13px, tracking 1px. Body: 14px, leading 22px.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Desktop: 500px, px-24, pt-18, pb-48, gap 32px. Title: label/1 (14px, tracking 1.12px). Body: body/3 (16px, leading 1.5).
+          </p>
+          <p className="text-[13px] font-medium mt-2" style={{ color: cssVars["color/primary/400"] }}>
+            Trigger
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            "+" icon: 20×20px circle, 1.5px border tertiary/300, text tertiary/300. Label: underlined, neutral/800.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Progress Bars ───────────────────────────────────────────────────────────
+
+const progressBarFlows = [
+  { label: "Hair — R&R Flow", steps: HAIR_RR_STEPS },
+  { label: "Skin — R&R Flow", steps: SKIN_RR_STEPS },
+  { label: "Hair — Consultation Flow", steps: HAIR_CONSULTATION_STEPS },
+  { label: "Skin — Consultation Flow", steps: SKIN_CONSULTATION_STEPS },
+];
+
+function ProgressBarsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Progress Bars"
+        subtitle="Horizontal step progress indicators for consultation and R&R flows. Blue fill advances per step."
+      />
+
+      {progressBarFlows.map(({ label, steps }) => (
+        <div key={label} className="mb-12">
+          <SectionLabel>{label} — Desktop</SectionLabel>
+          <div className="flex flex-col gap-4 overflow-x-auto pb-2">
+            {steps.map((_, i) => (
+              <ProgressBar key={i} steps={steps} activeStep={i} size="desktop" />
+            ))}
+          </div>
+
+          <SectionLabel>{label} — Mobile</SectionLabel>
+          <div className="flex flex-col gap-4">
+            {steps.map((_, i) => (
+              <ProgressBar key={i} steps={steps} activeStep={i} size="mobile" />
+            ))}
+          </div>
+        </div>
+      ))}
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Track: neutral/600 (#eaeaea). Fill: secondary/200 (#a2c6d1).
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Desktop: 1440×29px. Mobile: 375×29px.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Font: Simplon Mono Regular, 10px, tracking 0.8px, uppercase, centered.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Text: active = neutral/900, completed = neutral/800, upcoming = neutral/700.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Fill width: (activeStep + 0.5) / totalSteps × 100%. Dividers: 1px at each step boundary.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Offer Badges ────────────────────────────────────────────────────────────
+
+const offerTypes: OfferBadgeOffer[] = ["50-off", "sss", "raf"];
+const offerLabels: Record<OfferBadgeOffer, string> = {
+  "50-off": "50% Off",
+  sss: "Free Skincare Starter Set",
+  raf: "Refer-a-Friend",
+};
+
+function OfferBadgesPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Offer Badges"
+        subtitle="Circular promotional badges for offer callouts. Two colors, two sizes, three offer types."
+      />
+
+      <div className="mb-10">
+        <SectionLabel>Desktop — 136px</SectionLabel>
+        <div className="flex flex-wrap gap-6">
+          {(["yellow", "green"] as OfferBadgeColor[]).map((color) =>
+            offerTypes.map((offer) => (
+              <div key={`${color}-${offer}`} className="flex flex-col items-center gap-2">
+                <OfferBadge offer={offer} color={color} size="desktop" />
+                <span className="text-[11px]" style={{ color: cssVars["color/primary/300"] }}>
+                  {color} · {offerLabels[offer]}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Mobile — 88px</SectionLabel>
+        <div className="flex flex-wrap gap-6">
+          {(["yellow", "green"] as OfferBadgeColor[]).map((color) =>
+            offerTypes.map((offer) => (
+              <div key={`${color}-${offer}`} className="flex flex-col items-center gap-2">
+                <OfferBadge offer={offer} color={color} size="mobile" />
+                <span className="text-[11px]" style={{ color: cssVars["color/primary/300"] }}>
+                  {color} · {offerLabels[offer]}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
+      {/* Spec notes */}
+      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Yellow: BG highlight/200, text neutral/900. Green: BG primary/400, text highlight/200.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Desktop: 136×136px. Mobile: 88×88px. Shape: circle (border-radius 50%).
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Font: Simplon Mono. Primary text: Medium weight, 32px (desktop) / 20px (mobile).
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            SSS secondary text: Light weight, 16px (desktop) / 10px (mobile). Tracking: 1px. Uppercase.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Layout ───────────────────────────────────────────────────────────────────
 
 export default function ComponentLibrary() {
@@ -1560,7 +2026,11 @@ export default function ComponentLibrary() {
         {page === "ui-controls" && <UIControlsPage />}
         {page === "accordion"   && <AccordionPage />}
         {page === "toasts"     && <ToastsPage />}
-        {page === "tags"       && <TagsPage />}
+        {page === "tags"         && <TagsPage />}
+        {page === "offer-badges"  && <OfferBadgesPage />}
+        {page === "progress-bars" && <ProgressBarsPage />}
+        {page === "carousels"     && <CarouselsPage />}
+        {page === "tips"          && <TipsPage />}
       </main>
     </div>
   );

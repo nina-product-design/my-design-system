@@ -1,0 +1,1 @@
+export { IngredientCardCarousel } from "./IngredientCardCarousel";
