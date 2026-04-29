@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 
-const page = import.meta.env.VITE_PAGE || "design-system";
+const page = import.meta.env.VITE_PAGE || "library";
 
 const pages: Record<string, () => Promise<{ default: React.ComponentType }>> = {
   "design-system": () => import("./pages/DesignSystemPage"),
@@ -16,7 +16,7 @@ const pages: Record<string, () => Promise<{ default: React.ComponentType }>> = {
   consultation: () => import("./pages/ConsultationPage"),
 };
 
-const loader = pages[page] ?? pages["design-system"];
+const loader = pages[page] ?? pages.library;
 
 loader().then(({ default: Page }) => {
   createRoot(document.getElementById("root")!).render(
