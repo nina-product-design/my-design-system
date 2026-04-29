@@ -41,11 +41,13 @@ import {
   variantTokens as linkVariantTokens,
 } from "../components/TextLink/TextLink";
 import { TypographyShowcase } from "../components/Typography/Typography";
+import { Navigation, type NavigationSize, type NavigationState } from "../components/Navigation/Navigation";
+import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
 import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "carousels" | "tips";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "navigation" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "carousels" | "tips";
 
 type NavSection = {
   title: string;
@@ -81,6 +83,7 @@ const navSections: NavSection[] = [
   {
     title: "Patterns",
     items: [
+      { id: "navigation", label: "Navigation" },
       { id: "carousels", label: "Carousels" },
       { id: "tips",      label: "Tips" },
     ],
@@ -1568,6 +1571,80 @@ const tagExamples = [
   "60% off",
 ];
 
+// ─── Page: Navigation ─────────────────────────────────────────────────────────
+
+function NavigationPage() {
+  const navStates: NavigationState[] = ["default", "items-added", "consultation", "checkout"];
+  const bannerStates: SitewideBannerState[] = ["no-promo", "subscribe", "promo"];
+
+  return (
+    <div>
+      <PageHeader
+        title="Navigation"
+        subtitle="Site header with sitewide banner + nav bar. Desktop and mobile sizes with multiple states."
+      />
+
+      {/* Sitewide Banner standalone */}
+      <SectionLabel>Sitewide Banner (standalone)</SectionLabel>
+      <div className="flex flex-col gap-4 mb-12">
+        {bannerStates.map((bs) => (
+          <div key={bs} className="flex flex-col gap-1">
+            <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: cssVars["color/neutral/700"] }}>
+              {bs}
+            </p>
+            <SitewideBanner state={bs} />
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop navigation */}
+      <SectionLabel>Desktop</SectionLabel>
+      <div className="flex flex-col gap-8 mb-12">
+        {navStates.map((ns) => (
+          <div key={`desktop-${ns}`} className="flex flex-col gap-1">
+            <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: cssVars["color/neutral/700"] }}>
+              {ns}
+            </p>
+            <div className="overflow-hidden">
+              <Navigation size="desktop" state={ns} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile navigation */}
+      <SectionLabel>Mobile</SectionLabel>
+      <div className="flex flex-col gap-8 mb-12">
+        {navStates.map((ns) => (
+          <div key={`mobile-${ns}`} className="flex flex-col gap-1">
+            <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: cssVars["color/neutral/700"] }}>
+              {ns}
+            </p>
+            <div className="w-[375px] overflow-hidden">
+              <Navigation size="mobile" state={ns} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Banner color variants within navigation */}
+      <SectionLabel>Banner Variants (in navigation)</SectionLabel>
+      <div className="flex flex-col gap-8">
+        {bannerStates.map((bs) => (
+          <div key={`banner-${bs}`} className="flex flex-col gap-1">
+            <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: cssVars["color/neutral/700"] }}>
+              {bs}
+            </p>
+            <div className="overflow-hidden">
+              <Navigation size="desktop" state="default" bannerState={bs} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TagsPage() {
   return (
     <div>
@@ -2019,6 +2096,7 @@ export default function ComponentLibrary() {
         {page === "typography" && <TypographyPage />}
         {page === "spacing"    && <SpacingPage />}
         {page === "radius"     && <RadiusPage />}
+        {page === "navigation" && <NavigationPage />}
         {page === "buttons"    && <ButtonsPage />}
         {page === "text-links" && <TextLinksPage />}
         {page === "inputs"     && <InputsPage />}

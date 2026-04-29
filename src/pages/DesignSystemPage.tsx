@@ -35,6 +35,8 @@ import {
   type TextLinkColor,
 } from "../components/TextLink/TextLink";
 import { TypographyShowcase } from "../components/Typography/Typography";
+import { Navigation, type NavigationState } from "../components/Navigation/Navigation";
+import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
 import { cssVars } from "../tokens";
 
 // ─── Navigation ─────────────────────────────────────────────────────────────
@@ -386,6 +388,44 @@ function ComponentsPage() {
           <PreviewCell bg="dark">
             <Logo variant="light" height={32} />
           </PreviewCell>
+        </div>
+      </section>
+
+      {/* ── Sitewide Banner ──────────────────────────────────── */}
+      <section className="mb-12">
+        <SectionLabel>Sitewide Banner</SectionLabel>
+        <div className="flex flex-col gap-4">
+          {(["no-promo", "subscribe", "promo"] as SitewideBannerState[]).map((bs) => (
+            <div key={bs} className="flex flex-col gap-1">
+              <span className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>{bs}</span>
+              <SitewideBanner state={bs} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Navigation ─────────────────────────────────────────── */}
+      <section className="mb-12">
+        <SectionLabel>Navigation</SectionLabel>
+        <div className="flex flex-col gap-6">
+          <p className="text-[11px] font-mono font-medium" style={{ color: cssVars["color/neutral/800"] }}>Desktop</p>
+          {(["default", "items-added", "consultation", "checkout"] as NavigationState[]).map((ns) => (
+            <div key={`d-${ns}`} className="flex flex-col gap-1">
+              <span className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>{ns}</span>
+              <div className="overflow-hidden">
+                <Navigation size="desktop" state={ns} />
+              </div>
+            </div>
+          ))}
+          <p className="text-[11px] font-mono font-medium mt-4" style={{ color: cssVars["color/neutral/800"] }}>Mobile</p>
+          {(["default", "items-added", "consultation", "checkout"] as NavigationState[]).map((ns) => (
+            <div key={`m-${ns}`} className="flex flex-col gap-1">
+              <span className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>{ns}</span>
+              <div className="w-[375px] border rounded-xl overflow-hidden" style={{ borderColor: cssVars["color/neutral/600"] }}>
+                <Navigation size="mobile" state={ns} />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

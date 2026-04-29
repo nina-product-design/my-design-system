@@ -151,6 +151,20 @@ Each label size has Regular and Medium variants (no italic).
 
 ## Components
 
+### Sitewide Banner (page: Navigation)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **SitewideBanner** | 3 variants | State (No Promo, Subscribe, Promo), Message (optional custom text) |
+
+Full-width promotional banner, 40px height. No Promo: primary/400 bg, white text. Subscribe: highlight/200 bg, dark text. Promo: tertiary/200 bg, dark text. Text is body/5 regular (12px), centered, underlined.
+
+### Navigation (page: Navigation)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **Navigation** | 8 variants (Desktop + Mobile x 4 states) | Size (Desktop, Mobile), State (Default, Items Added, Consultation, Checkout), Banner State (No Promo, Subscribe, Promo) |
+
+Two-part header: SitewideBanner (40px) + nav bar (56px desktop, 55px mobile). Default/Items Added: full nav links with logo, cart, and account icons. Consultation: "← Back", centered logo, "Exit". Checkout: back arrow, centered logo. Mobile uses hamburger menu instead of inline nav links. Items Added state shows accent/200 dot badge on cart icon.
+
 ### Logo (page: Logo)
 | Component | Variants | Properties |
 |-----------|----------|------------|
