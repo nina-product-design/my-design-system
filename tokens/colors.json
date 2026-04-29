@@ -1,0 +1,37 @@
+{
+  "color/primary/100": { "value": "#dce0d2", "usage": "Lightest tint — background highlights" },
+  "color/primary/200": { "value": "#b9c2a6", "usage": "Light green" },
+  "color/primary/300": { "value": "#4d523c", "usage": "Mid — hover / pressed states" },
+  "color/primary/400": { "value": "#323429", "usage": "Brand dark green — primary surface" },
+
+  "color/neutral/100": { "value": "#ffffff", "usage": "White" },
+  "color/neutral/200": { "value": "#f9f7f2", "usage": "Off-white background" },
+  "color/neutral/300": { "value": "#f1ece0", "usage": "Warm light background" },
+  "color/neutral/400": { "value": "#e2d9c2", "usage": "Light tan" },
+  "color/neutral/500": { "value": "#c8bfa8", "usage": "Muted tan" },
+  "color/neutral/600": { "value": "#eaeaea", "usage": "Light dividers / subtle background" },
+  "color/neutral/700": { "value": "#a6a6a6", "usage": "Secondary text / icons" },
+  "color/neutral/800": { "value": "#6c6c6c", "usage": "Tertiary text / disabled background" },
+  "color/neutral/900": { "value": "#161714", "usage": "Near-black" },
+
+  "color/accent/100": { "value": "#fcded3", "usage": "Light accent tint" },
+  "color/accent/200": { "value": "#f69371", "usage": "Warm salmon — primary CTA accent" },
+  "color/accent/300": { "value": "#c5765a", "usage": "Darker accent — hover state" },
+
+  "color/highlight/100": { "value": "#f6ffcd", "usage": "Highlight tint" },
+  "color/highlight/200": { "value": "#ecff92", "usage": "Highlight bright" },
+
+  "color/secondary/100": { "value": "#d0e2e8", "usage": "Light blue" },
+  "color/secondary/200": { "value": "#a2c6d1", "usage": "Mid blue" },
+  "color/secondary/300": { "value": "#88acb7", "usage": "Dark blue" },
+
+  "color/tertiary/100": { "value": "#f9f9fe", "usage": "Light lavender" },
+  "color/tertiary/200": { "value": "#ead7f3", "usage": "Mid lavender" },
+  "color/tertiary/300": { "value": "#bbacc2", "usage": "Dark lavender" },
+
+  "color/error/100": { "value": "#e8cac6", "usage": "Error tint" },
+  "color/error/200": { "value": "#b45446", "usage": "Destructive / error" },
+
+  "color/success/100": { "value": "#bed9c7", "usage": "Success tint" },
+  "color/success/200": { "value": "#2e844a", "usage": "Success" }
+}

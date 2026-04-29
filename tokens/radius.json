@@ -1,0 +1,9 @@
+{
+  "radius/0": { "value": "0px" },
+  "radius/4": { "value": "4px" },
+  "radius/10": { "value": "10px" },
+  "radius/12": { "value": "12px" },
+  "radius/20": { "value": "20px" },
+  "radius/60": { "value": "60px" },
+  "radius/400": { "value": "400px", "usage": "Pill" }
+}

@@ -1,0 +1,12 @@
+{
+  "spacing/none": { "value": "0px" },
+  "spacing/4": { "value": "4px" },
+  "spacing/8": { "value": "8px" },
+  "spacing/12": { "value": "12px" },
+  "spacing/16": { "value": "16px" },
+  "spacing/24": { "value": "24px" },
+  "spacing/32": { "value": "32px" },
+  "spacing/48": { "value": "48px" },
+  "spacing/64": { "value": "64px" },
+  "spacing/80": { "value": "80px" }
+}

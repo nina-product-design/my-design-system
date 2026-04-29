@@ -163,7 +163,13 @@ The Prose wordmark with registered trademark symbol. SVG uses `currentColor` —
 |-----------|----------|------------|
 | **TextLink** | 10 variants | Type (Primary, Secondary, Simple), Color (Light, Dark), Disabled (True, False), Has Icon (True, False) |
 
-Primary & Secondary use Simplon Mono 12px medium uppercase with animated underline (left→right on hover). Simple uses Simplon Norm 14px regular with static text-decoration underline. Icon variant adds a 20px play/arrow circle icon.
+Primary & Secondary use Simplon Mono 12px medium uppercase with animated underline (left-to-right on hover). Simple uses Simplon Norm 14px regular with static text-decoration underline. Icon variant adds a 20px play/arrow circle icon.
+
+Variant detail:
+- Primary Light, Primary Dark
+- Secondary Light, Secondary Dark
+- Simple Light, Simple Dark
+- Each with Disabled state and optional Icon
 
 ### Input Fields (page: Inputs)
 | Component | Variants | Properties |
@@ -186,27 +192,9 @@ Two forms: text pills and image cards. Deselected: white bg, border neutral/300,
 | **Checkbox** | 4 variants | State (Empty, Selected, Inactive, Read Only), optional Label + Headline |
 | **Toggle** | 4 variants | On/Off, optional Labels (OFF/ON text), optional Label + Headline |
 
-Radio: primary/300 for selected fill and border, neutral/700 for disabled. Checkbox: 28px, shadow, primary/300 fill with white check. Toggle: 55×24px track, 18px thumb, neutral/600 off, primary/300 on.
+Radio: primary/300 for selected fill and border, neutral/700 for disabled. Checkbox: 28px, shadow, primary/300 fill with white check. Toggle: 55x24px track, 18px thumb, neutral/600 off, primary/300 on.
 
-### Accordion (page: Accordion)
-| Component | Variants | Properties |
-|-----------|----------|------------|
-| **Accordion** | 2 variants | Variant (Product, FAQ), Items (question + optional answer) |
-
-Product variant: label/2 medium (Simplon Mono 12px uppercase), primary/300 text, chevron icon. FAQ variant: body/4 regular (14px), primary/400 text, plus/minus icon, expandable answers. Divider: 1px neutral/600. Desktop FAQ uses two-column layout (title left, questions right).
-
-### Buttons (page: Buttons)
-| Component | Variants | Properties |
-|-----------|----------|------------|
-| **Buttons** | 40 variants | Appearance (Primary Light, Primary Dark, Secondary Light, Secondary Dark, Accent, Destructive), State (Default, Hover, Disabled, Loading), Size (Fit, Full), Floating (True, False) |
-| **Button/Mini** | 8 variants | Variant (Back, Add), Size (Mini), Floating (True, False), Color (Light mode, Dark mode) |
-
-### Text Links (page: Text Links)
-| Component | Variants | Properties |
-|-----------|----------|------------|
-| **Text link** | 10 variants | Type (Primary Light, Primary Dark, Secondary Light, Secondary Dark, Simple Light, Simple Dark), Disabled (True, False), Has Icon (True, False) |
-
-### UI Controls (page: UI Controls)
+Sub-components and icons:
 | Component | Variants | Properties |
 |-----------|----------|------------|
 | **Radio Button/Small** | 3 variants | State (Selected, Empty, Disabled) |
@@ -229,6 +217,19 @@ Product variant: label/2 medium (Simplon Mono 12px uppercase), primary/300 text,
 | **carousel** | 3 variants | shape (dots, lines), color (dark, light) |
 | **dots** | 3 variants | Property 1 (image-carousel-1, -2, -3) |
 
+### Accordion (page: Accordion)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **Accordion** | 2 variants | Variant (Product, FAQ), Items (question + optional answer) |
+
+Product variant: label/2 medium (Simplon Mono 12px uppercase), primary/300 text, chevron icon. FAQ variant: body/4 regular (14px), primary/400 text, plus/minus icon, expandable answers. Divider: 1px neutral/600. Desktop FAQ uses two-column layout (title left, questions right).
+
+### Buttons (page: Buttons)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **Buttons** | 40 variants | Appearance (Primary Light, Primary Dark, Secondary Light, Secondary Dark, Accent, Destructive), State (Default, Hover, Disabled, Loading), Size (Fit, Full), Floating (True, False) |
+| **Button/Mini** | 8 variants | Variant (Back, Add), Size (Mini), Floating (True, False), Color (Light mode, Dark mode) |
+
 ---
 
 ## Naming Conventions
@@ -248,27 +249,3 @@ Product variant: label/2 medium (Simplon Mono 12px uppercase), primary/300 text,
 ### Layers
 - Semantic names, no generic "Frame N" or "Group N" names
 - Internal layers describe their purpose (e.g., `Weight badge`, `Link content`, `Plus icon`)
-
----
-
-## Known Issues / Cleanup Remaining
-
-The following components still use inconsistent naming and need standardization to TitleCase/Slash:
-
-| Current Name | Suggested Fix |
-|---|---|
-| `toggle` | `Toggle` |
-| `Arrow button` | `Button/Arrow` |
-| `Pagination dots` | `Pagination/Dots` |
-| `carousel` | `Carousel` |
-| `dots` | `Carousel/Dots` |
-| `UI controls/Caret` | `Icon/Caret` |
-| `UI controls/Video controls` | `Icon/Video Controls` |
-| `UI controls/Arrow` | `Icon/Arrow` |
-
-### Unnamed variant properties
-- `dots` component uses `Property 1` — should be renamed to a meaningful property name (e.g., `Slide`)
-- `carousel` variants use lowercase property values — should be Title Case
-
-### Stray variable
-- `Collection 1` contains a single white color variable — should be deleted

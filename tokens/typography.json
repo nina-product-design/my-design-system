@@ -1,0 +1,33 @@
+{
+  "families": {
+    "title": { "value": "Saol Text", "role": "Headings", "cssVariable": "--font-family-title" },
+    "body": { "value": "Simplon Norm", "role": "Body", "cssVariable": "--font-family-body" },
+    "label": { "value": "Simplon Mono", "role": "Labels", "cssVariable": "--font-family-label" }
+  },
+  "weights": {
+    "light": { "value": 300, "usage": "Headings only" },
+    "regular": { "value": 400, "usage": "Body and label default" },
+    "medium": { "value": 500, "usage": "Body and label emphasis" }
+  },
+  "headings": {
+    "h1": { "family": "Saol Text", "size": "48px", "lineHeight": "110%", "weight": 300 },
+    "h2": { "family": "Saol Text", "size": "40px", "lineHeight": "110%", "weight": 300 },
+    "h3": { "family": "Saol Text", "size": "32px", "lineHeight": "110%", "weight": 300 },
+    "h4": { "family": "Saol Text", "size": "24px", "lineHeight": "110%", "weight": 300 },
+    "h5": { "family": "Saol Text", "size": "20px", "lineHeight": "120%", "weight": 300 },
+    "h6": { "family": "Saol Text", "size": "16px", "lineHeight": "120%", "weight": 300 }
+  },
+  "body": {
+    "body1": { "family": "Simplon Norm", "size": "24px", "lineHeight": "150%", "weights": [400, 500], "italic": true },
+    "body2": { "family": "Simplon Norm", "size": "20px", "lineHeight": "150%", "weights": [400, 500], "italic": true },
+    "body3": { "family": "Simplon Norm", "size": "16px", "lineHeight": "150%", "weights": [400, 500], "italic": true },
+    "body4": { "family": "Simplon Norm", "size": "14px", "lineHeight": "150%", "weights": [400, 500], "italic": true },
+    "body5": { "family": "Simplon Norm", "size": "12px", "lineHeight": "150%", "weights": [400, 500], "italic": true },
+    "body6": { "family": "Simplon Norm", "size": "10px", "lineHeight": "150%", "weights": [400, 500], "italic": true }
+  },
+  "labels": {
+    "label1": { "family": "Simplon Mono", "size": "14px", "lineHeight": "120%", "weights": [400, 500] },
+    "label2": { "family": "Simplon Mono", "size": "12px", "lineHeight": "120%", "weights": [400, 500] },
+    "label3": { "family": "Simplon Mono", "size": "10px", "lineHeight": "120%", "weights": [400, 500] }
+  }
+}
