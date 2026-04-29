@@ -43,11 +43,12 @@ import {
 import { TypographyShowcase } from "../components/Typography/Typography";
 import { Navigation, type NavigationSize, type NavigationState } from "../components/Navigation/Navigation";
 import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
+import { PromoModal } from "../components/PromoModal/PromoModal";
 import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "navigation" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "carousels" | "tips";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "navigation" | "promo-modals" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "carousels" | "tips";
 
 type NavSection = {
   title: string;
@@ -84,6 +85,7 @@ const navSections: NavSection[] = [
     title: "Patterns",
     items: [
       { id: "navigation", label: "Navigation" },
+      { id: "promo-modals", label: "Promo Modals" },
       { id: "carousels", label: "Carousels" },
       { id: "tips",      label: "Tips" },
     ],
@@ -1645,6 +1647,155 @@ function NavigationPage() {
   );
 }
 
+// ─── Page: Promo Modals ───────────────────────────────────────────────────────
+
+const promoModalImage = "/my-design-system/images/pop-up modal/Image.png";
+
+function PromoModalsPage() {
+  const img = promoModalImage;
+  const hl = "Headline goes here and can be up to 2 lines";
+  const sub = "Subhead goes here and can be up to 2 lines. Subhead goes here and can be up to 2 lines.";
+
+  return (
+    <div>
+      <PageHeader
+        title="Promo Modals"
+        subtitle="Promotional overlay modals for offers, email capture, and announcements. 22 Figma variants across desktop and mobile."
+      />
+
+      {/* ── Desktop + Image ────────────────────────────────────── */}
+      <SectionLabel>Desktop + Image</SectionLabel>
+      <div className="flex flex-wrap gap-8 mb-12">
+        {/* 1. All options: text link + form + eyebrow + disclaimer */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>text link + form + eyebrow + disclaimer</p>
+          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
+        </div>
+        {/* 2. Form + eyebrow + disclaimer (no text link) */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>form + eyebrow + disclaimer</p>
+          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" showDisclaimer />
+        </div>
+        {/* 3. Eyebrow + disclaimer (no form, no text link) */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + disclaimer</p>
+          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
+        </div>
+        {/* 4. Disclaimer, no eyebrow */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no eyebrow + disclaimer</p>
+          <PromoModal size="desktop" image={img} headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
+        </div>
+        {/* 5. All options alternate layout (with text link + form) */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>text link + form + eyebrow + disclaimer (alt)</p>
+          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
+        </div>
+        {/* 6. Headline only, no subcopy */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>headline only</p>
+          <PromoModal size="desktop" image={img} headline={hl} ctaLabel="Get your formula" />
+        </div>
+        {/* 7. No CTA, headline + subcopy */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no cta</p>
+          <PromoModal size="desktop" image={img} headline={hl} subhead={sub} ctaLabel="" />
+        </div>
+        {/* 8. Subcopy only, no header */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>subcopy only, no headline</p>
+          <PromoModal size="desktop" image={img} headline="" subhead={sub} ctaLabel="Get your formula" />
+        </div>
+      </div>
+
+      {/* ── Mobile + Image ─────────────────────────────────────── */}
+      <SectionLabel>Mobile + Image</SectionLabel>
+      <div className="flex flex-wrap gap-8 mb-12">
+        {/* 1. All options */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>text link + form + eyebrow + disclaimer</p>
+          <PromoModal size="mobile" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
+        </div>
+        {/* 2. Form + eyebrow + disclaimer */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>form + eyebrow + disclaimer</p>
+          <PromoModal size="mobile" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" showDisclaimer />
+        </div>
+        {/* 3. Eyebrow + disclaimer */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + disclaimer</p>
+          <PromoModal size="mobile" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
+        </div>
+        {/* 4. Disclaimer, no eyebrow */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no eyebrow + disclaimer</p>
+          <PromoModal size="mobile" image={img} headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
+        </div>
+        {/* 5. Headline + subcopy, no disclaimer */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no disclaimer</p>
+          <PromoModal size="mobile" image={img} headline={hl} subhead={sub} ctaLabel="Get your formula" />
+        </div>
+        {/* 6. No CTA */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no cta</p>
+          <PromoModal size="mobile" image={img} headline={hl} subhead={sub} ctaLabel="" />
+        </div>
+        {/* 7. Headline only, no subcopy */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>headline only</p>
+          <PromoModal size="mobile" image={img} headline={hl} ctaLabel="Get your formula" />
+        </div>
+        {/* 8. CTA only, no header */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>cta only, no header</p>
+          <PromoModal size="mobile" image={img} headline="" subhead="" ctaLabel="Get your formula" />
+        </div>
+      </div>
+
+      {/* ── Desktop, No Image ──────────────────────────────────── */}
+      <SectionLabel>Desktop — No Image</SectionLabel>
+      <div className="flex flex-wrap gap-8 mb-12">
+        {/* 1. All options + eyebrow */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + form + text link + disclaimer</p>
+          <PromoModal size="desktop" eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
+        </div>
+        {/* 2. Highlight eyebrow + form + text link + disclaimer */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>highlight eyebrow + form + text link + disclaimer</p>
+          <PromoModal size="desktop" eyebrow="50% off first order" eyebrowHighlight headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
+        </div>
+        {/* 3. Minimal — headline + subcopy + CTA */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>minimal</p>
+          <PromoModal size="desktop" headline={hl} subhead={sub} ctaLabel="Get your formula" />
+        </div>
+      </div>
+
+      {/* ── Mobile, No Image ───────────────────────────────────── */}
+      <SectionLabel>Mobile — No Image</SectionLabel>
+      <div className="flex flex-wrap gap-8 mb-12">
+        {/* 1. Eyebrow + all options */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + form + text link + disclaimer</p>
+          <PromoModal size="mobile" eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
+        </div>
+        {/* 2. Highlight eyebrow + form + text link + disclaimer */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>highlight eyebrow + form + text link + disclaimer</p>
+          <PromoModal size="mobile" eyebrow="50% off first order" eyebrowHighlight headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
+        </div>
+        {/* 3. Minimal */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>minimal</p>
+          <PromoModal size="mobile" headline={hl} subhead={sub} ctaLabel="Get your formula" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TagsPage() {
   return (
     <div>
@@ -2087,7 +2238,7 @@ export default function ComponentLibrary() {
   const [page, setPage] = useState<Page>("colors");
 
   return (
-    <div className="flex min-h-screen" style={{ background: cssVars["color/neutral/200"] }}>
+    <div className="flex min-h-screen" style={{ background: "#E5E5E5" }}>
       <Sidebar active={page} onNav={setPage} />
 
       <main className="ml-[220px] flex-1 px-12 py-10 min-h-screen">
@@ -2097,6 +2248,7 @@ export default function ComponentLibrary() {
         {page === "spacing"    && <SpacingPage />}
         {page === "radius"     && <RadiusPage />}
         {page === "navigation" && <NavigationPage />}
+        {page === "promo-modals" && <PromoModalsPage />}
         {page === "buttons"    && <ButtonsPage />}
         {page === "text-links" && <TextLinksPage />}
         {page === "inputs"     && <InputsPage />}

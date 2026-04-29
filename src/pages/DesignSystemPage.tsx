@@ -881,7 +881,7 @@ export default function DesignSystemPage() {
     <div
       className="flex min-h-screen"
       style={{
-        background: cssVars["color/neutral/200"],
+        background: "#E5E5E5",
         color: cssVars["color/neutral/900"],
       }}
     >

@@ -238,6 +238,13 @@ Sub-components and icons:
 
 Product variant: label/2 medium (Simplon Mono 12px uppercase), primary/300 text, chevron icon. FAQ variant: body/4 regular (14px), primary/400 text, plus/minus icon, expandable answers. Divider: 1px neutral/600. Desktop FAQ uses two-column layout (title left, questions right).
 
+### Promo Modals (page: Promo Modals)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **PromoModal** | Desktop + Mobile, with/without image | Size (Desktop, Mobile), Image (optional), Eyebrow (optional, plain or highlight), Headline (optional), Subhead (optional), Form Field (boolean), CTA (optional), Text Link (optional), Disclaimer (boolean) |
+
+Promotional overlay modal. Desktop: 555px, 20px radius, 40px content padding, 350px image. Mobile: 375px, 10px top radius, 24px content padding, 236px image. Content bg: neutral/200. Close button (32px circle) on image or top-right. Eyebrow can be plain (label/1 regular uppercase) or highlight tag (highlight/200, label/2 medium). Headline: H3 (32px Saol). Subhead: body/4. Form field: 56px input. Disclaimer: body/5 with Terms/Privacy links.
+
 ### Buttons (page: Buttons)
 | Component | Variants | Properties |
 |-----------|----------|------------|
