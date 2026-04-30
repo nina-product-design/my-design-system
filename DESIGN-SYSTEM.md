@@ -199,6 +199,10 @@ Variant detail:
 
 Two forms: text pills and image cards. Deselected: white bg, border neutral/300, text primary/400. Selected: bg primary/200 (light green), text neutral/900. Text pills: rounded-10, body/4 regular (14px). Image cards: 127px tall, image 101px wide, rounded-8. Subcopy uses body/5 (12px).
 
+| **FrequencySelector** | 3 selection modes | Selection (Subscription/One-time/Accessory), Options (array of label + price + optional originalPrice + optional note), Open/Collapsed |
+
+Collapsible frequency/price selector with radio-button dropdown. Width 295px. "Added to cart" floating label (body/6, neutral/900). Header: border neutral/400, radius-10, shows selected option label + optional note (body/6, neutral/800) + price (body/4 medium). Subscription prices: highlight/200 bg, strikethrough original. Chevron toggles dropdown (subscription/one-time). Accessory mode: non-expandable. Dropdown rows: radio (small 20px) + label (body/5 regular) + price stack, border-l/r/b neutral/400, last row rounded-b-10. Used inside RoutineCard.
+
 ### UI Controls (page: UI Controls)
 | Component | Variants | Properties |
 |-----------|----------|------------|

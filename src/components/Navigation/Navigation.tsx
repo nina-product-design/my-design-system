@@ -188,7 +188,7 @@ function MobileIcons({ hasItems }: { hasItems: boolean }) {
 export function Navigation({
   size = "desktop",
   state = "default",
-  bannerState = "no-promo",
+  bannerState = "banner",
   bannerMessage,
   userName,
   className = "",

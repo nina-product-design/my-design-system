@@ -12,20 +12,20 @@
 import { typography } from "../../tokens";
 
 // ─── Ingredient images ───────────────────────────────────
-import imgHyaluronicAcid from "../../../images/ingredients/Acai 1.png";
-import imgSeaMoss from "../../../images/ingredients/Acai 1-1.png";
-import imgSpirulina from "../../../images/ingredients/Acai 1-2.png";
-import imgBiotin from "../../../images/ingredients/Acai 1-3.png";
-import imgRosehipOil from "../../../images/ingredients/Acai 1-4.png";
-import imgNiacinamide from "../../../images/ingredients/Acai 1-5.png";
-import imgBakuchiol from "../../../images/ingredients/Acai 1-6.png";
-import imgVitaminC from "../../../images/ingredients/Acai 1-7.png";
-import imgAminoAcids from "../../../images/ingredients/Acai 1-8.png";
-import imgCastorOil from "../../../images/ingredients/Acai 1-9.png";
-import imgAcaciaCollagen from "../../../images/ingredients/Acai 1-10.png";
-import imgAloeVera from "../../../images/ingredients/Acai 1-11.png";
-import imgAppleCiderVinegar from "../../../images/ingredients/Acai 1-12.png";
-import imgCoconutOil from "../../../images/ingredients/Acai 1-13.png";
+import imgHyaluronicAcid from "../../../images/ingredients/hyaluronic.png";
+import imgSeaMoss from "../../../images/ingredients/RED ALGAE.png";
+import imgSpirulina from "../../../images/ingredients/agastache.png";
+import imgBiotin from "../../../images/ingredients/Peppermint.png";
+import imgRosehipOil from "../../../images/ingredients/20190723_Ingredients_Argan.png";
+import imgNiacinamide from "../../../images/ingredients/niacinamide.png";
+import imgBakuchiol from "../../../images/ingredients/bakuchiol.png";
+import imgVitaminC from "../../../images/ingredients/Caviar Lime Extract.png";
+import imgAminoAcids from "../../../images/ingredients/amino-acid.png";
+import imgCastorOil from "../../../images/ingredients/Castor Oil.png";
+import imgAcaciaCollagen from "../../../images/ingredients/Babbasu.png";
+import imgAloeVera from "../../../images/ingredients/20190723_Ingredients_Aloe_Vera.png";
+import imgAppleCiderVinegar from "../../../images/ingredients/2019118_Ingredients_Apple_Cider_Vinegar.png";
+import imgCoconutOil from "../../../images/ingredients/Coconut Oil.png";
 
 // ─── Predefined ingredients ──────────────────────────────
 export type IngredientKey =

@@ -20,6 +20,7 @@ import { Radio, type RadioState, type RadioSize } from "../components/Radio/Radi
 import { Tag } from "../components/Tag/Tag";
 import { Toast, type ToastType } from "../components/Toast/Toast";
 import { Toggle } from "../components/Toggle/Toggle";
+import { CloseButton } from "../components/CloseButton";
 import {
   InputField,
   type InputFieldType,
@@ -36,7 +37,7 @@ import {
 } from "../components/TextLink/TextLink";
 import { TypographyShowcase } from "../components/Typography/Typography";
 import { Navigation, type NavigationState } from "../components/Navigation/Navigation";
-import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
+import { SitewideBanner } from "../components/SitewideBanner/SitewideBanner";
 import { RoutineCard } from "../components/RoutineCard";
 import { cssVars } from "../tokens";
 
@@ -396,12 +397,10 @@ function ComponentsPage() {
       <section className="mb-12">
         <SectionLabel>Sitewide Banner</SectionLabel>
         <div className="flex flex-col gap-4">
-          {(["no-promo", "subscribe", "promo"] as SitewideBannerState[]).map((bs) => (
-            <div key={bs} className="flex flex-col gap-1">
-              <span className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>{bs}</span>
-              <SitewideBanner state={bs} />
-            </div>
-          ))}
+          <div className="flex flex-col gap-1">
+            <span className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>banner</span>
+            <SitewideBanner />
+          </div>
         </div>
       </section>
 
@@ -745,6 +744,19 @@ function ComponentsPage() {
         </div>
       </section>
 
+      {/* ── Close Button ─────────────────────────────────────── */}
+      <section className="mb-12">
+        <SectionLabel>Close Button</SectionLabel>
+        <div className="flex flex-wrap gap-6">
+          <PreviewCell bg="light">
+            <CloseButton color="dark" />
+          </PreviewCell>
+          <PreviewCell bg="dark">
+            <CloseButton color="light" />
+          </PreviewCell>
+        </div>
+      </section>
+
       {/* ── Accordion ──────────────────────────────────────────── */}
       <section className="mb-12">
         <SectionLabel>Accordion</SectionLabel>
@@ -858,7 +870,6 @@ function ComponentsPage() {
               productName="Maggie's Hair Towel"
               productDescription={'Fast-drying hair towel for reducing unwanted frizz.'}
               productSize='23" x 37" in'
-              price="$34.00"
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -870,13 +881,11 @@ function ComponentsPage() {
               productDescription="A gentle, sulfate-free cleanser."
               productSize="8.5 fl oz 250mL"
               ingredients={[
-                { image: "/my-design-system/images/ingredients/Acai 1-3.png", name: "Bamboo Charcoal", description: "Gently cleanses and detoxifies the scalp." },
-                { image: "/my-design-system/images/ingredients/Acai 1-4.png", name: "Pink Clay" },
-                { image: "/my-design-system/images/ingredients/Acai 1-5.png", name: "Anise Myrtle Extract" },
+                { image: "/my-design-system/images/ingredients/Peppermint.png", name: "Peppermint", description: <>Gently cleanses and detoxifies the scalp to help manage your <span style={{ fontWeight: 500, textDecoration: "underline" }}>sensitivity</span>.</> },
+                { image: "/my-design-system/images/ingredients/20190723_Ingredients_Aloe_Vera.png", name: "Aloe Vera", description: <>Refreshes roots and promotes scalp health to help manage your <span style={{ fontWeight: 500, textDecoration: "underline" }}>damage</span>.</> },
+                { image: "/my-design-system/images/ingredients/20190723_Ingredients_Argan.png", name: "Argan", description: <>Calms and soothes the scalp to help manage your <span style={{ fontWeight: 500, textDecoration: "underline" }}>oiliness</span>.</> },
               ]}
               preferences="Fragrance free."
-              price="$14.00"
-              originalPrice="$35.00"
             />
           </div>
         </div>

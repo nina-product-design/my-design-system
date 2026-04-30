@@ -42,14 +42,24 @@ import {
 } from "../components/TextLink/TextLink";
 import { TypographyShowcase } from "../components/Typography/Typography";
 import { Navigation, type NavigationSize, type NavigationState } from "../components/Navigation/Navigation";
-import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
+import { SitewideBanner } from "../components/SitewideBanner/SitewideBanner";
 import { PromoModal, type OfferModalOffer, type OfferModalType } from "../components/PromoModal/PromoModal";
 import { RoutineCard, type RoutineCardType } from "../components/RoutineCard";
+import { FrequencySelector } from "../components/Selector";
+import { CloseButton } from "../components/CloseButton";
+import { VideoControls } from "../components/VideoControls";
+import { ArrowButton, type ArrowButtonColor } from "../components/ArrowButton";
+import { ProductTag } from "../components/ProductTag";
 import { colors, cssVars, tokenMap } from "../tokens";
+
+// Sample ingredient images for RoutineCard demos
+import imgIngPeppermint from "../../images/ingredients/Peppermint.png";
+import imgIngAloe from "../../images/ingredients/20190723_Ingredients_Aloe_Vera.png";
+import imgIngArganOil from "../../images/ingredients/20190723_Ingredients_Argan.png";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "icons" | "navigation" | "promo-modals" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "product-cards" | "routine-cards" | "carousels" | "tips";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "icons" | "images" | "navigation" | "promo-modals" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "progress-bars" | "product-cards" | "routine-cards" | "carousels" | "tips";
 
 type NavSection = {
   title: string;
@@ -66,6 +76,7 @@ const navSections: NavSection[] = [
       { id: "spacing",    label: "Spacing" },
       { id: "radius",     label: "Radius" },
       { id: "icons",      label: "Icons" },
+      { id: "images",     label: "Ingredients" },
     ],
   },
   {
@@ -78,8 +89,7 @@ const navSections: NavSection[] = [
       { id: "ui-controls",   label: "UI Controls" },
       { id: "accordion",     label: "Accordion" },
       { id: "toasts",        label: "Toasts" },
-      { id: "tags",           label: "Tags" },
-      { id: "offer-badges",   label: "Offer Badges" },
+      { id: "tags",           label: "Tags & Badges" },
       { id: "progress-bars",  label: "Progress Bars" },
       { id: "product-cards",  label: "Product Cards" },
       { id: "routine-cards",  label: "Routine Cards" },
@@ -874,10 +884,38 @@ function SelectorsPage() {
         </div>
       </div>
 
+      {/* Frequency Selector */}
+      <div className="mb-10">
+        <SectionLabel>Frequency Selector</SectionLabel>
+        <div className="flex gap-6 overflow-x-auto pb-4">
+          <div className="flex flex-col items-center gap-2 shrink-0">
+            <FrequencySelector selection="subscription" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>subscription (collapsed)</span>
+          </div>
+          <div className="flex flex-col items-center gap-2 shrink-0">
+            <FrequencySelector selection="subscription" defaultOpen />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>subscription (open)</span>
+          </div>
+          <div className="flex flex-col items-center gap-2 shrink-0">
+            <FrequencySelector selection="one-time" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>one-time (collapsed)</span>
+          </div>
+          <div className="flex flex-col items-center gap-2 shrink-0">
+            <FrequencySelector selection="one-time" defaultOpen />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>one-time (open)</span>
+          </div>
+          <div className="flex flex-col items-center gap-2 shrink-0">
+            <FrequencySelector selection="accessory" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>accessory</span>
+          </div>
+        </div>
+      </div>
+
       {/* Spec notes */}
       <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
         <SectionLabel>Specs</SectionLabel>
         <div className="flex flex-col gap-1">
+          <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>Text Pill / Image Card</p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
             Text pill: py-16px, rounded-10. Fixed: w-327px px-32. Hug: w-fit px-12.
           </p>
@@ -889,6 +927,16 @@ function SelectorsPage() {
           </p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
             Selected: bg primary/200, text neutral/900 — border primary/200 (image cards)
+          </p>
+          <p className="text-[13px] font-medium mt-2" style={{ color: cssVars["color/primary/400"] }}>Frequency Selector</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Width: 295px. Border neutral/400, radius-10. "Added to cart" floating label (body/6).
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Header: body/5 label + optional note (body/6) + price (body/4 medium). Subscription: highlight/200 bg + strikethrough.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Dropdown: radio small (20px) + label (body/5) + price. Rows bordered neutral/400, last row rounded-b-10.
           </p>
         </div>
       </div>
@@ -1321,6 +1369,77 @@ function UIControlsPage() {
         </div>
       </div>
 
+      {/* Video Controls */}
+      <div className="mb-10">
+        <SectionLabel>Video Controls</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <VideoControls state="pause" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>pause</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <VideoControls state="play" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>play</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Arrow Buttons */}
+      <div className="mb-10">
+        <SectionLabel>Arrow Buttons — Small (29px)</SectionLabel>
+        <div className="flex gap-4 items-center">
+          {(["light", "dark", "disabled"] as ArrowButtonColor[]).map((c) => (
+            <div key={c} className="flex gap-2 items-center">
+              <div className="flex flex-col gap-1 items-center">
+                <ArrowButton size="small" direction="left" color={c} />
+                <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{c} L</span>
+              </div>
+              <div className="flex flex-col gap-1 items-center">
+                <ArrowButton size="small" direction="right" color={c} />
+                <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{c} R</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Arrow Buttons — Large (50px)</SectionLabel>
+        <div className="flex gap-4 items-center">
+          {(["light", "dark", "disabled"] as ArrowButtonColor[]).map((c) => (
+            <div key={c} className="flex gap-2 items-center">
+              <div className="flex flex-col gap-1 items-center">
+                <ArrowButton size="large" direction="left" color={c} />
+                <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{c} L</span>
+              </div>
+              <div className="flex flex-col gap-1 items-center">
+                <ArrowButton size="large" direction="right" color={c} />
+                <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{c} R</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Close Button */}
+      <div className="mb-10">
+        <SectionLabel>Close Button</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <div className="flex items-center justify-center p-4 rounded-xl" style={{ background: cssVars["color/primary/100"] }}>
+              <CloseButton color="dark" />
+            </div>
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>dark (on light bg)</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <div className="flex items-center justify-center p-4 rounded-xl" style={{ background: cssVars["color/primary/400"] }}>
+              <CloseButton color="light" />
+            </div>
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>light (on dark bg)</span>
+          </div>
+        </div>
+      </div>
+
       {/* Spec notes */}
       <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
         <SectionLabel>Specs</SectionLabel>
@@ -1333,6 +1452,15 @@ function UIControlsPage() {
           </p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
             Toggle: 55×24px track, 18px thumb. Off: neutral/600. On: primary/300.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Video Controls: 32×32px circle, border neutral/600, bg neutral/100. Pause: two bars. Play: triangle. Icon: neutral/900.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Arrow Button: Small 29px, Large 50px. Colors: Light (neutral/300), Dark (primary/300), Disabled (neutral/600). Chevron icon.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Close Button: 32×32px circle, X icon (12px, stroke 1.5). Light: bg white/80%, Dark: transparent. Icon: primary/400.
           </p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
             Labels: body/4 regular (14px), text neutral/900 or primary/400.
@@ -1685,11 +1813,115 @@ function IconsPage() {
   );
 }
 
+// ─── Page: Ingredients ───────────────────────────────────────────────────────
+
+// Dynamically load all ingredient and oil images
+const ingredientGlob = import.meta.glob<{ default: string }>("../../images/ingredients/*.png", { eager: true });
+const oilGlob = import.meta.glob<{ default: string }>("../../images/oils/*.png", { eager: true });
+
+function cleanName(filepath: string): string {
+  const base = filepath.split("/").pop()?.replace(/\.png$/i, "") ?? "";
+  return base
+    .replace(/^\d+_/, "")                // strip leading date prefixes like 20190723_
+    .replace(/^Prose[- ]Ingredient[- ]/i, "")
+    .replace(/^Ingredients?[_ ]/i, "")
+    .replace(/^PR\d+[_ ]/i, "")
+    .replace(/^22PR\d+[_ ]\d+[_ ]/i, "")
+    .replace(/[_ ]+/g, " ")
+    .replace(/-/g, " ")
+    .replace(/\d+$/, "")                 // strip trailing numbers like _032_R2
+    .replace(/R\d+$/i, "")
+    .trim()
+    .split(" ")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function isOilImage(filepath: string): boolean {
+  const lower = filepath.toLowerCase();
+  return /[_\-/]oil[s_.\-/]|[_\-/]oils[_.\-/]|oil\.png$/i.test(lower);
+}
+
+function buildImageList(glob: Record<string, { default: string }>, excludeOils = false) {
+  const seen = new Map<string, { name: string; src: string }>();
+  for (const [path, mod] of Object.entries(glob)) {
+    if (excludeOils && isOilImage(path)) continue;
+    const name = cleanName(path);
+    if (!name || name.length < 2) continue;
+    // Keep the first occurrence (dedup by lowercase name)
+    const key = name.toLowerCase();
+    if (!seen.has(key)) {
+      seen.set(key, { name, src: mod.default });
+    }
+  }
+  return Array.from(seen.values()).sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+  );
+}
+
+const allIngredientImages = buildImageList(ingredientGlob, true);
+const allOilImages = buildImageList(oilGlob);
+
+function ImageGrid({ images }: { images: { name: string; src: string }[] }) {
+  return (
+    <div className="flex flex-wrap gap-4">
+      {images.map((img, i) => (
+        <div key={i} className="flex flex-col items-center gap-2">
+          <div
+            className="w-[80px] h-[80px] rounded-xl overflow-hidden flex items-center justify-center"
+            style={{ background: "#FFFFFF" }}
+          >
+            <img src={img.src} alt={img.name} className="w-full h-full object-contain" />
+          </div>
+          <span className="text-[10px] font-mono text-center max-w-[80px] leading-tight" style={{ color: cssVars["color/neutral/700"] }}>
+            {img.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ImagesPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Ingredients"
+        subtitle={`${allIngredientImages.length} ingredient images + ${allOilImages.length} oil images. All PNGs with transparent backgrounds.`}
+      />
+
+      <SectionLabel>Ingredients ({allIngredientImages.length})</SectionLabel>
+      <div className="mb-12">
+        <ImageGrid images={allIngredientImages} />
+      </div>
+
+      <SectionLabel>Oils ({allOilImages.length})</SectionLabel>
+      <div className="mb-12">
+        <ImageGrid images={allOilImages} />
+      </div>
+
+      <div className="p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Usage</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Ingredients: IngredientCard (148×148px), RoutineCard rows (32×40px), consultation flows.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Oils: consultation flows, product detail pages.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Display with object-contain on a white or neutral background.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Page: Navigation ─────────────────────────────────────────────────────────
 
 function NavigationPage() {
   const navStates: NavigationState[] = ["default", "items-added", "consultation", "checkout"];
-  const bannerStates: SitewideBannerState[] = ["no-promo", "subscribe", "promo"];
 
   return (
     <div>
@@ -1699,16 +1931,14 @@ function NavigationPage() {
       />
 
       {/* Sitewide Banner standalone */}
-      <SectionLabel>Sitewide Banner (standalone)</SectionLabel>
+      <SectionLabel>Sitewide Banner</SectionLabel>
       <div className="flex flex-col gap-4 mb-12">
-        {bannerStates.map((bs) => (
-          <div key={bs} className="flex flex-col gap-1">
-            <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: cssVars["color/neutral/700"] }}>
-              {bs}
-            </p>
-            <SitewideBanner state={bs} />
-          </div>
-        ))}
+        <div className="flex flex-col gap-1">
+          <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: cssVars["color/neutral/700"] }}>
+            banner
+          </p>
+          <SitewideBanner />
+        </div>
       </div>
 
       {/* Desktop navigation */}
@@ -1741,20 +1971,6 @@ function NavigationPage() {
         ))}
       </div>
 
-      {/* Banner color variants within navigation */}
-      <SectionLabel>Banner Variants (in navigation)</SectionLabel>
-      <div className="flex flex-col gap-8">
-        {bannerStates.map((bs) => (
-          <div key={`banner-${bs}`} className="flex flex-col gap-1">
-            <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: cssVars["color/neutral/700"] }}>
-              {bs}
-            </p>
-            <div className="overflow-hidden">
-              <Navigation size="desktop" state="default" bannerState={bs} />
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
@@ -1859,12 +2075,13 @@ function TagsPage() {
   return (
     <div>
       <PageHeader
-        title="Tags"
-        subtitle="Offer and promo tags. Lime highlight background with uppercase mono text."
+        title="Tags & Badges"
+        subtitle="Promo tags, product tags, and offer badges."
       />
 
+      {/* Tags */}
       <div className="mb-10">
-        <SectionLabel>Default — Label/1 (14px)</SectionLabel>
+        <SectionLabel>Tags — Default (Label/1, 14px)</SectionLabel>
         <div className="flex flex-wrap gap-3">
           {tagExamples.map((t) => (
             <Tag key={t}>{t}</Tag>
@@ -1877,7 +2094,7 @@ function TagsPage() {
       </div>
 
       <div className="mb-10">
-        <SectionLabel>Small — Label/2 (12px)</SectionLabel>
+        <SectionLabel>Tags — Small (Label/2, 12px)</SectionLabel>
         <div className="flex flex-wrap gap-3">
           {tagExamples.map((t) => (
             <Tag key={t} size="small">{t}</Tag>
@@ -1885,18 +2102,88 @@ function TagsPage() {
         </div>
       </div>
 
+      {/* Product Tag */}
+      <div className="mb-10">
+        <SectionLabel>Product Tag</SectionLabel>
+        <div className="flex gap-6 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <div className="flex items-center justify-center p-4 rounded-xl" style={{ background: cssVars["color/primary/300"] }}>
+              <ProductTag />
+            </div>
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>default</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <div className="flex items-center justify-center p-4 rounded-xl" style={{ background: cssVars["color/primary/300"] }}>
+              <ProductTag label="New" />
+            </div>
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>custom</span>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <div className="flex items-center justify-center p-4 rounded-xl" style={{ background: cssVars["color/primary/300"] }}>
+              <ProductTag label="Best Seller" />
+            </div>
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>custom</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Offer Badges */}
+      <div className="mb-10">
+        <SectionLabel>Offer Badges — Desktop (136px)</SectionLabel>
+        <div className="flex flex-wrap gap-6">
+          {(["yellow", "green"] as OfferBadgeColor[]).map((color) =>
+            offerTypes.map((offer) => (
+              <div key={`${color}-${offer}`} className="flex flex-col items-center gap-2">
+                <OfferBadge offer={offer} color={color} size="desktop" />
+                <span className="text-[11px]" style={{ color: cssVars["color/primary/300"] }}>
+                  {color} · {offerLabels[offer]}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel>Offer Badges — Mobile (88px)</SectionLabel>
+        <div className="flex flex-wrap gap-6">
+          {(["yellow", "green"] as OfferBadgeColor[]).map((color) =>
+            offerTypes.map((offer) => (
+              <div key={`${color}-${offer}`} className="flex flex-col items-center gap-2">
+                <OfferBadge offer={offer} color={color} size="mobile" />
+                <span className="text-[11px]" style={{ color: cssVars["color/primary/300"] }}>
+                  {color} · {offerLabels[offer]}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
       {/* Spec notes */}
       <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
         <SectionLabel>Specs</SectionLabel>
         <div className="flex flex-col gap-1">
+          <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>Tags</p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            BG: highlight/200. Text: primary/400, Simplon Mono Medium, uppercase.
+            BG: highlight/200. Text: primary/400, Simplon Mono Medium, uppercase. Padding: 8px. Radius: 4px.
           </p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
             Default (label/1): 14px, tracking 1.12px. Small (label/2): 12px, tracking 0.96px.
           </p>
+          <p className="text-[13px] font-medium mt-2" style={{ color: cssVars["color/primary/400"] }}>Product Tag</p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Padding: 8px. Border radius: 4px.
+            Auto-width, px-8 py-4px, radius-4. BG: white/50%. Text: body/5 regular (12px), primary/300.
+          </p>
+          <p className="text-[13px] font-medium mt-2" style={{ color: cssVars["color/primary/400"] }}>Offer Badges</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Yellow: BG highlight/200, text neutral/900. Green: BG primary/400, text highlight/200.
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Desktop: 136×136px. Mobile: 88×88px. Shape: circle (border-radius 50%).
+          </p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Font: Simplon Mono. Primary text: Medium weight, 32px (desktop) / 20px (mobile).
           </p>
         </div>
       </div>
@@ -2052,15 +2339,10 @@ function ProductCardsPage() {
 
 // ─── Page: Routine Cards ─────────────────────────────────────────────────────
 
-// Sample ingredient images for demo (reuse existing ingredient images)
-import imgIngBamboo from "../../images/ingredients/Acai 1-3.png";
-import imgIngPinkClay from "../../images/ingredients/Acai 1-4.png";
-import imgIngAniseMyrtle from "../../images/ingredients/Acai 1-5.png";
-
 const sampleIngredients = [
-  { image: imgIngBamboo, name: "Bamboo Charcoal", description: "Gently cleanses and detoxifies the scalp to help manage your sensitivity." },
-  { image: imgIngPinkClay, name: "Pink Clay" },
-  { image: imgIngAniseMyrtle, name: "Anise Myrtle Extract" },
+  { image: imgIngPeppermint, name: "Peppermint", description: <>Gently cleanses and detoxifies the scalp to help manage your <span style={{ fontWeight: 500, textDecoration: "underline" }}>sensitivity</span>.</> },
+  { image: imgIngAloe, name: "Aloe", description: <>Refreshes roots and promotes scalp health to help manage your <span style={{ fontWeight: 500, textDecoration: "underline" }}>damage</span>.</> },
+  { image: imgIngArganOil, name: "Argan Oil", description: <>Calms and soothes the scalp to help manage your <span style={{ fontWeight: 500, textDecoration: "underline" }}>oiliness</span>.</> },
 ];
 
 function RoutineCardsPage() {
@@ -2081,7 +2363,6 @@ function RoutineCardsPage() {
             productName="Maggie's Hair Towel"
             productDescription={'Fast-drying hair towel for reducing unwanted frizz and preserving hair\u2019s natural texture. Made from 100% recycled microfiber derived from plastic bottles.\n\nDesigned for all textures and lengths.'}
             productSize='23" x 37" in'
-            price="$34.00"
           />
           <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>one-time</span>
         </div>
@@ -2096,8 +2377,6 @@ function RoutineCardsPage() {
             productSize="8.5 fl oz 250mL"
             ingredients={sampleIngredients}
             preferences="Fragrance free."
-            price="$14.00"
-            originalPrice="$35.00"
           />
           <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>subscription</span>
         </div>
@@ -2112,8 +2391,6 @@ function RoutineCardsPage() {
             productSize="8.5 fl oz 250mL"
             ingredients={sampleIngredients}
             preferences="Fragrance free."
-            price="$14.00"
-            originalPrice="$35.00"
           />
           <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>subscription-expanded</span>
         </div>
@@ -2128,7 +2405,7 @@ function RoutineCardsPage() {
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Image: 220px tall, full-width, object-cover. Close button 32px top-right.</p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Name: H3 (Saol Text 32px, weight 300, -0.96px tracking). Description: body/5 regular (12px).</p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Ingredients: label/2 medium section heading, 32x40px images, body/5 medium names, border-b neutral/600.</p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Frequency selector: border neutral/400, radius-10, "Added to cart" floating label. Subscription: highlight/200 price bg, strikethrough original.</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Frequency selector: uses FrequencySelector component (see Selectors page).</p>
         </div>
       </div>
     </div>
@@ -2365,68 +2642,6 @@ const offerLabels: Record<OfferBadgeOffer, string> = {
   raf: "Refer-a-Friend",
 };
 
-function OfferBadgesPage() {
-  return (
-    <div>
-      <PageHeader
-        title="Offer Badges"
-        subtitle="Circular promotional badges for offer callouts. Two colors, two sizes, three offer types."
-      />
-
-      <div className="mb-10">
-        <SectionLabel>Desktop — 136px</SectionLabel>
-        <div className="flex flex-wrap gap-6">
-          {(["yellow", "green"] as OfferBadgeColor[]).map((color) =>
-            offerTypes.map((offer) => (
-              <div key={`${color}-${offer}`} className="flex flex-col items-center gap-2">
-                <OfferBadge offer={offer} color={color} size="desktop" />
-                <span className="text-[11px]" style={{ color: cssVars["color/primary/300"] }}>
-                  {color} · {offerLabels[offer]}
-                </span>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <SectionLabel>Mobile — 88px</SectionLabel>
-        <div className="flex flex-wrap gap-6">
-          {(["yellow", "green"] as OfferBadgeColor[]).map((color) =>
-            offerTypes.map((offer) => (
-              <div key={`${color}-${offer}`} className="flex flex-col items-center gap-2">
-                <OfferBadge offer={offer} color={color} size="mobile" />
-                <span className="text-[11px]" style={{ color: cssVars["color/primary/300"] }}>
-                  {color} · {offerLabels[offer]}
-                </span>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-
-      {/* Spec notes */}
-      <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
-        <SectionLabel>Specs</SectionLabel>
-        <div className="flex flex-col gap-1">
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Yellow: BG highlight/200, text neutral/900. Green: BG primary/400, text highlight/200.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Desktop: 136×136px. Mobile: 88×88px. Shape: circle (border-radius 50%).
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Font: Simplon Mono. Primary text: Medium weight, 32px (desktop) / 20px (mobile).
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            SSS secondary text: Light weight, 16px (desktop) / 10px (mobile). Tracking: 1px. Uppercase.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ─── Layout ───────────────────────────────────────────────────────────────────
 
 export default function ComponentLibrary() {
@@ -2443,6 +2658,7 @@ export default function ComponentLibrary() {
         {page === "spacing"    && <SpacingPage />}
         {page === "radius"     && <RadiusPage />}
         {page === "icons"      && <IconsPage />}
+        {page === "images"     && <ImagesPage />}
         {page === "navigation" && <NavigationPage />}
         {page === "promo-modals" && <PromoModalsPage />}
         {page === "buttons"    && <ButtonsPage />}
@@ -2453,7 +2669,6 @@ export default function ComponentLibrary() {
         {page === "accordion"   && <AccordionPage />}
         {page === "toasts"     && <ToastsPage />}
         {page === "tags"         && <TagsPage />}
-        {page === "offer-badges"  && <OfferBadgesPage />}
         {page === "progress-bars" && <ProgressBarsPage />}
         {page === "product-cards"  && <ProductCardsPage />}
         {page === "routine-cards"  && <RoutineCardsPage />}
