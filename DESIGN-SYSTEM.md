@@ -251,6 +251,13 @@ Promotional overlay modal. Desktop: 555px, 20px radius, 40px content padding, 35
 | **Buttons** | 40 variants | Appearance (Primary Light, Primary Dark, Secondary Light, Secondary Dark, Accent, Destructive), State (Default, Hover, Disabled, Loading), Size (Fit, Full), Floating (True, False) |
 | **Button/Mini** | 8 variants | Variant (Back, Add), Size (Mini), Floating (True, False), Color (Light mode, Dark mode) |
 
+### Routine Cards (page: Routine Cards)
+| Component | Variants | Properties |
+|-----------|----------|------------|
+| **RoutineCard** | 3 variants | Type (One-time purchase, Subscription, Subscription expanded) |
+
+Card: 327px wide, bg neutral/100, radius-10, pb-24, gap-24 between sections. Product image: 220px tall, full-width, object-cover. Close button 32px top-right. Subscription variants show "Recommended" tag (bg white/50%, radius-4, body/5 regular). Product name: H3 (Saol Text 32px, weight 300, letter-spacing -0.96px), primary/400. Description: body/5 regular (12px), primary/300. Size: body/5 regular. Subscription includes "See full details" underline link. Key ingredients section: label/2 medium heading, ingredient rows (32x40px image, body/5 medium name, plus/minus toggle 12px, border-b neutral/600). Expanded ingredient shows description (body/5 regular, pl-34px). Preferences section: label/2 medium heading, body/5 regular text. Frequency selector: border neutral/400, radius-10, "Added to cart" floating label (body/6, neutral/900). One-time: price in body/4 medium. Subscription: highlight/200 bg on price, strikethrough original price, chevron.
+
 ---
 
 ## Naming Conventions

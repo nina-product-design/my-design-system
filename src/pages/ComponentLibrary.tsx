@@ -44,11 +44,12 @@ import { TypographyShowcase } from "../components/Typography/Typography";
 import { Navigation, type NavigationSize, type NavigationState } from "../components/Navigation/Navigation";
 import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
 import { PromoModal, type OfferModalOffer, type OfferModalType } from "../components/PromoModal/PromoModal";
+import { RoutineCard, type RoutineCardType } from "../components/RoutineCard";
 import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "icons" | "navigation" | "promo-modals" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "product-cards" | "carousels" | "tips";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "icons" | "navigation" | "promo-modals" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "product-cards" | "routine-cards" | "carousels" | "tips";
 
 type NavSection = {
   title: string;
@@ -81,6 +82,7 @@ const navSections: NavSection[] = [
       { id: "offer-badges",   label: "Offer Badges" },
       { id: "progress-bars",  label: "Progress Bars" },
       { id: "product-cards",  label: "Product Cards" },
+      { id: "routine-cards",  label: "Routine Cards" },
     ],
   },
   {
@@ -2048,6 +2050,91 @@ function ProductCardsPage() {
   );
 }
 
+// ─── Page: Routine Cards ─────────────────────────────────────────────────────
+
+// Sample ingredient images for demo (reuse existing ingredient images)
+import imgIngBamboo from "../../images/ingredients/Acai 1-3.png";
+import imgIngPinkClay from "../../images/ingredients/Acai 1-4.png";
+import imgIngAniseMyrtle from "../../images/ingredients/Acai 1-5.png";
+
+const sampleIngredients = [
+  { image: imgIngBamboo, name: "Bamboo Charcoal", description: "Gently cleanses and detoxifies the scalp to help manage your sensitivity." },
+  { image: imgIngPinkClay, name: "Pink Clay" },
+  { image: imgIngAniseMyrtle, name: "Anise Myrtle Extract" },
+];
+
+function RoutineCardsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Routine Cards"
+        subtitle="Product routine cards showing product details, optional key ingredients, preferences, and frequency/price selector. Three variants: one-time purchase, subscription (collapsed), and subscription expanded."
+      />
+
+      <SectionLabel>All Variants</SectionLabel>
+      <div className="flex gap-6 overflow-x-auto pb-4 mb-10">
+        {/* One-time purchase */}
+        <div className="flex flex-col items-center gap-2 shrink-0">
+          <RoutineCard
+            type="one-time"
+            productImage="/my-design-system/images/products/Accessories/Prose-Hair-Towel-BG.png"
+            productName="Maggie's Hair Towel"
+            productDescription={'Fast-drying hair towel for reducing unwanted frizz and preserving hair\u2019s natural texture. Made from 100% recycled microfiber derived from plastic bottles.\n\nDesigned for all textures and lengths.'}
+            productSize='23" x 37" in'
+            price="$34.00"
+          />
+          <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>one-time</span>
+        </div>
+
+        {/* Subscription (collapsed) */}
+        <div className="flex flex-col items-center gap-2 shrink-0">
+          <RoutineCard
+            type="subscription"
+            productImage="/my-design-system/images/products/Hair/Prose-custom-shampoo.png"
+            productName="Maggie's Shampoo"
+            productDescription="A gentle, sulfate-free cleanser that maintains the natural balance of your scalp, without color washout."
+            productSize="8.5 fl oz 250mL"
+            ingredients={sampleIngredients}
+            preferences="Fragrance free."
+            price="$14.00"
+            originalPrice="$35.00"
+          />
+          <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>subscription</span>
+        </div>
+
+        {/* Subscription (expanded) */}
+        <div className="flex flex-col items-center gap-2 shrink-0">
+          <RoutineCard
+            type="subscription-expanded"
+            productImage="/my-design-system/images/products/Hair/Prose-custom-shampoo.png"
+            productName="Maggie's Shampoo"
+            productDescription="A gentle, sulfate-free cleanser that maintains the natural balance of your scalp, without color washout."
+            productSize="8.5 fl oz 250mL"
+            ingredients={sampleIngredients}
+            preferences="Fragrance free."
+            price="$14.00"
+            originalPrice="$35.00"
+          />
+          <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>subscription-expanded</span>
+        </div>
+      </div>
+
+      {/* Specs */}
+      <div className="p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>Routine Card</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Card: 327px wide, bg neutral/100, radius-10, pb-24, gap-24 between sections.</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Image: 220px tall, full-width, object-cover. Close button 32px top-right.</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Name: H3 (Saol Text 32px, weight 300, -0.96px tracking). Description: body/5 regular (12px).</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Ingredients: label/2 medium section heading, 32x40px images, body/5 medium names, border-b neutral/600.</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Frequency selector: border neutral/400, radius-10, "Added to cart" floating label. Subscription: highlight/200 price bg, strikethrough original.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Page: Carousels ──────────────────────────────────────────────────────────
 
 function CarouselsPage() {
@@ -2369,6 +2456,7 @@ export default function ComponentLibrary() {
         {page === "offer-badges"  && <OfferBadgesPage />}
         {page === "progress-bars" && <ProgressBarsPage />}
         {page === "product-cards"  && <ProductCardsPage />}
+        {page === "routine-cards"  && <RoutineCardsPage />}
         {page === "carousels"     && <CarouselsPage />}
         {page === "tips"          && <TipsPage />}
       </main>

@@ -37,6 +37,7 @@ import {
 import { TypographyShowcase } from "../components/Typography/Typography";
 import { Navigation, type NavigationState } from "../components/Navigation/Navigation";
 import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
+import { RoutineCard } from "../components/RoutineCard";
 import { cssVars } from "../tokens";
 
 // ─── Navigation ─────────────────────────────────────────────────────────────
@@ -842,6 +843,42 @@ function ComponentsPage() {
               <Toast type={type} message={`Item ${type}`} />
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── Routine Cards ─────────────────────────────────────── */}
+      <section className="mb-12">
+        <SectionLabel>Routine Cards</SectionLabel>
+        <div className="flex flex-wrap gap-6">
+          <div className="flex flex-col gap-1">
+            <span className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>one-time</span>
+            <RoutineCard
+              type="one-time"
+              productImage="/my-design-system/images/products/Accessories/Prose-Hair-Towel-BG.png"
+              productName="Maggie's Hair Towel"
+              productDescription={'Fast-drying hair towel for reducing unwanted frizz.'}
+              productSize='23" x 37" in'
+              price="$34.00"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>subscription</span>
+            <RoutineCard
+              type="subscription"
+              productImage="/my-design-system/images/products/Hair/Prose-custom-shampoo.png"
+              productName="Maggie's Shampoo"
+              productDescription="A gentle, sulfate-free cleanser."
+              productSize="8.5 fl oz 250mL"
+              ingredients={[
+                { image: "/my-design-system/images/ingredients/Acai 1-3.png", name: "Bamboo Charcoal", description: "Gently cleanses and detoxifies the scalp." },
+                { image: "/my-design-system/images/ingredients/Acai 1-4.png", name: "Pink Clay" },
+                { image: "/my-design-system/images/ingredients/Acai 1-5.png", name: "Anise Myrtle Extract" },
+              ]}
+              preferences="Fragrance free."
+              price="$14.00"
+              originalPrice="$35.00"
+            />
+          </div>
         </div>
       </section>
 
