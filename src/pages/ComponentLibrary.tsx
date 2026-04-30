@@ -43,12 +43,12 @@ import {
 import { TypographyShowcase } from "../components/Typography/Typography";
 import { Navigation, type NavigationSize, type NavigationState } from "../components/Navigation/Navigation";
 import { SitewideBanner, type SitewideBannerState } from "../components/SitewideBanner/SitewideBanner";
-import { PromoModal } from "../components/PromoModal/PromoModal";
+import { PromoModal, type OfferModalOffer, type OfferModalType } from "../components/PromoModal/PromoModal";
 import { colors, cssVars, tokenMap } from "../tokens";
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
-type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "navigation" | "promo-modals" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "carousels" | "tips";
+type Page = "logo" | "colors" | "typography" | "spacing" | "radius" | "icons" | "navigation" | "promo-modals" | "buttons" | "text-links" | "inputs" | "selectors" | "ui-controls" | "accordion" | "toasts" | "tags" | "offer-badges" | "progress-bars" | "product-cards" | "carousels" | "tips";
 
 type NavSection = {
   title: string;
@@ -64,6 +64,7 @@ const navSections: NavSection[] = [
       { id: "typography", label: "Typography" },
       { id: "spacing",    label: "Spacing" },
       { id: "radius",     label: "Radius" },
+      { id: "icons",      label: "Icons" },
     ],
   },
   {
@@ -79,6 +80,7 @@ const navSections: NavSection[] = [
       { id: "tags",           label: "Tags" },
       { id: "offer-badges",   label: "Offer Badges" },
       { id: "progress-bars",  label: "Progress Bars" },
+      { id: "product-cards",  label: "Product Cards" },
     ],
   },
   {
@@ -1573,6 +1575,114 @@ const tagExamples = [
   "60% off",
 ];
 
+// ─── Page: Icons ──────────────────────────────────────────────────────────────
+
+import iconManifest from "../icon-manifest.json";
+
+type IconEntry = { category: string; name: string; size: string; file: string; path: string };
+
+const allIcons: IconEntry[] = iconManifest as IconEntry[];
+
+const iconCategories = ["Brand", "Hair", "Skin", "Subscription", "Nav"] as const;
+
+function IconsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Icons"
+        subtitle="All icons from the design system, grouped by category. Sizes: XL, Large, Small."
+      />
+
+      {iconCategories.map((cat) => {
+        const icons = allIcons.filter((i) => i.category === cat && !(cat === "Nav" && i.name === "Cart") && !i.name.startsWith("Slice"));
+        if (icons.length === 0) return null;
+
+        // Group by name, then show sizes side by side
+        const byName: Record<string, IconEntry[]> = {};
+        for (const icon of icons) {
+          const key = icon.name;
+          if (!byName[key]) byName[key] = [];
+          byName[key].push(icon);
+        }
+
+        return (
+          <div key={cat} className="mb-12">
+            <SectionLabel>{cat}</SectionLabel>
+            <div className="flex flex-wrap gap-6">
+              {Object.entries(byName).map(([name, variants]) => (
+                <div
+                  key={name}
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl"
+                  style={{ background: cssVars["color/neutral/100"], minWidth: 100 }}
+                >
+                  <div className="flex items-end gap-3">
+                    {variants
+                      .sort((a, b) => {
+                        const order: Record<string, number> = { XL: 0, Large: 1, Small: 2, "": 3 };
+                        return (order[a.size] ?? 9) - (order[b.size] ?? 9);
+                      })
+                      .map((v) => {
+                        const src = `${import.meta.env.BASE_URL}${encodeURI(v.path)}`;
+                        return (
+                          <div key={v.path} className="flex flex-col items-center gap-1">
+                            <img
+                              src={src}
+                              alt={v.name}
+                              className={
+                                v.size === "XL" ? "w-[48px] h-[48px]" :
+                                v.size === "Large" ? "w-[32px] h-[32px]" :
+                                "w-[20px] h-[20px]"
+                              }
+                              style={{ objectFit: "contain" }}
+                            />
+                            {variants.length > 1 && (
+                              <span className="text-[8px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>
+                                {v.size || "—"}
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                  </div>
+                  <span
+                    className="text-[10px] font-mono text-center max-w-[120px]"
+                    style={{ color: cssVars["color/neutral/800"] }}
+                  >
+                    {name}
+                  </span>
+                </div>
+              ))}
+
+              {/* Nav: replace file-based Cart with inline Cart + Cart with badge side by side */}
+              {cat === "Nav" && (() => {
+                const cartSvg = <svg width="25" height="22" viewBox="0 0 25 22" fill="none"><path d="M15.0778 22H1.11111L0 6.26666H16.1889L15.0778 22Z" fill="currentColor"/><path d="M8.10018 0C5.43351 0 3.26685 2.16667 3.26685 4.82222V5.26667H5.3224V4.82222C5.3224 3.28889 6.56685 2.05556 8.08907 2.05556C9.61129 2.05556 10.8557 3.3 10.8557 4.82222V5.26667H12.9113V4.82222C12.9224 2.16667 10.7557 0 8.10018 0Z" fill="currentColor"/></svg>;
+                return (
+                  <div className="flex flex-col items-center gap-2 p-4 rounded-xl" style={{ background: cssVars["color/neutral/100"], minWidth: 100 }}>
+                    <div className="flex items-end gap-4 text-(--color-primary-400)">
+                      <div className="flex flex-col items-center gap-1">
+                        {cartSvg}
+                        <span className="text-[8px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>default</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="relative">
+                          {cartSvg}
+                          <div className="absolute -top-[2px] -right-[2px] size-[16px] rounded-full bg-(--color-accent-200)" />
+                        </div>
+                        <span className="text-[8px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>items added</span>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono text-center" style={{ color: cssVars["color/neutral/800"] }}>Cart</span>
+                  </div>
+                );
+              })()}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // ─── Page: Navigation ─────────────────────────────────────────────────────────
 
 function NavigationPage() {
@@ -1653,143 +1763,90 @@ const promoModalImage = "/my-design-system/images/pop-up modal/Image.png";
 
 function PromoModalsPage() {
   const img = promoModalImage;
-  const hl = "Headline goes here and can be up to 2 lines";
-  const sub = "Subhead goes here and can be up to 2 lines. Subhead goes here and can be up to 2 lines.";
+  const offers: OfferModalOffer[] = ["hc", "sss", "sk50"];
+  const types: OfferModalType[] = ["standard", "email", "no-cta"];
+
+  const offerLabels: Record<OfferModalOffer, string> = {
+    hc: "HC (60% off)",
+    sss: "SSS (Starter Set)",
+    sk50: "SK 50%",
+    "hc-no-image": "HC No Image",
+  };
+
+  const typeLabels: Record<OfferModalType, string> = {
+    standard: "Standard",
+    email: "Email",
+    "no-cta": "No CTA",
+  };
 
   return (
     <div>
       <PageHeader
-        title="Promo Modals"
-        subtitle="Promotional overlay modals for offers, email capture, and announcements. 22 Figma variants across desktop and mobile."
+        title="Offer Modals"
+        subtitle="Promotional overlay modals with offer-specific content. 18 variants: 4 offers × 3 types × 2 sizes."
       />
 
-      {/* ── Desktop + Image ────────────────────────────────────── */}
-      <SectionLabel>Desktop + Image</SectionLabel>
-      <div className="flex flex-wrap gap-8 mb-12">
-        {/* 1. All options: text link + form + eyebrow + disclaimer */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>text link + form + eyebrow + disclaimer</p>
-          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
-        </div>
-        {/* 2. Form + eyebrow + disclaimer (no text link) */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>form + eyebrow + disclaimer</p>
-          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" showDisclaimer />
-        </div>
-        {/* 3. Eyebrow + disclaimer (no form, no text link) */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + disclaimer</p>
-          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
-        </div>
-        {/* 4. Disclaimer, no eyebrow */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no eyebrow + disclaimer</p>
-          <PromoModal size="desktop" image={img} headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
-        </div>
-        {/* 5. All options alternate layout (with text link + form) */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>text link + form + eyebrow + disclaimer (alt)</p>
-          <PromoModal size="desktop" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
-        </div>
-        {/* 6. Headline only, no subcopy */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>headline only</p>
-          <PromoModal size="desktop" image={img} headline={hl} ctaLabel="Get your formula" />
-        </div>
-        {/* 7. No CTA, headline + subcopy */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no cta</p>
-          <PromoModal size="desktop" image={img} headline={hl} subhead={sub} ctaLabel="" />
-        </div>
-        {/* 8. Subcopy only, no header */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>subcopy only, no headline</p>
-          <PromoModal size="desktop" image={img} headline="" subhead={sub} ctaLabel="Get your formula" />
+      {/* ── Desktop ────────────────────────────────────────────── */}
+      <SectionLabel>Desktop</SectionLabel>
+      <div className="flex flex-col gap-10 mb-16">
+        {offers.map((offer) => (
+          <div key={`d-${offer}`}>
+            <p className="text-[11px] font-mono font-medium mb-4" style={{ color: cssVars["color/neutral/800"] }}>
+              {offerLabels[offer]}
+            </p>
+            <div className="flex flex-wrap gap-8">
+              {types.map((type) => (
+                <div key={`d-${offer}-${type}`} className="flex flex-col gap-1">
+                  <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>
+                    {typeLabels[type]}
+                  </p>
+                  <PromoModal size="desktop" offer={offer} type={type} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+        {/* HC No Image — Desktop only, Standard type */}
+        <div>
+          <p className="text-[11px] font-mono font-medium mb-4" style={{ color: cssVars["color/neutral/800"] }}>
+            {offerLabels["hc-no-image"]}
+          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>Standard</p>
+            <PromoModal size="desktop" offer="hc-no-image" type="standard" />
+          </div>
         </div>
       </div>
 
-      {/* ── Mobile + Image ─────────────────────────────────────── */}
-      <SectionLabel>Mobile + Image</SectionLabel>
-      <div className="flex flex-wrap gap-8 mb-12">
-        {/* 1. All options */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>text link + form + eyebrow + disclaimer</p>
-          <PromoModal size="mobile" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
-        </div>
-        {/* 2. Form + eyebrow + disclaimer */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>form + eyebrow + disclaimer</p>
-          <PromoModal size="mobile" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" showDisclaimer />
-        </div>
-        {/* 3. Eyebrow + disclaimer */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + disclaimer</p>
-          <PromoModal size="mobile" image={img} eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
-        </div>
-        {/* 4. Disclaimer, no eyebrow */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no eyebrow + disclaimer</p>
-          <PromoModal size="mobile" image={img} headline={hl} subhead={sub} ctaLabel="Get your formula" showDisclaimer />
-        </div>
-        {/* 5. Headline + subcopy, no disclaimer */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no disclaimer</p>
-          <PromoModal size="mobile" image={img} headline={hl} subhead={sub} ctaLabel="Get your formula" />
-        </div>
-        {/* 6. No CTA */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>no cta</p>
-          <PromoModal size="mobile" image={img} headline={hl} subhead={sub} ctaLabel="" />
-        </div>
-        {/* 7. Headline only, no subcopy */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>headline only</p>
-          <PromoModal size="mobile" image={img} headline={hl} ctaLabel="Get your formula" />
-        </div>
-        {/* 8. CTA only, no header */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>cta only, no header</p>
-          <PromoModal size="mobile" image={img} headline="" subhead="" ctaLabel="Get your formula" />
-        </div>
-      </div>
-
-      {/* ── Desktop, No Image ──────────────────────────────────── */}
-      <SectionLabel>Desktop — No Image</SectionLabel>
-      <div className="flex flex-wrap gap-8 mb-12">
-        {/* 1. All options + eyebrow */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + form + text link + disclaimer</p>
-          <PromoModal size="desktop" eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
-        </div>
-        {/* 2. Highlight eyebrow + form + text link + disclaimer */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>highlight eyebrow + form + text link + disclaimer</p>
-          <PromoModal size="desktop" eyebrow="50% off first order" eyebrowHighlight headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
-        </div>
-        {/* 3. Minimal — headline + subcopy + CTA */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>minimal</p>
-          <PromoModal size="desktop" headline={hl} subhead={sub} ctaLabel="Get your formula" />
-        </div>
-      </div>
-
-      {/* ── Mobile, No Image ───────────────────────────────────── */}
-      <SectionLabel>Mobile — No Image</SectionLabel>
-      <div className="flex flex-wrap gap-8 mb-12">
-        {/* 1. Eyebrow + all options */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>eyebrow + form + text link + disclaimer</p>
-          <PromoModal size="mobile" eyebrow="Eyebrow text goes here" headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
-        </div>
-        {/* 2. Highlight eyebrow + form + text link + disclaimer */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>highlight eyebrow + form + text link + disclaimer</p>
-          <PromoModal size="mobile" eyebrow="50% off first order" eyebrowHighlight headline={hl} subhead={sub} showFormField ctaLabel="Get your formula" textLink="Text link text here" showDisclaimer />
-        </div>
-        {/* 3. Minimal */}
-        <div className="flex flex-col gap-1">
-          <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>minimal</p>
-          <PromoModal size="mobile" headline={hl} subhead={sub} ctaLabel="Get your formula" />
+      {/* ── Mobile ─────────────────────────────────────────────── */}
+      <SectionLabel>Mobile</SectionLabel>
+      <div className="flex flex-col gap-10 mb-16">
+        {offers.map((offer) => (
+          <div key={`m-${offer}`}>
+            <p className="text-[11px] font-mono font-medium mb-4" style={{ color: cssVars["color/neutral/800"] }}>
+              {offerLabels[offer]}
+            </p>
+            <div className="flex flex-wrap gap-8">
+              {types.map((type) => (
+                <div key={`m-${offer}-${type}`} className="flex flex-col gap-1">
+                  <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>
+                    {typeLabels[type]}
+                  </p>
+                  <PromoModal size="mobile" offer={offer} type={type} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+        {/* HC No Image — Mobile */}
+        <div>
+          <p className="text-[11px] font-mono font-medium mb-4" style={{ color: cssVars["color/neutral/800"] }}>
+            {offerLabels["hc-no-image"]}
+          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-[9px] font-mono uppercase" style={{ color: cssVars["color/neutral/700"] }}>Standard</p>
+            <PromoModal size="mobile" offer="hc-no-image" type="standard" />
+          </div>
         </div>
       </div>
     </div>
@@ -1852,62 +1909,154 @@ const allAccessoryKeys = Object.keys(ACCESSORY_PRODUCTS) as AccessoryProduct[];
 const allSkincareKeys = Object.keys(SKINCARE_PRODUCTS) as SkincareProduct[];
 const allIngredientKeys = Object.keys(INGREDIENTS) as IngredientKey[];
 
-const sampleCarouselItems: ProductCardItem[] = allHaircareKeys.map((key) => HAIRCARE_PRODUCTS[key]);
+const sampleCarouselItems: ProductCardItem[] = allHaircareKeys.map((key) => ({
+  image: HAIRCARE_PRODUCTS[key].image,
+  name: HAIRCARE_PRODUCTS[key].name,
+  price: HAIRCARE_PRODUCTS[key].priceUS,
+}));
+
+// ─── Page: Product Cards ──────────────────────────────────────────────────────
+
+function ProductCardsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Product Cards"
+        subtitle="Product cards with image and overlapping name + price. Desktop (260px) and mobile (185px) sizes, US and CA pricing."
+      />
+
+      {/* Haircare — Desktop US */}
+      <SectionLabel>Haircare — Desktop / US</SectionLabel>
+      <div className="flex gap-4 overflow-x-auto pb-4 mb-10">
+        {allHaircareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="desktop" country="US" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Haircare — Desktop CA */}
+      <SectionLabel>Haircare — Desktop / CA</SectionLabel>
+      <div className="flex gap-4 overflow-x-auto pb-4 mb-10">
+        {allHaircareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="desktop" country="CA" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Haircare — Mobile US */}
+      <SectionLabel>Haircare — Mobile / US</SectionLabel>
+      <div className="flex gap-3 overflow-x-auto pb-4 mb-10">
+        {allHaircareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="mobile" country="US" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Haircare — Mobile CA */}
+      <SectionLabel>Haircare — Mobile / CA</SectionLabel>
+      <div className="flex gap-3 overflow-x-auto pb-4 mb-10">
+        {allHaircareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="mobile" country="CA" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Skincare */}
+      <SectionLabel>Skincare — Desktop / US</SectionLabel>
+      <div className="flex gap-4 overflow-x-auto pb-4 mb-10">
+        {allSkincareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="desktop" country="US" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      <SectionLabel>Skincare — Desktop / CA</SectionLabel>
+      <div className="flex gap-4 overflow-x-auto pb-4 mb-10">
+        {allSkincareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="desktop" country="CA" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      <SectionLabel>Skincare — Mobile / US</SectionLabel>
+      <div className="flex gap-3 overflow-x-auto pb-4 mb-10">
+        {allSkincareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="mobile" country="US" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      <SectionLabel>Skincare — Mobile / CA</SectionLabel>
+      <div className="flex gap-3 overflow-x-auto pb-4 mb-10">
+        {allSkincareKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="mobile" country="CA" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Accessories */}
+      <SectionLabel>Accessories — Desktop / US</SectionLabel>
+      <div className="flex gap-4 overflow-x-auto pb-4 mb-10">
+        {allAccessoryKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <ProductCard product={key} size="desktop" country="US" />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Ingredient Cards */}
+      <SectionLabel>Ingredient Cards</SectionLabel>
+      <div className="flex gap-3 overflow-x-auto pb-2 mb-10" style={{ background: cssVars["color/neutral/300"], borderRadius: 12, padding: 16 }}>
+        {allIngredientKeys.map((key) => (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <IngredientCard ingredient={key} />
+            <span className="text-[10px] font-mono" style={{ color: cssVars["color/neutral/700"] }}>{key}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Specs */}
+      <div className="p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
+        <SectionLabel>Specs</SectionLabel>
+        <div className="flex flex-col gap-1">
+          <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>Product Card</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Desktop: 260×453px image, radius-10, text at top 362px. Mobile: 185×332px image, radius-8, text at top 253px.</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Name: body/3 medium (16px), primary/400. Price: body/3 regular (16px), primary/400.</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Country: US ($ prices) or CA (CA $ prices).</p>
+          <p className="text-[13px] font-medium mt-2" style={{ color: cssVars["color/primary/400"] }}>Ingredient Card</p>
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>Card: 204×207px, white, radius 15px. Image: ~148×148px, overlaps top. Name: body/3 regular, neutral/800.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Page: Carousels ──────────────────────────────────────────────────────────
 
 function CarouselsPage() {
   return (
     <div>
       <PageHeader
         title="Carousels"
-        subtitle="Horizontally scrollable product card rows with a section title."
+        subtitle="Horizontally scrollable card rows with a section title."
       />
-
-      <div className="mb-10">
-        <SectionLabel>Haircare Products</SectionLabel>
-        <div className="flex gap-3 overflow-x-auto pb-2">
-          {allHaircareKeys.map((key) => (
-            <div key={key} className="flex flex-col items-center gap-2">
-              <ProductCard product={key} />
-              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
-                product="{key}"
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-1.5 mt-3">
-          <TokenPill token="radius/radius-10" />
-          <TokenPill token="spacing/spacing-24" />
-          <TokenPill token="color/highlight/200" />
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <SectionLabel>Accessory Products</SectionLabel>
-        <div className="flex gap-3 overflow-x-auto pb-2">
-          {allAccessoryKeys.map((key) => (
-            <div key={key} className="flex flex-col items-center gap-2">
-              <ProductCard product={key} />
-              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
-                product="{key}"
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <SectionLabel>Skincare Products</SectionLabel>
-        <div className="flex gap-3 overflow-x-auto pb-2">
-          {allSkincareKeys.map((key) => (
-            <div key={key} className="flex flex-col items-center gap-2">
-              <ProductCard product={key} />
-              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
-                product="{key}"
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
 
       <div className="mb-10">
         <SectionLabel>Product Card Carousel</SectionLabel>
@@ -1915,20 +2064,6 @@ function CarouselsPage() {
           <div className="py-6">
             <ProductCardCarousel title="Custom Haircare" items={sampleCarouselItems} />
           </div>
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <SectionLabel>Ingredient Card — All Ingredients</SectionLabel>
-        <div className="flex gap-3 overflow-x-auto pb-2" style={{ background: cssVars["color/neutral/300"], borderRadius: 12, padding: 16 }}>
-          {allIngredientKeys.map((key) => (
-            <div key={key} className="flex flex-col items-center gap-2">
-              <IngredientCard ingredient={key} />
-              <span className="text-[11px] font-mono" style={{ color: cssVars["color/primary/300"] }}>
-                ingredient="{key}"
-              </span>
-            </div>
-          ))}
         </div>
       </div>
 
@@ -1945,38 +2080,11 @@ function CarouselsPage() {
       <div className="mt-8 p-6 rounded-xl" style={{ background: cssVars["color/neutral/300"] }}>
         <SectionLabel>Specs</SectionLabel>
         <div className="flex flex-col gap-1">
-          <p className="text-[13px] font-medium" style={{ color: cssVars["color/primary/400"] }}>
-            Product Card
+          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
+            Title: Saol Text Regular 28px, tracking 0.5px, leading 36px. Gap 23px title→cards, 12px between cards, px-16.
           </p>
           <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Image: 185×246px, radius-10, object-cover. Gap: 24px image→text, 5px name→price.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Name: body/3 medium, #1f232d. Price: body/3 regular, #1f232d.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Badge: 50×50px circle, highlight/200, Simplon Mono Regular 14px, tracking 1.12px, uppercase.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Carousel: title Saol Text Regular 28px, tracking 0.5px, leading 36px. Gap 23px title→cards, 12px between cards, px-16.
-          </p>
-          <p className="text-[13px] font-medium mt-2" style={{ color: cssVars["color/primary/400"] }}>
-            Ingredient Card
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Card: 204×207px, white, radius 15px, offset 67px from top. Total height: 274px.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Image: ~148×148px, centered, overlaps card top.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Name: body/3 regular (16px), neutral/800.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Description: body/5 regular (12px), neutral/800, max-w 162px.
-          </p>
-          <p className="text-[13px]" style={{ color: cssVars["color/primary/400"] }}>
-            Carousel gap: 11px between cards. Hidden scrollbar.
+            Ingredient carousel gap: 11px between cards. Hidden scrollbar.
           </p>
         </div>
       </div>
@@ -2247,6 +2355,7 @@ export default function ComponentLibrary() {
         {page === "typography" && <TypographyPage />}
         {page === "spacing"    && <SpacingPage />}
         {page === "radius"     && <RadiusPage />}
+        {page === "icons"      && <IconsPage />}
         {page === "navigation" && <NavigationPage />}
         {page === "promo-modals" && <PromoModalsPage />}
         {page === "buttons"    && <ButtonsPage />}
@@ -2259,6 +2368,7 @@ export default function ComponentLibrary() {
         {page === "tags"         && <TagsPage />}
         {page === "offer-badges"  && <OfferBadgesPage />}
         {page === "progress-bars" && <ProgressBarsPage />}
+        {page === "product-cards"  && <ProductCardsPage />}
         {page === "carousels"     && <CarouselsPage />}
         {page === "tips"          && <TipsPage />}
       </main>

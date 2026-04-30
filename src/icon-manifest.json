@@ -1,0 +1,989 @@
+[
+  {
+    "category": "Brand",
+    "name": "85 factors",
+    "size": "Small",
+    "file": "Category=Brand, Icon=85 factors, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=85 factors, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "85 factors",
+    "size": "XL",
+    "file": "Category=Brand, Icon=85 factors, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=85 factors, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Add Remove Ing",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Add Remove Ing, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Add Remove Ing, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Clean Ingredients",
+    "size": "Small",
+    "file": "Category=Brand, Icon=Clean Ingredients, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Clean Ingredients, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Clean ingredients",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Clean ingredients, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Clean ingredients, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Clinically Tested",
+    "size": "Small",
+    "file": "Category=Brand, Icon=Clinically Tested, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Clinically Tested, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Clinically Tested",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Clinically Tested, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Clinically Tested, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Earth",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Earth, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Earth, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Essential Nutrients",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Essential Nutrients, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Essential Nutrients, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Formulas Evolve",
+    "size": "Small",
+    "file": "Category=Brand, Icon=Formulas Evolve, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Formulas Evolve, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Formulas Evolve",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Formulas Evolve, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Formulas Evolve, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Fragrance Free",
+    "size": "Small",
+    "file": "Category=Brand, Icon=Fragrance Free, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Fragrance Free, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Fragrance Free",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Fragrance Free, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Fragrance Free, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Made to Order",
+    "size": "Small",
+    "file": "Category=Brand, Icon=Made to Order, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Made to Order, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Made to Order",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Made to Order, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Made to Order, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Microbiome",
+    "size": "Small",
+    "file": "Category=Brand, Icon=Microbiome, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Microbiome, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Microbiome",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Microbiome, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Microbiome, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Millions Formulas",
+    "size": "Small",
+    "file": "Category=Brand, Icon=Millions Formulas, Size=Small.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Millions Formulas, Size=Small.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Millions Formulas",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Millions Formulas, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Millions Formulas, Size=XL.svg"
+  },
+  {
+    "category": "Brand",
+    "name": "Targets Concerns",
+    "size": "XL",
+    "file": "Category=Brand, Icon=Targets Concerns, Size=XL.svg",
+    "path": "images/icons/Brand/Category=Brand, Icon=Targets Concerns, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Breakage",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Breakage, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Breakage, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Breakage",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Breakage, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Breakage, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Breakage Alt",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Breakage Alt, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Breakage Alt, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Breakage Alt",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Breakage Alt, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Breakage Alt, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Comortable Scalp",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Comortable Scalp, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Comortable Scalp, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Comortable Scalp",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Comortable Scalp, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Comortable Scalp, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Comortable Scalp Alt",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Comortable Scalp Alt, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Comortable Scalp Alt, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Curls",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Curls, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Curls, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Curls",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Curls, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Curls, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Flakes",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Flakes, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Flakes, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Flakes",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Flakes, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Flakes, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Flakes Alt",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Flakes Alt, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Flakes Alt, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Frizz",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Frizz, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Frizz, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Frizz",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Frizz, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Frizz, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Breakage",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Hair Breakage, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Breakage, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Breakage",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Hair Breakage, Size=XL.png",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Breakage, Size=XL.png"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Growth",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Hair Growth, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Growth, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Growth",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Hair Growth, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Growth, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Shine",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Hair Shine, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Shine, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Shine",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Hair Shine, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Shine, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Strength",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Hair Strength, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Strength, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Hair Strength",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Hair Strength, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Hair Strength, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Healthy Scalp",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Healthy Scalp, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Healthy Scalp, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Healthy Scalp",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Healthy Scalp, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Healthy Scalp, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Heat Protection",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Heat Protection, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Heat Protection, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Heat Protection",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Heat Protection, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Heat Protection, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Humidity",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Humidity, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Humidity, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Humidity",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Humidity, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Humidity, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Imroved Appearance",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Imroved Appearance, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Imroved Appearance, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Imroved Appearance",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Imroved Appearance, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Imroved Appearance, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Itch",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Itch, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Itch, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Itch",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Itch, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Itch, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "No Aerosol",
+    "size": "Small",
+    "file": "Category=Hair, Icon=No Aerosol, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=No Aerosol, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "No Aerosol",
+    "size": "XL",
+    "file": "Category=Hair, Icon=No Aerosol, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=No Aerosol, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Nourished Scalp",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Nourished Scalp, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Nourished Scalp, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Nourished Scalp",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Nourished Scalp, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Nourished Scalp, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Nourished Scalp Alt",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Nourished Scalp Alt, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Nourished Scalp Alt, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Reduced Shedding",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Reduced Shedding, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Reduced Shedding, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Reduced Shedding",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Reduced Shedding, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Reduced Shedding, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Scalp Balance",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Scalp Balance, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Scalp Balance, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Scalp Balance",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Scalp Balance, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Scalp Balance, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Shrinkage",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Shrinkage, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Shrinkage, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Shrinkage",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Shrinkage, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Shrinkage, Size=XL.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Styles",
+    "size": "Small",
+    "file": "Category=Hair, Icon=Styles, Size=Small.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Styles, Size=Small.svg"
+  },
+  {
+    "category": "Hair",
+    "name": "Styles",
+    "size": "XL",
+    "file": "Category=Hair, Icon=Styles, Size=XL.svg",
+    "path": "images/icons/Hair/Category=Hair, Icon=Styles, Size=XL.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Account",
+    "size": "",
+    "file": "Account.svg",
+    "path": "images/icons/Nav/Account.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Arrow",
+    "size": "",
+    "file": "Arrow.svg",
+    "path": "images/icons/Nav/Arrow.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Caret Closed",
+    "size": "",
+    "file": "State=Closed.svg",
+    "path": "images/icons/Nav/State=Closed.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Caret Left",
+    "size": "",
+    "file": "State=Left.svg",
+    "path": "images/icons/Nav/State=Left.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Caret Open",
+    "size": "",
+    "file": "State=Open.svg",
+    "path": "images/icons/Nav/State=Open.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Caret Right",
+    "size": "",
+    "file": "State=Right.svg",
+    "path": "images/icons/Nav/State=Right.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Cart",
+    "size": "",
+    "file": "Cart.svg",
+    "path": "images/icons/Nav/Cart.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Close",
+    "size": "",
+    "file": "Close.svg",
+    "path": "images/icons/Nav/Close.svg"
+  },
+  {
+    "category": "Nav",
+    "name": "Hamburger",
+    "size": "",
+    "file": "Hamburger.svg",
+    "path": "images/icons/Nav/Hamburger.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Blemishes",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Blemishes, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Blemishes, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Blemishes",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Blemishes, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Blemishes, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Clean",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Clean, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Clean, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Clean",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Clean, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Clean, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Clear",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Clear, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Clear, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Clear",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Clear, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Clear, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Evenness",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Evenness, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Evenness, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Evenness",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Evenness, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Evenness, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Fading Blemishes",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Fading Blemishes, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Fading Blemishes, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Fine Lines",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Fine Lines, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Fine Lines, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Fine Lines",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Fine Lines, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Fine Lines, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Firmness",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Firmness, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Firmness, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Firness",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Firness, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Firness, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Glow",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Glow, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Glow, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Glow",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Glow, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Glow, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Hydration",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Hydration, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Hydration, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Hydration",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Hydration, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Hydration, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Hyperpigmentation",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Hyperpigmentation, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Hyperpigmentation, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Hyperpigmentation",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Hyperpigmentation, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Hyperpigmentation, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Makeup Removal",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Makeup Removal, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Makeup Removal, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Makeup Removal",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Makeup Removal, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Makeup Removal, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Moisturizer Textures",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Moisturizer Textures, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Moisturizer Textures, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Skin Barrier",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Skin Barrier, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Skin Barrier, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Skin Barrier",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Skin Barrier, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Skin Barrier, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Smooth",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Smooth, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Smooth, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Smooth",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Smooth, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Smooth, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Soft",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Soft, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Soft, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Soft",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Soft, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Soft, Size=XL.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Wrinkles",
+    "size": "Small",
+    "file": "Category=Skin, Icon=Wrinkles, Size=Small.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Wrinkles, Size=Small.svg"
+  },
+  {
+    "category": "Skin",
+    "name": "Wrinkles",
+    "size": "XL",
+    "file": "Category=Skin, Icon=Wrinkles, Size=XL.svg",
+    "path": "images/icons/Skin/Category=Skin, Icon=Wrinkles, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "15% discount",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=15% discount, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=15% discount, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "15% discount",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=15% discount, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=15% discount, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "15% discount",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=15% discount, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=15% discount, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Cancel Anytime",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=Cancel Anytime, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Cancel Anytime, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Cancel Anytime",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=Cancel Anytime, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Cancel Anytime, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Cancel Anytime",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Cancel Anytime, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Cancel Anytime, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Early access",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Early access, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Early access, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Easy Refills",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=Easy Refills, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Easy Refills, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Easy Refills",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=Easy Refills, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Easy Refills, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Easy Refills",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Easy Refills, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Easy Refills, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Email offer",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=Email offer, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Email offer, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Email offer",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=Email offer, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Email offer, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Email offer",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Email offer, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Email offer, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Flexible Subscription",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=Flexible Subscription, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Flexible Subscription, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Flexible Subscription",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=Flexible Subscription, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Flexible Subscription, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Flexible Subscription",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Flexible Subscription, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Flexible Subscription, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Free Shipping",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=Free Shipping, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Free Shipping, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Free Shipping",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=Free Shipping, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Free Shipping, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Free Shipping",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Free Shipping, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Free Shipping, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Frequency",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=Frequency, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Frequency, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Frequency",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=Frequency, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Frequency, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Frequency",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Frequency, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Frequency, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "GWP",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=GWP, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=GWP, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "GWP",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=GWP, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=GWP, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "GWP",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=GWP, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=GWP, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "HairBottle",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=HairBottle, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=HairBottle, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "HairBottle",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=HairBottle, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=HairBottle, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "HairBottle",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=HairBottle, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=HairBottle, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Prose Promise",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Prose Promise, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Prose Promise, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "SkinBottle",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=SkinBottle, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=SkinBottle, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "SkinBottle",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=SkinBottle, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=SkinBottle, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "SkinBottle",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=SkinBottle, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=SkinBottle, Size=XL.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Slice 1",
+    "size": "",
+    "file": "Slice 1.svg",
+    "path": "images/icons/Subscription/Slice 1.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Slice 2",
+    "size": "",
+    "file": "Slice 2.svg",
+    "path": "images/icons/Subscription/Slice 2.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Snooze",
+    "size": "Large",
+    "file": "Category=Subscription, Icon=Snooze, Size=Large.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Snooze, Size=Large.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Snooze",
+    "size": "Small",
+    "file": "Category=Subscription, Icon=Snooze, Size=Small.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Snooze, Size=Small.svg"
+  },
+  {
+    "category": "Subscription",
+    "name": "Snooze",
+    "size": "XL",
+    "file": "Category=Subscription, Icon=Snooze, Size=XL.svg",
+    "path": "images/icons/Subscription/Category=Subscription, Icon=Snooze, Size=XL.svg"
+  }
+]
