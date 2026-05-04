@@ -18,7 +18,8 @@ import { typography } from "../../tokens";
 import { FrequencySelector, type FrequencyOption } from "../Selector";
 import { CloseButton } from "../CloseButton";
 import { ProductTag } from "../ProductTag";
-import imgCardBg from "../../../images/products/bg.png";
+const IMG_BASE = "https://nina-product-design.github.io/my-design-system/images";
+const imgCardBg = `${IMG_BASE}/products/bg.png`;
 
 // ─── Icons (inline SVGs) ──────────────────────────────────
 

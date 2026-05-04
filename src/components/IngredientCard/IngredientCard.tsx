@@ -11,21 +11,22 @@
 
 import { typography } from "../../tokens";
 
-// ─── Ingredient images ───────────────────────────────────
-import imgHyaluronicAcid from "../../../images/ingredients/hyaluronic.png";
-import imgSeaMoss from "../../../images/ingredients/RED ALGAE.png";
-import imgSpirulina from "../../../images/ingredients/agastache.png";
-import imgBiotin from "../../../images/ingredients/Peppermint.png";
-import imgRosehipOil from "../../../images/ingredients/20190723_Ingredients_Argan.png";
-import imgNiacinamide from "../../../images/ingredients/niacinamide.png";
-import imgBakuchiol from "../../../images/ingredients/bakuchiol.png";
-import imgVitaminC from "../../../images/ingredients/Caviar Lime Extract.png";
-import imgAminoAcids from "../../../images/ingredients/amino-acid.png";
-import imgCastorOil from "../../../images/ingredients/Castor Oil.png";
-import imgAcaciaCollagen from "../../../images/ingredients/Babbasu.png";
-import imgAloeVera from "../../../images/ingredients/20190723_Ingredients_Aloe_Vera.png";
-import imgAppleCiderVinegar from "../../../images/ingredients/2019118_Ingredients_Apple_Cider_Vinegar.png";
-import imgCoconutOil from "../../../images/ingredients/Coconut Oil.png";
+// ─── Ingredient images (served from GitHub Pages) ────────
+const IMG_BASE = "https://nina-product-design.github.io/my-design-system/images/ingredients";
+const imgHyaluronicAcid = `${IMG_BASE}/hyaluronic.png`;
+const imgSeaMoss = `${IMG_BASE}/RED%20ALGAE.png`;
+const imgSpirulina = `${IMG_BASE}/agastache.png`;
+const imgBiotin = `${IMG_BASE}/Peppermint.png`;
+const imgRosehipOil = `${IMG_BASE}/20190723_Ingredients_Argan.png`;
+const imgNiacinamide = `${IMG_BASE}/niacinamide.png`;
+const imgBakuchiol = `${IMG_BASE}/bakuchiol.png`;
+const imgVitaminC = `${IMG_BASE}/Caviar%20Lime%20Extract.png`;
+const imgAminoAcids = `${IMG_BASE}/amino-acid.png`;
+const imgCastorOil = `${IMG_BASE}/Castor%20Oil.png`;
+const imgAcaciaCollagen = `${IMG_BASE}/Babbasu.png`;
+const imgAloeVera = `${IMG_BASE}/20190723_Ingredients_Aloe_Vera.png`;
+const imgAppleCiderVinegar = `${IMG_BASE}/2019118_Ingredients_Apple_Cider_Vinegar.png`;
+const imgCoconutOil = `${IMG_BASE}/Coconut%20Oil.png`;
 
 // ─── Predefined ingredients ──────────────────────────────
 export type IngredientKey =

@@ -1,16 +1,13 @@
-# Prose Design System — Component Source Code
+# Prose Design System -- Component Library Source
 
-> This file contains the full source code for every component in the Prose design system.
-> When building prototypes, copy the component code below into your project's `src/components/` directory.
-> Also copy `tokens.ts` into `src/tokens.ts` — all components depend on it.
-> Merge the CSS variables from `globals.css` into your project's CSS.
->
-> Source repo: https://github.com/nina-product-design/my-design-system
-> Last updated: 2026-04-30
+**Repo:** `https://github.com/nina-product-design/my-design-system`
+**Last updated:** 2026-05-04
 
 ---
 
 ## tokens.ts
+
+`src/tokens.ts`
 
 ```ts
 /*
@@ -438,6 +435,8 @@ export const tokenMap = {
 ---
 
 ## globals.css
+
+`src/globals.css`
 
 ```css
 /*
@@ -918,12 +917,14 @@ export function Accordion({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { Accordion } from "./Accordion";
+
 ```
 
 ---
@@ -1026,6 +1027,7 @@ export function ArrowButton({
     </button>
   );
 }
+
 ```
 
 #### index.ts
@@ -1033,6 +1035,7 @@ export function ArrowButton({
 ```ts
 export { ArrowButton } from "./ArrowButton";
 export type { ArrowButtonSize, ArrowButtonDirection, ArrowButtonColor } from "./ArrowButton";
+
 ```
 
 ---
@@ -1265,6 +1268,7 @@ function Spinner() {
     </>
   );
 }
+
 ```
 
 #### ButtonMini.tsx
@@ -1337,12 +1341,14 @@ export function ButtonMini({
     </button>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { Button } from "./Button";
+
 ```
 
 ---
@@ -1463,12 +1469,14 @@ export function Checkbox({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { Checkbox } from "./Checkbox";
+
 ```
 
 ---
@@ -1530,6 +1538,7 @@ export function CloseButton({
     </button>
   );
 }
+
 ```
 
 #### index.ts
@@ -1537,6 +1546,7 @@ export function CloseButton({
 ```ts
 export { CloseButton } from "./CloseButton";
 export type { CloseButtonColor } from "./CloseButton";
+
 ```
 
 ---
@@ -1559,21 +1569,22 @@ export type { CloseButtonColor } from "./CloseButton";
 
 import { typography } from "../../tokens";
 
-// ─── Ingredient images ───────────────────────────────────
-import imgHyaluronicAcid from "../../../images/ingredients/hyaluronic.png";
-import imgSeaMoss from "../../../images/ingredients/RED ALGAE.png";
-import imgSpirulina from "../../../images/ingredients/agastache.png";
-import imgBiotin from "../../../images/ingredients/Peppermint.png";
-import imgRosehipOil from "../../../images/ingredients/20190723_Ingredients_Argan.png";
-import imgNiacinamide from "../../../images/ingredients/niacinamide.png";
-import imgBakuchiol from "../../../images/ingredients/bakuchiol.png";
-import imgVitaminC from "../../../images/ingredients/Caviar Lime Extract.png";
-import imgAminoAcids from "../../../images/ingredients/amino-acid.png";
-import imgCastorOil from "../../../images/ingredients/Castor Oil.png";
-import imgAcaciaCollagen from "../../../images/ingredients/Babbasu.png";
-import imgAloeVera from "../../../images/ingredients/20190723_Ingredients_Aloe_Vera.png";
-import imgAppleCiderVinegar from "../../../images/ingredients/2019118_Ingredients_Apple_Cider_Vinegar.png";
-import imgCoconutOil from "../../../images/ingredients/Coconut Oil.png";
+// ─── Ingredient images (served from GitHub Pages) ────────
+const IMG_BASE = "https://nina-product-design.github.io/my-design-system/images/ingredients";
+const imgHyaluronicAcid = `${IMG_BASE}/hyaluronic.png`;
+const imgSeaMoss = `${IMG_BASE}/RED%20ALGAE.png`;
+const imgSpirulina = `${IMG_BASE}/agastache.png`;
+const imgBiotin = `${IMG_BASE}/Peppermint.png`;
+const imgRosehipOil = `${IMG_BASE}/20190723_Ingredients_Argan.png`;
+const imgNiacinamide = `${IMG_BASE}/niacinamide.png`;
+const imgBakuchiol = `${IMG_BASE}/bakuchiol.png`;
+const imgVitaminC = `${IMG_BASE}/Caviar%20Lime%20Extract.png`;
+const imgAminoAcids = `${IMG_BASE}/amino-acid.png`;
+const imgCastorOil = `${IMG_BASE}/Castor%20Oil.png`;
+const imgAcaciaCollagen = `${IMG_BASE}/Babbasu.png`;
+const imgAloeVera = `${IMG_BASE}/20190723_Ingredients_Aloe_Vera.png`;
+const imgAppleCiderVinegar = `${IMG_BASE}/2019118_Ingredients_Apple_Cider_Vinegar.png`;
+const imgCoconutOil = `${IMG_BASE}/Coconut%20Oil.png`;
 
 // ─── Predefined ingredients ──────────────────────────────
 export type IngredientKey =
@@ -1693,6 +1704,7 @@ export function IngredientCard({
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -1700,6 +1712,7 @@ export function IngredientCard({
 ```ts
 export { IngredientCard, INGREDIENTS } from "./IngredientCard";
 export type { IngredientKey, IngredientCardData } from "./IngredientCard";
+
 ```
 
 ---
@@ -1780,12 +1793,14 @@ export function IngredientCardCarousel({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { IngredientCardCarousel } from "./IngredientCardCarousel";
+
 ```
 
 ---
@@ -2064,12 +2079,14 @@ export function InputField({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { InputField } from "./InputField";
+
 ```
 
 ---
@@ -2133,12 +2150,14 @@ export function Logo({
     </svg>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { Logo } from "./Logo";
+
 ```
 
 ---
@@ -2444,12 +2463,14 @@ export function Navigation({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { Navigation } from "./Navigation";
+
 ```
 
 ---
@@ -2580,6 +2601,7 @@ export function OfferBadge({
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -2587,6 +2609,7 @@ export function OfferBadge({
 ```ts
 export { OfferBadge } from "./OfferBadge";
 export type { OfferBadgeColor, OfferBadgeSize, OfferBadgeOffer } from "./OfferBadge";
+
 ```
 
 ---
@@ -2612,34 +2635,37 @@ export type { OfferBadgeColor, OfferBadgeSize, OfferBadgeOffer } from "./OfferBa
  */
 
 import { typography } from "../../tokens";
-import imgCardBg from "../../../images/products/bg.png";
+
+// ─── Images (served from GitHub Pages) ───────────────────
+const IMG_BASE = "https://nina-product-design.github.io/my-design-system/images/products";
+const imgCardBg = `${IMG_BASE}/bg.png`;
 
 // ─── Product images ──────────────────────────────────────
-import imgShampoo from "../../../images/products/Hair/Prose-custom-shampoo.png";
-import imgConditioner from "../../../images/products/Hair/Prose-custom-conditioner.png";
-import imgScalpMask from "../../../images/products/Hair/Prose-scalp-mask-front-background.png";
-import imgCurlCream from "../../../images/products/Hair/Prose-curl-cream.png";
-import imgLeaveInPump from "../../../images/products/Hair/Prose-leave-in-conditioner-pump-front-background.png";
-import imgDryShampoo from "../../../images/products/Hair/Prose-dry-shampoo-front-background.png";
-import imgHairMask from "../../../images/products/Hair/Prose-hair-mask-front-background.png";
-import imgHairOil from "../../../images/products/Hair/Prose-hair-oil-front-background.png";
-import imgScalpSerum from "../../../images/products/Hair/Prose-scalp-serum-front-background.png";
-import imgStylingGel from "../../../images/products/Hair/Prose-styling-gel-front-background.png";
-import imgRootSource from "../../../images/products/Hair/Prose-root-source-background-1.png";
+const imgShampoo = `${IMG_BASE}/Hair/Prose-custom-shampoo.png`;
+const imgConditioner = `${IMG_BASE}/Hair/Prose-custom-conditioner.png`;
+const imgScalpMask = `${IMG_BASE}/Hair/Prose-scalp-mask-front-background.png`;
+const imgCurlCream = `${IMG_BASE}/Hair/Prose-curl-cream.png`;
+const imgLeaveInPump = `${IMG_BASE}/Hair/Prose-leave-in-conditioner-pump-front-background.png`;
+const imgDryShampoo = `${IMG_BASE}/Hair/Prose-dry-shampoo-front-background.png`;
+const imgHairMask = `${IMG_BASE}/Hair/Prose-hair-mask-front-background.png`;
+const imgHairOil = `${IMG_BASE}/Hair/Prose-hair-oil-front-background.png`;
+const imgScalpSerum = `${IMG_BASE}/Hair/Prose-scalp-serum-front-background.png`;
+const imgStylingGel = `${IMG_BASE}/Hair/Prose-styling-gel-front-background.png`;
+const imgRootSource = `${IMG_BASE}/Hair/Prose-root-source-background-1.png`;
 
 // ─── Skincare images ─────────────────────────────────────
-import imgCleanser from "../../../images/products/Skin/Prose-cleanser-front-background.png";
-import imgMoisturizer from "../../../images/products/Skin/Prose-moisturizer-front-background.png";
-import imgSerum from "../../../images/products/Skin/Prose-serum-front-background.png";
+const imgCleanser = `${IMG_BASE}/Skin/Prose-cleanser-front-background.png`;
+const imgMoisturizer = `${IMG_BASE}/Skin/Prose-moisturizer-front-background.png`;
+const imgSerum = `${IMG_BASE}/Skin/Prose-serum-front-background.png`;
 
 // ─── Accessory images ────────────────────────────────────
-import imgBoarBrush from "../../../images/products/Accessories/Prose-Brush-Boar-BG.png";
-import imgNylonBrush from "../../../images/products/Accessories/Prose-Brush-Boar-Nylon-BG.png";
-import imgMetalTipBrush from "../../../images/products/Accessories/Prose-Brush-Metal-Tip-BG.png";
-import imgCandleArcadia from "../../../images/products/Accessories/Prose-Candle-Arcadia-Front-BG.png";
-import imgCandleCorsica from "../../../images/products/Accessories/Prose-Candle-Corsica-Front-BG.png";
-import imgCandlePrelude from "../../../images/products/Accessories/Prose-Candle-Prelude-Front-BG.png";
-import imgHairTowel from "../../../images/products/Accessories/Prose-Hair-Towel-BG.png";
+const imgBoarBrush = `${IMG_BASE}/Accessories/Prose-Brush-Boar-BG.png`;
+const imgNylonBrush = `${IMG_BASE}/Accessories/Prose-Brush-Boar-Nylon-BG.png`;
+const imgMetalTipBrush = `${IMG_BASE}/Accessories/Prose-Brush-Metal-Tip-BG.png`;
+const imgCandleArcadia = `${IMG_BASE}/Accessories/Prose-Candle-Arcadia-Front-BG.png`;
+const imgCandleCorsica = `${IMG_BASE}/Accessories/Prose-Candle-Corsica-Front-BG.png`;
+const imgCandlePrelude = `${IMG_BASE}/Accessories/Prose-Candle-Prelude-Front-BG.png`;
+const imgHairTowel = `${IMG_BASE}/Accessories/Prose-Hair-Towel-BG.png`;
 
 // ─── Product data ────────────────────────────────────────
 
@@ -2788,6 +2814,7 @@ export function ProductCard({
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -2795,6 +2822,7 @@ export function ProductCard({
 ```ts
 export { ProductCard, HAIRCARE_PRODUCTS, ACCESSORY_PRODUCTS, SKINCARE_PRODUCTS } from "./ProductCard";
 export type { HaircareProduct, AccessoryProduct, SkincareProduct, ProductCardData } from "./ProductCard";
+
 ```
 
 ---
@@ -2883,6 +2911,7 @@ export function ProductCardCarousel({
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -2890,6 +2919,7 @@ export function ProductCardCarousel({
 ```ts
 export { ProductCardCarousel } from "./ProductCardCarousel";
 export type { ProductCardItem } from "./ProductCardCarousel";
+
 ```
 
 ---
@@ -2938,12 +2968,14 @@ export function ProductTag({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { ProductTag } from "./ProductTag";
+
 ```
 
 ---
@@ -3061,6 +3093,7 @@ export function ProgressBar({
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -3068,6 +3101,7 @@ export function ProgressBar({
 ```ts
 export { ProgressBar, HAIR_RR_STEPS, SKIN_RR_STEPS, HAIR_CONSULTATION_STEPS, SKIN_CONSULTATION_STEPS } from "./ProgressBar";
 export type { ProgressBarSize } from "./ProgressBar";
+
 ```
 
 ---
@@ -3394,12 +3428,14 @@ export function PromoModal({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { PromoModal } from "./PromoModal";
+
 ```
 
 ---
@@ -3468,12 +3504,14 @@ export function Radio({ state = "empty", size = "small", className = "" }: Radio
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { Radio } from "./Radio";
+
 ```
 
 ---
@@ -3503,7 +3541,8 @@ import { typography } from "../../tokens";
 import { FrequencySelector, type FrequencyOption } from "../Selector";
 import { CloseButton } from "../CloseButton";
 import { ProductTag } from "../ProductTag";
-import imgCardBg from "../../../images/products/bg.png";
+const IMG_BASE = "https://nina-product-design.github.io/my-design-system/images";
+const imgCardBg = `${IMG_BASE}/products/bg.png`;
 
 // ─── Icons (inline SVGs) ──────────────────────────────────
 
@@ -3811,6 +3850,7 @@ export function RoutineCard({
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -3818,205 +3858,12 @@ export function RoutineCard({
 ```ts
 export { RoutineCard } from "./RoutineCard";
 export type { RoutineCardType, RoutineCardIngredient, RoutineCardProps } from "./RoutineCard";
+
 ```
 
 ---
 
 ### Selector
-
-#### Selector.tsx
-
-```tsx
-import { typography } from "../../tokens";
-
-/*
- * Selector — Figma: Design System Foundations > Consultation Selectors
- *
- * Two forms:
- *   1. Text pill (Image=False) — rounded pill with text, optional subcopy
- *   2. Image card (Image=True) — image on left, text on right, optional subcopy
- *
- * States:
- *   deselected — white bg, 1px border neutral/300
- *   selected   — primary/200 bg (light green), text neutral/900
- *
- * Sizes (text pill):
- *   fixed — 327px wide, px-32
- *   hug   — auto width (w-fit), px-12
- *
- * Sizes (image card):
- *   mobile  — 327px total (101px image + 226px text)
- *   desktop — 368px total (101px image + 267px text)
- *
- * All class strings are STATIC LITERALS.
- */
-
-export type SelectorSize = "fixed" | "hug" | "mobile" | "desktop";
-
-type SelectorProps = {
-  selected?: boolean;
-  subcopy?: string;
-  label?: string;
-  /** Image URL for card variant. When provided, renders as image card. */
-  image?: string;
-  size?: SelectorSize;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  className?: string;
-};
-
-// ─── Token refs for ComponentLibrary ─────────────────────────────────────────
-
-export const stateTokens = {
-  deselected: { bg: "color/neutral/100", border: "color/neutral/300", text: "color/primary/400" },
-  selected:   { bg: "color/primary/200", border: "color/primary/200", text: "color/neutral/900" },
-};
-
-// ─── Text pill sizes ─────────────────────────────────────────────────────────
-
-const pillSizeClasses: Record<"fixed" | "hug", string> = {
-  fixed: "w-[327px] px-(--spacing-spacing-32)",
-  hug:   "w-fit px-(--spacing-spacing-12)",
-};
-
-// ─── Image card text-side widths ─────────────────────────────────────────────
-
-const cardTextWidths: Record<"mobile" | "desktop", string> = {
-  mobile:  "w-[226px]",
-  desktop: "w-[267px]",
-};
-
-// ─── Component ────────────────────────────────────────────────────────────────
-
-export function Selector({
-  selected = false,
-  subcopy,
-  label = "Once or twice a week",
-  image,
-  size = "fixed",
-  onClick,
-  className = "",
-}: SelectorProps) {
-  const isImageCard = !!image;
-
-  // ── Image card variant ──────────────────────────────────────────────────
-  if (isImageCard) {
-    const cardSize = size === "desktop" ? "desktop" : "mobile";
-    const totalWidth = cardSize === "desktop" ? "w-[368px]" : "w-[327px]";
-
-    return (
-      <button
-        type="button"
-        onClick={onClick}
-        className={[
-          "flex items-center rounded-[8px] overflow-clip",
-          selected
-            ? "border border-(--color-primary-200)"
-            : "border border-(--color-neutral-300)",
-          totalWidth,
-          className,
-        ]
-          .filter(Boolean)
-          .join(" ")}
-      >
-        {/* Image */}
-        <div className="h-[127px] w-[101px] shrink-0 relative overflow-hidden rounded-l-(--radius-radius-10)">
-          <img
-            src={image}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Text side */}
-        <div
-          className={[
-            "flex flex-col items-start justify-center h-[127px] px-(--spacing-spacing-32) py-[30px]",
-            "rounded-r-(--radius-radius-10)",
-            cardTextWidths[cardSize],
-            selected ? "bg-(--color-primary-200)" : "bg-(--color-neutral-100)",
-          ].join(" ")}
-        >
-          <span
-            className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
-            style={{
-              fontFamily: typography.styles.body4Regular.fontFamily,
-              fontSize: typography.styles.body4Regular.fontSize,
-              fontWeight: typography.styles.body4Regular.fontWeight,
-              lineHeight: typography.styles.body4Regular.lineHeight,
-              letterSpacing: typography.styles.body4Regular.letterSpacing,
-              textAlign: "left",
-            }}
-          >
-            {label}
-          </span>
-          {subcopy && (
-            <span
-              className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
-              style={{
-                fontFamily: typography.styles.body5Regular.fontFamily,
-                fontSize: typography.styles.body5Regular.fontSize,
-                fontWeight: typography.styles.body5Regular.fontWeight,
-                lineHeight: typography.styles.body5Regular.lineHeight,
-                letterSpacing: typography.styles.body5Regular.letterSpacing,
-                textAlign: "left",
-              }}
-            >
-              {subcopy}
-            </span>
-          )}
-        </div>
-      </button>
-    );
-  }
-
-  // ── Text pill variant ───────────────────────────────────────────────────
-  const pillSize = size === "hug" ? "hug" : "fixed";
-
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={[
-        "flex flex-col items-start justify-center py-[16px] rounded-[10px] overflow-clip text-left",
-        pillSizeClasses[pillSize],
-        selected
-          ? "bg-(--color-primary-200)"
-          : "bg-(--color-neutral-100) border border-(--color-neutral-300)",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-    >
-      <span
-        className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
-        style={{
-          fontFamily: typography.styles.body4Regular.fontFamily,
-          fontSize: typography.styles.body4Regular.fontSize,
-          fontWeight: typography.styles.body4Regular.fontWeight,
-          lineHeight: typography.styles.body4Regular.lineHeight,
-          letterSpacing: typography.styles.body4Regular.letterSpacing,
-        }}
-      >
-        {label}
-      </span>
-      {subcopy && (
-        <span
-          className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
-          style={{
-            fontFamily: typography.styles.body5Regular.fontFamily,
-            fontSize: typography.styles.body5Regular.fontSize,
-            fontWeight: typography.styles.body5Regular.fontWeight,
-            lineHeight: typography.styles.body5Regular.lineHeight,
-            letterSpacing: typography.styles.body5Regular.letterSpacing,
-          }}
-        >
-          {subcopy}
-        </span>
-      )}
-    </button>
-  );
-}
-```
 
 #### FrequencySelector.tsx
 
@@ -4306,6 +4153,202 @@ export function FrequencySelector({
     </div>
   );
 }
+
+```
+
+#### Selector.tsx
+
+```tsx
+import { typography } from "../../tokens";
+
+/*
+ * Selector — Figma: Design System Foundations > Consultation Selectors
+ *
+ * Two forms:
+ *   1. Text pill (Image=False) — rounded pill with text, optional subcopy
+ *   2. Image card (Image=True) — image on left, text on right, optional subcopy
+ *
+ * States:
+ *   deselected — white bg, 1px border neutral/300
+ *   selected   — primary/200 bg (light green), text neutral/900
+ *
+ * Sizes (text pill):
+ *   fixed — 327px wide, px-32
+ *   hug   — auto width (w-fit), px-12
+ *
+ * Sizes (image card):
+ *   mobile  — 327px total (101px image + 226px text)
+ *   desktop — 368px total (101px image + 267px text)
+ *
+ * All class strings are STATIC LITERALS.
+ */
+
+export type SelectorSize = "fixed" | "hug" | "mobile" | "desktop";
+
+type SelectorProps = {
+  selected?: boolean;
+  subcopy?: string;
+  label?: string;
+  /** Image URL for card variant. When provided, renders as image card. */
+  image?: string;
+  size?: SelectorSize;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
+};
+
+// ─── Token refs for ComponentLibrary ─────────────────────────────────────────
+
+export const stateTokens = {
+  deselected: { bg: "color/neutral/100", border: "color/neutral/300", text: "color/primary/400" },
+  selected:   { bg: "color/primary/200", border: "color/primary/200", text: "color/neutral/900" },
+};
+
+// ─── Text pill sizes ─────────────────────────────────────────────────────────
+
+const pillSizeClasses: Record<"fixed" | "hug", string> = {
+  fixed: "w-[327px] px-(--spacing-spacing-32)",
+  hug:   "w-fit px-(--spacing-spacing-12)",
+};
+
+// ─── Image card text-side widths ─────────────────────────────────────────────
+
+const cardTextWidths: Record<"mobile" | "desktop", string> = {
+  mobile:  "w-[226px]",
+  desktop: "w-[267px]",
+};
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export function Selector({
+  selected = false,
+  subcopy,
+  label = "Once or twice a week",
+  image,
+  size = "fixed",
+  onClick,
+  className = "",
+}: SelectorProps) {
+  const isImageCard = !!image;
+
+  // ── Image card variant ──────────────────────────────────────────────────
+  if (isImageCard) {
+    const cardSize = size === "desktop" ? "desktop" : "mobile";
+    const totalWidth = cardSize === "desktop" ? "w-[368px]" : "w-[327px]";
+
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className={[
+          "flex items-center rounded-[8px] overflow-clip",
+          selected
+            ? "border border-(--color-primary-200)"
+            : "border border-(--color-neutral-300)",
+          totalWidth,
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {/* Image */}
+        <div className="h-[127px] w-[101px] shrink-0 relative overflow-hidden rounded-l-(--radius-radius-10)">
+          <img
+            src={image}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Text side */}
+        <div
+          className={[
+            "flex flex-col items-start justify-center h-[127px] px-(--spacing-spacing-32) py-[30px]",
+            "rounded-r-(--radius-radius-10)",
+            cardTextWidths[cardSize],
+            selected ? "bg-(--color-primary-200)" : "bg-(--color-neutral-100)",
+          ].join(" ")}
+        >
+          <span
+            className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
+            style={{
+              fontFamily: typography.styles.body4Regular.fontFamily,
+              fontSize: typography.styles.body4Regular.fontSize,
+              fontWeight: typography.styles.body4Regular.fontWeight,
+              lineHeight: typography.styles.body4Regular.lineHeight,
+              letterSpacing: typography.styles.body4Regular.letterSpacing,
+              textAlign: "left",
+            }}
+          >
+            {label}
+          </span>
+          {subcopy && (
+            <span
+              className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
+              style={{
+                fontFamily: typography.styles.body5Regular.fontFamily,
+                fontSize: typography.styles.body5Regular.fontSize,
+                fontWeight: typography.styles.body5Regular.fontWeight,
+                lineHeight: typography.styles.body5Regular.lineHeight,
+                letterSpacing: typography.styles.body5Regular.letterSpacing,
+                textAlign: "left",
+              }}
+            >
+              {subcopy}
+            </span>
+          )}
+        </div>
+      </button>
+    );
+  }
+
+  // ── Text pill variant ───────────────────────────────────────────────────
+  const pillSize = size === "hug" ? "hug" : "fixed";
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={[
+        "flex flex-col items-start justify-center py-[16px] rounded-[10px] overflow-clip text-left",
+        pillSizeClasses[pillSize],
+        selected
+          ? "bg-(--color-primary-200)"
+          : "bg-(--color-neutral-100) border border-(--color-neutral-300)",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <span
+        className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
+        style={{
+          fontFamily: typography.styles.body4Regular.fontFamily,
+          fontSize: typography.styles.body4Regular.fontSize,
+          fontWeight: typography.styles.body4Regular.fontWeight,
+          lineHeight: typography.styles.body4Regular.lineHeight,
+          letterSpacing: typography.styles.body4Regular.letterSpacing,
+        }}
+      >
+        {label}
+      </span>
+      {subcopy && (
+        <span
+          className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
+          style={{
+            fontFamily: typography.styles.body5Regular.fontFamily,
+            fontSize: typography.styles.body5Regular.fontSize,
+            fontWeight: typography.styles.body5Regular.fontWeight,
+            lineHeight: typography.styles.body5Regular.lineHeight,
+            letterSpacing: typography.styles.body5Regular.letterSpacing,
+          }}
+        >
+          {subcopy}
+        </span>
+      )}
+    </button>
+  );
+}
+
 ```
 
 #### index.ts
@@ -4314,6 +4357,7 @@ export function FrequencySelector({
 export { Selector } from "./Selector";
 export { FrequencySelector } from "./FrequencySelector";
 export type { FrequencyOption, FrequencySelectorProps } from "./FrequencySelector";
+
 ```
 
 ---
@@ -4367,12 +4411,14 @@ export function SitewideBanner({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { SitewideBanner } from "./SitewideBanner";
+
 ```
 
 ---
@@ -4424,6 +4470,7 @@ export function Tag({ children, size = "default", className = "" }: TagProps) {
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -4431,6 +4478,7 @@ export function Tag({ children, size = "default", className = "" }: TagProps) {
 ```ts
 export { Tag } from "./Tag";
 export type { TagSize } from "./Tag";
+
 ```
 
 ---
@@ -4665,12 +4713,14 @@ export function TextLink({
     </a>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { TextLink } from "./TextLink";
+
 ```
 
 ---
@@ -4861,6 +4911,7 @@ export function TipTrigger({ label, onClick, className = "" }: TipTriggerProps) 
     </button>
   );
 }
+
 ```
 
 #### index.ts
@@ -4868,6 +4919,7 @@ export function TipTrigger({ label, onClick, className = "" }: TipTriggerProps) 
 ```ts
 export { Tip, TipTrigger } from "./Tip";
 export type { TipSize } from "./Tip";
+
 ```
 
 ---
@@ -5000,6 +5052,7 @@ export function Toast({
     </div>
   );
 }
+
 ```
 
 #### index.ts
@@ -5007,6 +5060,7 @@ export function Toast({
 ```ts
 export { Toast } from "./Toast";
 export type { ToastType, ToastBreakpoint } from "./Toast";
+
 ```
 
 ---
@@ -5120,12 +5174,14 @@ export function Toggle({
     </div>
   );
 }
+
 ```
 
 #### index.ts
 
 ```ts
 export { Toggle } from "./Toggle";
+
 ```
 
 ---
@@ -5660,6 +5716,8 @@ export function TypographyShowcase() {
     </div>
   );
 }
+
+
 ```
 
 ---
@@ -5716,6 +5774,7 @@ export function VideoControls({
     </button>
   );
 }
+
 ```
 
 #### index.ts
@@ -5723,4 +5782,8 @@ export function VideoControls({
 ```ts
 export { VideoControls } from "./VideoControls";
 export type { VideoControlsState } from "./VideoControls";
+
 ```
+
+---
+

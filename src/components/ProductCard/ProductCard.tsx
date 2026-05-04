@@ -14,34 +14,37 @@
  */
 
 import { typography } from "../../tokens";
-import imgCardBg from "../../../images/products/bg.png";
+
+// ─── Images (served from GitHub Pages) ───────────────────
+const IMG_BASE = "https://nina-product-design.github.io/my-design-system/images/products";
+const imgCardBg = `${IMG_BASE}/bg.png`;
 
 // ─── Product images ──────────────────────────────────────
-import imgShampoo from "../../../images/products/Hair/Prose-custom-shampoo.png";
-import imgConditioner from "../../../images/products/Hair/Prose-custom-conditioner.png";
-import imgScalpMask from "../../../images/products/Hair/Prose-scalp-mask-front-background.png";
-import imgCurlCream from "../../../images/products/Hair/Prose-curl-cream.png";
-import imgLeaveInPump from "../../../images/products/Hair/Prose-leave-in-conditioner-pump-front-background.png";
-import imgDryShampoo from "../../../images/products/Hair/Prose-dry-shampoo-front-background.png";
-import imgHairMask from "../../../images/products/Hair/Prose-hair-mask-front-background.png";
-import imgHairOil from "../../../images/products/Hair/Prose-hair-oil-front-background.png";
-import imgScalpSerum from "../../../images/products/Hair/Prose-scalp-serum-front-background.png";
-import imgStylingGel from "../../../images/products/Hair/Prose-styling-gel-front-background.png";
-import imgRootSource from "../../../images/products/Hair/Prose-root-source-background-1.png";
+const imgShampoo = `${IMG_BASE}/Hair/Prose-custom-shampoo.png`;
+const imgConditioner = `${IMG_BASE}/Hair/Prose-custom-conditioner.png`;
+const imgScalpMask = `${IMG_BASE}/Hair/Prose-scalp-mask-front-background.png`;
+const imgCurlCream = `${IMG_BASE}/Hair/Prose-curl-cream.png`;
+const imgLeaveInPump = `${IMG_BASE}/Hair/Prose-leave-in-conditioner-pump-front-background.png`;
+const imgDryShampoo = `${IMG_BASE}/Hair/Prose-dry-shampoo-front-background.png`;
+const imgHairMask = `${IMG_BASE}/Hair/Prose-hair-mask-front-background.png`;
+const imgHairOil = `${IMG_BASE}/Hair/Prose-hair-oil-front-background.png`;
+const imgScalpSerum = `${IMG_BASE}/Hair/Prose-scalp-serum-front-background.png`;
+const imgStylingGel = `${IMG_BASE}/Hair/Prose-styling-gel-front-background.png`;
+const imgRootSource = `${IMG_BASE}/Hair/Prose-root-source-background-1.png`;
 
 // ─── Skincare images ─────────────────────────────────────
-import imgCleanser from "../../../images/products/Skin/Prose-cleanser-front-background.png";
-import imgMoisturizer from "../../../images/products/Skin/Prose-moisturizer-front-background.png";
-import imgSerum from "../../../images/products/Skin/Prose-serum-front-background.png";
+const imgCleanser = `${IMG_BASE}/Skin/Prose-cleanser-front-background.png`;
+const imgMoisturizer = `${IMG_BASE}/Skin/Prose-moisturizer-front-background.png`;
+const imgSerum = `${IMG_BASE}/Skin/Prose-serum-front-background.png`;
 
 // ─── Accessory images ────────────────────────────────────
-import imgBoarBrush from "../../../images/products/Accessories/Prose-Brush-Boar-BG.png";
-import imgNylonBrush from "../../../images/products/Accessories/Prose-Brush-Boar-Nylon-BG.png";
-import imgMetalTipBrush from "../../../images/products/Accessories/Prose-Brush-Metal-Tip-BG.png";
-import imgCandleArcadia from "../../../images/products/Accessories/Prose-Candle-Arcadia-Front-BG.png";
-import imgCandleCorsica from "../../../images/products/Accessories/Prose-Candle-Corsica-Front-BG.png";
-import imgCandlePrelude from "../../../images/products/Accessories/Prose-Candle-Prelude-Front-BG.png";
-import imgHairTowel from "../../../images/products/Accessories/Prose-Hair-Towel-BG.png";
+const imgBoarBrush = `${IMG_BASE}/Accessories/Prose-Brush-Boar-BG.png`;
+const imgNylonBrush = `${IMG_BASE}/Accessories/Prose-Brush-Boar-Nylon-BG.png`;
+const imgMetalTipBrush = `${IMG_BASE}/Accessories/Prose-Brush-Metal-Tip-BG.png`;
+const imgCandleArcadia = `${IMG_BASE}/Accessories/Prose-Candle-Arcadia-Front-BG.png`;
+const imgCandleCorsica = `${IMG_BASE}/Accessories/Prose-Candle-Corsica-Front-BG.png`;
+const imgCandlePrelude = `${IMG_BASE}/Accessories/Prose-Candle-Prelude-Front-BG.png`;
+const imgHairTowel = `${IMG_BASE}/Accessories/Prose-Hair-Towel-BG.png`;
 
 // ─── Product data ────────────────────────────────────────
 
