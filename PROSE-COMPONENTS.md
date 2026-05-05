@@ -1,7 +1,7 @@
 # Prose Design System -- Component Library Source
 
 **Repo:** `https://github.com/nina-product-design/my-design-system`
-**Last updated:** 2026-05-04
+**Last updated:** 2026-05-05
 
 ---
 
@@ -917,14 +917,12 @@ export function Accordion({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { Accordion } from "./Accordion";
-
 ```
 
 ---
@@ -1027,7 +1025,6 @@ export function ArrowButton({
     </button>
   );
 }
-
 ```
 
 #### index.ts
@@ -1035,7 +1032,6 @@ export function ArrowButton({
 ```ts
 export { ArrowButton } from "./ArrowButton";
 export type { ArrowButtonSize, ArrowButtonDirection, ArrowButtonColor } from "./ArrowButton";
-
 ```
 
 ---
@@ -1268,7 +1264,6 @@ function Spinner() {
     </>
   );
 }
-
 ```
 
 #### ButtonMini.tsx
@@ -1341,14 +1336,12 @@ export function ButtonMini({
     </button>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { Button } from "./Button";
-
 ```
 
 ---
@@ -1469,14 +1462,12 @@ export function Checkbox({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { Checkbox } from "./Checkbox";
-
 ```
 
 ---
@@ -1538,7 +1529,6 @@ export function CloseButton({
     </button>
   );
 }
-
 ```
 
 #### index.ts
@@ -1546,7 +1536,6 @@ export function CloseButton({
 ```ts
 export { CloseButton } from "./CloseButton";
 export type { CloseButtonColor } from "./CloseButton";
-
 ```
 
 ---
@@ -1704,7 +1693,6 @@ export function IngredientCard({
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -1712,7 +1700,6 @@ export function IngredientCard({
 ```ts
 export { IngredientCard, INGREDIENTS } from "./IngredientCard";
 export type { IngredientKey, IngredientCardData } from "./IngredientCard";
-
 ```
 
 ---
@@ -1793,14 +1780,12 @@ export function IngredientCardCarousel({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { IngredientCardCarousel } from "./IngredientCardCarousel";
-
 ```
 
 ---
@@ -2079,14 +2064,12 @@ export function InputField({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { InputField } from "./InputField";
-
 ```
 
 ---
@@ -2150,14 +2133,12 @@ export function Logo({
     </svg>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { Logo } from "./Logo";
-
 ```
 
 ---
@@ -2420,7 +2401,12 @@ export function Navigation({
     <div className={`flex flex-col w-full ${className}`}>
       <SitewideBanner state={bannerState} message={resolvedBannerMessage} />
 
-      <div className="flex items-center justify-between w-full h-[55px] px-(--spacing-spacing-24) bg-(--color-neutral-100)">
+      <div className="relative flex items-center justify-between w-full h-[55px] px-(--spacing-spacing-24) bg-(--color-neutral-100)">
+        {/* Logo — always absolutely centered */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Logo variant="dark" height={18} />
+        </div>
+
         {isSimplified ? (
           <>
             {/* Left */}
@@ -2435,8 +2421,6 @@ export function Navigation({
                 </span>
               )}
             </div>
-            {/* Center */}
-            <Logo variant="dark" height={18} />
             {/* Right */}
             {state === "consultation" ? (
               <span className="text-(--color-primary-400) cursor-pointer" style={navLinkStyle}>
@@ -2452,25 +2436,20 @@ export function Navigation({
             <span className="text-(--color-primary-400) cursor-pointer">
               <HamburgerIcon />
             </span>
-            {/* Center + Right: logo and icons */}
-            <div className="flex items-center justify-between flex-1 ml-(--spacing-spacing-24)">
-              <Logo variant="dark" height={18} />
-              <MobileIcons hasItems={hasItems} />
-            </div>
+            {/* Right: icons */}
+            <MobileIcons hasItems={hasItems} />
           </>
         )}
       </div>
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { Navigation } from "./Navigation";
-
 ```
 
 ---
@@ -2601,7 +2580,6 @@ export function OfferBadge({
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -2609,7 +2587,6 @@ export function OfferBadge({
 ```ts
 export { OfferBadge } from "./OfferBadge";
 export type { OfferBadgeColor, OfferBadgeSize, OfferBadgeOffer } from "./OfferBadge";
-
 ```
 
 ---
@@ -2814,7 +2791,6 @@ export function ProductCard({
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -2822,7 +2798,6 @@ export function ProductCard({
 ```ts
 export { ProductCard, HAIRCARE_PRODUCTS, ACCESSORY_PRODUCTS, SKINCARE_PRODUCTS } from "./ProductCard";
 export type { HaircareProduct, AccessoryProduct, SkincareProduct, ProductCardData } from "./ProductCard";
-
 ```
 
 ---
@@ -2911,7 +2886,6 @@ export function ProductCardCarousel({
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -2919,7 +2893,6 @@ export function ProductCardCarousel({
 ```ts
 export { ProductCardCarousel } from "./ProductCardCarousel";
 export type { ProductCardItem } from "./ProductCardCarousel";
-
 ```
 
 ---
@@ -2968,14 +2941,12 @@ export function ProductTag({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { ProductTag } from "./ProductTag";
-
 ```
 
 ---
@@ -3093,7 +3064,6 @@ export function ProgressBar({
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -3101,7 +3071,6 @@ export function ProgressBar({
 ```ts
 export { ProgressBar, HAIR_RR_STEPS, SKIN_RR_STEPS, HAIR_CONSULTATION_STEPS, SKIN_CONSULTATION_STEPS } from "./ProgressBar";
 export type { ProgressBarSize } from "./ProgressBar";
-
 ```
 
 ---
@@ -3428,14 +3397,12 @@ export function PromoModal({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { PromoModal } from "./PromoModal";
-
 ```
 
 ---
@@ -3504,14 +3471,12 @@ export function Radio({ state = "empty", size = "small", className = "" }: Radio
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { Radio } from "./Radio";
-
 ```
 
 ---
@@ -3850,7 +3815,6 @@ export function RoutineCard({
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -3858,12 +3822,205 @@ export function RoutineCard({
 ```ts
 export { RoutineCard } from "./RoutineCard";
 export type { RoutineCardType, RoutineCardIngredient, RoutineCardProps } from "./RoutineCard";
-
 ```
 
 ---
 
 ### Selector
+
+#### Selector.tsx
+
+```tsx
+import { typography } from "../../tokens";
+
+/*
+ * Selector — Figma: Design System Foundations > Consultation Selectors
+ *
+ * Two forms:
+ *   1. Text pill (Image=False) — rounded pill with text, optional subcopy
+ *   2. Image card (Image=True) — image on left, text on right, optional subcopy
+ *
+ * States:
+ *   deselected — white bg, 1px border neutral/300
+ *   selected   — primary/200 bg (light green), text neutral/900
+ *
+ * Sizes (text pill):
+ *   fixed — 327px wide, px-32
+ *   hug   — auto width (w-fit), px-12
+ *
+ * Sizes (image card):
+ *   mobile  — 327px total (101px image + 226px text)
+ *   desktop — 368px total (101px image + 267px text)
+ *
+ * All class strings are STATIC LITERALS.
+ */
+
+export type SelectorSize = "fixed" | "hug" | "mobile" | "desktop";
+
+type SelectorProps = {
+  selected?: boolean;
+  subcopy?: string;
+  label?: string;
+  /** Image URL for card variant. When provided, renders as image card. */
+  image?: string;
+  size?: SelectorSize;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
+};
+
+// ─── Token refs for ComponentLibrary ─────────────────────────────────────────
+
+export const stateTokens = {
+  deselected: { bg: "color/neutral/100", border: "color/neutral/300", text: "color/primary/400" },
+  selected:   { bg: "color/primary/200", border: "color/primary/200", text: "color/neutral/900" },
+};
+
+// ─── Text pill sizes ─────────────────────────────────────────────────────────
+
+const pillSizeClasses: Record<"fixed" | "hug", string> = {
+  fixed: "w-[327px] px-(--spacing-spacing-32)",
+  hug:   "w-fit px-(--spacing-spacing-12)",
+};
+
+// ─── Image card text-side widths ─────────────────────────────────────────────
+
+const cardTextWidths: Record<"mobile" | "desktop", string> = {
+  mobile:  "w-[226px]",
+  desktop: "w-[267px]",
+};
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export function Selector({
+  selected = false,
+  subcopy,
+  label = "Once or twice a week",
+  image,
+  size = "fixed",
+  onClick,
+  className = "",
+}: SelectorProps) {
+  const isImageCard = !!image;
+
+  // ── Image card variant ──────────────────────────────────────────────────
+  if (isImageCard) {
+    const cardSize = size === "desktop" ? "desktop" : "mobile";
+    const totalWidth = cardSize === "desktop" ? "w-[368px]" : "w-[327px]";
+
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className={[
+          "flex items-center rounded-[8px] overflow-clip",
+          selected
+            ? "border border-(--color-primary-200)"
+            : "border border-(--color-neutral-300)",
+          totalWidth,
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {/* Image */}
+        <div className="h-[127px] w-[101px] shrink-0 relative overflow-hidden rounded-l-(--radius-radius-10)">
+          <img
+            src={image}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Text side */}
+        <div
+          className={[
+            "flex flex-col items-start justify-center h-[127px] px-(--spacing-spacing-32) py-[30px]",
+            "rounded-r-(--radius-radius-10)",
+            cardTextWidths[cardSize],
+            selected ? "bg-(--color-primary-200)" : "bg-(--color-neutral-100)",
+          ].join(" ")}
+        >
+          <span
+            className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
+            style={{
+              fontFamily: typography.styles.body4Regular.fontFamily,
+              fontSize: typography.styles.body4Regular.fontSize,
+              fontWeight: typography.styles.body4Regular.fontWeight,
+              lineHeight: typography.styles.body4Regular.lineHeight,
+              letterSpacing: typography.styles.body4Regular.letterSpacing,
+              textAlign: "left",
+            }}
+          >
+            {label}
+          </span>
+          {subcopy && (
+            <span
+              className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
+              style={{
+                fontFamily: typography.styles.body5Regular.fontFamily,
+                fontSize: typography.styles.body5Regular.fontSize,
+                fontWeight: typography.styles.body5Regular.fontWeight,
+                lineHeight: typography.styles.body5Regular.lineHeight,
+                letterSpacing: typography.styles.body5Regular.letterSpacing,
+                textAlign: "left",
+              }}
+            >
+              {subcopy}
+            </span>
+          )}
+        </div>
+      </button>
+    );
+  }
+
+  // ── Text pill variant ───────────────────────────────────────────────────
+  const pillSize = size === "hug" ? "hug" : "fixed";
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={[
+        "flex flex-col items-start justify-center py-[16px] rounded-[10px] overflow-clip text-left",
+        pillSizeClasses[pillSize],
+        selected
+          ? "bg-(--color-primary-200)"
+          : "bg-(--color-neutral-100) border border-(--color-neutral-300)",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <span
+        className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
+        style={{
+          fontFamily: typography.styles.body4Regular.fontFamily,
+          fontSize: typography.styles.body4Regular.fontSize,
+          fontWeight: typography.styles.body4Regular.fontWeight,
+          lineHeight: typography.styles.body4Regular.lineHeight,
+          letterSpacing: typography.styles.body4Regular.letterSpacing,
+        }}
+      >
+        {label}
+      </span>
+      {subcopy && (
+        <span
+          className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
+          style={{
+            fontFamily: typography.styles.body5Regular.fontFamily,
+            fontSize: typography.styles.body5Regular.fontSize,
+            fontWeight: typography.styles.body5Regular.fontWeight,
+            lineHeight: typography.styles.body5Regular.lineHeight,
+            letterSpacing: typography.styles.body5Regular.letterSpacing,
+          }}
+        >
+          {subcopy}
+        </span>
+      )}
+    </button>
+  );
+}
+```
 
 #### FrequencySelector.tsx
 
@@ -4153,202 +4310,6 @@ export function FrequencySelector({
     </div>
   );
 }
-
-```
-
-#### Selector.tsx
-
-```tsx
-import { typography } from "../../tokens";
-
-/*
- * Selector — Figma: Design System Foundations > Consultation Selectors
- *
- * Two forms:
- *   1. Text pill (Image=False) — rounded pill with text, optional subcopy
- *   2. Image card (Image=True) — image on left, text on right, optional subcopy
- *
- * States:
- *   deselected — white bg, 1px border neutral/300
- *   selected   — primary/200 bg (light green), text neutral/900
- *
- * Sizes (text pill):
- *   fixed — 327px wide, px-32
- *   hug   — auto width (w-fit), px-12
- *
- * Sizes (image card):
- *   mobile  — 327px total (101px image + 226px text)
- *   desktop — 368px total (101px image + 267px text)
- *
- * All class strings are STATIC LITERALS.
- */
-
-export type SelectorSize = "fixed" | "hug" | "mobile" | "desktop";
-
-type SelectorProps = {
-  selected?: boolean;
-  subcopy?: string;
-  label?: string;
-  /** Image URL for card variant. When provided, renders as image card. */
-  image?: string;
-  size?: SelectorSize;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  className?: string;
-};
-
-// ─── Token refs for ComponentLibrary ─────────────────────────────────────────
-
-export const stateTokens = {
-  deselected: { bg: "color/neutral/100", border: "color/neutral/300", text: "color/primary/400" },
-  selected:   { bg: "color/primary/200", border: "color/primary/200", text: "color/neutral/900" },
-};
-
-// ─── Text pill sizes ─────────────────────────────────────────────────────────
-
-const pillSizeClasses: Record<"fixed" | "hug", string> = {
-  fixed: "w-[327px] px-(--spacing-spacing-32)",
-  hug:   "w-fit px-(--spacing-spacing-12)",
-};
-
-// ─── Image card text-side widths ─────────────────────────────────────────────
-
-const cardTextWidths: Record<"mobile" | "desktop", string> = {
-  mobile:  "w-[226px]",
-  desktop: "w-[267px]",
-};
-
-// ─── Component ────────────────────────────────────────────────────────────────
-
-export function Selector({
-  selected = false,
-  subcopy,
-  label = "Once or twice a week",
-  image,
-  size = "fixed",
-  onClick,
-  className = "",
-}: SelectorProps) {
-  const isImageCard = !!image;
-
-  // ── Image card variant ──────────────────────────────────────────────────
-  if (isImageCard) {
-    const cardSize = size === "desktop" ? "desktop" : "mobile";
-    const totalWidth = cardSize === "desktop" ? "w-[368px]" : "w-[327px]";
-
-    return (
-      <button
-        type="button"
-        onClick={onClick}
-        className={[
-          "flex items-center rounded-[8px] overflow-clip",
-          selected
-            ? "border border-(--color-primary-200)"
-            : "border border-(--color-neutral-300)",
-          totalWidth,
-          className,
-        ]
-          .filter(Boolean)
-          .join(" ")}
-      >
-        {/* Image */}
-        <div className="h-[127px] w-[101px] shrink-0 relative overflow-hidden rounded-l-(--radius-radius-10)">
-          <img
-            src={image}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Text side */}
-        <div
-          className={[
-            "flex flex-col items-start justify-center h-[127px] px-(--spacing-spacing-32) py-[30px]",
-            "rounded-r-(--radius-radius-10)",
-            cardTextWidths[cardSize],
-            selected ? "bg-(--color-primary-200)" : "bg-(--color-neutral-100)",
-          ].join(" ")}
-        >
-          <span
-            className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
-            style={{
-              fontFamily: typography.styles.body4Regular.fontFamily,
-              fontSize: typography.styles.body4Regular.fontSize,
-              fontWeight: typography.styles.body4Regular.fontWeight,
-              lineHeight: typography.styles.body4Regular.lineHeight,
-              letterSpacing: typography.styles.body4Regular.letterSpacing,
-              textAlign: "left",
-            }}
-          >
-            {label}
-          </span>
-          {subcopy && (
-            <span
-              className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
-              style={{
-                fontFamily: typography.styles.body5Regular.fontFamily,
-                fontSize: typography.styles.body5Regular.fontSize,
-                fontWeight: typography.styles.body5Regular.fontWeight,
-                lineHeight: typography.styles.body5Regular.lineHeight,
-                letterSpacing: typography.styles.body5Regular.letterSpacing,
-                textAlign: "left",
-              }}
-            >
-              {subcopy}
-            </span>
-          )}
-        </div>
-      </button>
-    );
-  }
-
-  // ── Text pill variant ───────────────────────────────────────────────────
-  const pillSize = size === "hug" ? "hug" : "fixed";
-
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={[
-        "flex flex-col items-start justify-center py-[16px] rounded-[10px] overflow-clip text-left",
-        pillSizeClasses[pillSize],
-        selected
-          ? "bg-(--color-primary-200)"
-          : "bg-(--color-neutral-100) border border-(--color-neutral-300)",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-    >
-      <span
-        className={selected ? "text-(--color-neutral-900)" : "text-(--color-primary-400)"}
-        style={{
-          fontFamily: typography.styles.body4Regular.fontFamily,
-          fontSize: typography.styles.body4Regular.fontSize,
-          fontWeight: typography.styles.body4Regular.fontWeight,
-          lineHeight: typography.styles.body4Regular.lineHeight,
-          letterSpacing: typography.styles.body4Regular.letterSpacing,
-        }}
-      >
-        {label}
-      </span>
-      {subcopy && (
-        <span
-          className={selected ? "text-(--color-neutral-900)" : "text-(--color-neutral-800)"}
-          style={{
-            fontFamily: typography.styles.body5Regular.fontFamily,
-            fontSize: typography.styles.body5Regular.fontSize,
-            fontWeight: typography.styles.body5Regular.fontWeight,
-            lineHeight: typography.styles.body5Regular.lineHeight,
-            letterSpacing: typography.styles.body5Regular.letterSpacing,
-          }}
-        >
-          {subcopy}
-        </span>
-      )}
-    </button>
-  );
-}
-
 ```
 
 #### index.ts
@@ -4357,7 +4318,6 @@ export function Selector({
 export { Selector } from "./Selector";
 export { FrequencySelector } from "./FrequencySelector";
 export type { FrequencyOption, FrequencySelectorProps } from "./FrequencySelector";
-
 ```
 
 ---
@@ -4411,14 +4371,12 @@ export function SitewideBanner({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { SitewideBanner } from "./SitewideBanner";
-
 ```
 
 ---
@@ -4470,7 +4428,6 @@ export function Tag({ children, size = "default", className = "" }: TagProps) {
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -4478,7 +4435,6 @@ export function Tag({ children, size = "default", className = "" }: TagProps) {
 ```ts
 export { Tag } from "./Tag";
 export type { TagSize } from "./Tag";
-
 ```
 
 ---
@@ -4713,14 +4669,12 @@ export function TextLink({
     </a>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { TextLink } from "./TextLink";
-
 ```
 
 ---
@@ -4911,7 +4865,6 @@ export function TipTrigger({ label, onClick, className = "" }: TipTriggerProps) 
     </button>
   );
 }
-
 ```
 
 #### index.ts
@@ -4919,7 +4872,6 @@ export function TipTrigger({ label, onClick, className = "" }: TipTriggerProps) 
 ```ts
 export { Tip, TipTrigger } from "./Tip";
 export type { TipSize } from "./Tip";
-
 ```
 
 ---
@@ -5052,7 +5004,6 @@ export function Toast({
     </div>
   );
 }
-
 ```
 
 #### index.ts
@@ -5060,7 +5011,6 @@ export function Toast({
 ```ts
 export { Toast } from "./Toast";
 export type { ToastType, ToastBreakpoint } from "./Toast";
-
 ```
 
 ---
@@ -5174,14 +5124,12 @@ export function Toggle({
     </div>
   );
 }
-
 ```
 
 #### index.ts
 
 ```ts
 export { Toggle } from "./Toggle";
-
 ```
 
 ---
@@ -5716,8 +5664,6 @@ export function TypographyShowcase() {
     </div>
   );
 }
-
-
 ```
 
 ---
@@ -5774,7 +5720,6 @@ export function VideoControls({
     </button>
   );
 }
-
 ```
 
 #### index.ts
@@ -5782,8 +5727,4 @@ export function VideoControls({
 ```ts
 export { VideoControls } from "./VideoControls";
 export type { VideoControlsState } from "./VideoControls";
-
 ```
-
----
-

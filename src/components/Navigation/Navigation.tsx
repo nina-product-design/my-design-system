@@ -251,7 +251,12 @@ export function Navigation({
     <div className={`flex flex-col w-full ${className}`}>
       <SitewideBanner state={bannerState} message={resolvedBannerMessage} />
 
-      <div className="flex items-center justify-between w-full h-[55px] px-(--spacing-spacing-24) bg-(--color-neutral-100)">
+      <div className="relative flex items-center justify-between w-full h-[55px] px-(--spacing-spacing-24) bg-(--color-neutral-100)">
+        {/* Logo — always absolutely centered */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Logo variant="dark" height={18} />
+        </div>
+
         {isSimplified ? (
           <>
             {/* Left */}
@@ -266,8 +271,6 @@ export function Navigation({
                 </span>
               )}
             </div>
-            {/* Center */}
-            <Logo variant="dark" height={18} />
             {/* Right */}
             {state === "consultation" ? (
               <span className="text-(--color-primary-400) cursor-pointer" style={navLinkStyle}>
@@ -283,11 +286,8 @@ export function Navigation({
             <span className="text-(--color-primary-400) cursor-pointer">
               <HamburgerIcon />
             </span>
-            {/* Center + Right: logo and icons */}
-            <div className="flex items-center justify-between flex-1 ml-(--spacing-spacing-24)">
-              <Logo variant="dark" height={18} />
-              <MobileIcons hasItems={hasItems} />
-            </div>
+            {/* Right: icons */}
+            <MobileIcons hasItems={hasItems} />
           </>
         )}
       </div>

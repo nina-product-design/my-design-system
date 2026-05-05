@@ -15,6 +15,18 @@ If the project is already set up, skip straight to building.
 
 ---
 
+## Default Behavior
+
+Follow these rules for every prototype unless the user explicitly says otherwise:
+
+1. **Always include the Navigation** (SitewideBanner + Nav bar) at the top of every page. Do not skip it.
+2. **Always build mobile-first** (375px viewport). Make it responsive if straightforward, but default to mobile if the user doesn't specify.
+3. **Always include all standard page elements**: Navigation at top, content area, and any relevant CTAs. Don't leave out elements unless the user says to.
+4. **Use real components** from PROSE-COMPONENTS.md — never rebuild from scratch. Copy the component source code exactly.
+5. **The Prose Logo must always appear** in the Navigation, horizontally centered within the nav bar.
+
+---
+
 ## Component Library
 
 The coded component library with all interactive examples and exact specs lives at:
