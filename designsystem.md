@@ -5,13 +5,22 @@ You are setting up or working in a Prose design system prototype. Follow every r
 ## Project Setup
 
 If this folder does NOT already have a `package.json` with Vite configured:
-1. Scaffold a new Vite + React + Tailwind project in the current folder
-2. Add the @font-face declarations from the Fonts section below into `src/index.css` (fonts load from cdn2.prose.com — no download needed)
-3. Replace `tailwind.config.js` with the Tailwind Config below
-4. Run `npm install`
-5. Start the dev server and give the user the localhost URL
+1. **First, fetch the component source bundle** — automatically download it (the user does not need to do anything):
+   ```bash
+   curl -sL https://raw.githubusercontent.com/nina-product-design/my-design-system/main/PROSE-COMPONENTS.md -o PROSE-COMPONENTS.md
+   ```
+   Then read PROSE-COMPONENTS.md — it contains tokens.ts, globals.css, and every component's full source code.
+2. Scaffold a new Vite + React + Tailwind project in the current folder
+3. Add the @font-face declarations from the Fonts section below into `src/index.css` (fonts load from cdn2.prose.com — no download needed)
+4. Copy `tokens.ts` and `globals.css` from PROSE-COMPONENTS.md into the project
+5. Replace `tailwind.config.js` with the Tailwind Config below
+6. Copy any components needed for the page from PROSE-COMPONENTS.md into `src/components/`
+7. Run `npm install`
+8. Start the dev server and give the user the localhost URL
 
-If the project is already set up, skip straight to building.
+If the project is already set up but PROSE-COMPONENTS.md is not in the folder, fetch it (step 1) before building.
+
+**CRITICAL: Always read component code from PROSE-COMPONENTS.md and copy it exactly. Do NOT invent or rebuild components from the spec tables — those are reference only.**
 
 ---
 
